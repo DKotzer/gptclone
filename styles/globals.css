@@ -1,4 +1,18 @@
-:root {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .infoText {
+    @apply p-4 bg-gray-700/50 rounded-lg max-w-[300px];
+  }
+
+  .chatRow {
+    @apply rounded-lg px-5 py-3 text-sm flex items-center justify-center space-x-2 hover:bg-gray-700/70 cursor-pointer text-gray-300 transition-all duration-200 ease-out;
+  }
+}
+
+/* :root {
   --max-width: 1100px;
   --border-radius: 12px;
   --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
@@ -39,6 +53,8 @@
   --card-rgb: 180, 185, 188;
   --card-border-rgb: 131, 134, 135;
 }
+
+
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -104,4 +120,4 @@ a {
   html {
     color-scheme: dark;
   }
-}
+} */
