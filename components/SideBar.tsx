@@ -6,6 +6,7 @@ import { collection, orderBy, query } from "firebase/firestore";
 import { db } from "@component/firebase";
 import ChatRow from "./ChatRow";
 import ModelSelection from "./ModelSelection";
+import { ArrowUpTrayIcon } from "@heroicons/react/24/outline";
 
 function SideBar() {
   const { data: session } = useSession();
@@ -38,12 +39,20 @@ function SideBar() {
         </div>
       </div>
       {session && (
-        <img
-          onClick={() => signOut()}
-          src={session.user?.image! || "/../public/user.png"}
-          alt='Profile Picture'
-          className='h-12 w-12 rounded-full cursor-pointed mx-auto mb-2 hover:opacity-50'
-        />
+        <div className='flex flex-col'>
+          <img
+            src={session.user?.image! || "https://i.imgur.com/dTJ67HS.png"}
+            alt='Profile Picture'
+            className='h-12 w-12 rounded-full cursor-pointed mx-auto mb-2 hover:opacity-50'
+          />{" "}
+          <div
+            className='hover:border-gray-700 chatRow align-self-start '
+            onClick={() => signOut()}
+          >
+            <ArrowUpTrayIcon className='h-4 w-4 rotate-90' />
+            <p>Log Out</p>
+          </div>
+        </div>
       )}
     </div>
   );

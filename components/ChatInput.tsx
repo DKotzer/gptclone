@@ -74,9 +74,9 @@ function ChatInput({ chatId }: Props) {
 
   return (
     <div className='bg-gray-700/50 text-gray-400 rounded-lg text-sm'>
-      <form onSubmit={sendMessage} className='p-5 space-x-5 flex'>
+      <form onSubmit={sendMessage} className='p-5  flex max-w-2xl mx-auto'>
         <input
-          className='bg-transparent focus:outline-none flex-1 disabled:cursor-not-allowed disabled:text-gray-300'
+          className='mx-auto stretch rounded-l-md pl-5 pr-5 m-0 bg-[#40414f] focus:outline-none flex-1 disabled:cursor-not-allowed disabled:text-gray-300'
           disabled={!session}
           type='text'
           value={prompt}
@@ -84,7 +84,7 @@ function ChatInput({ chatId }: Props) {
           placeholder='Type your message here...'
         />
         <button
-          className='bg-[#11A37F] hover:opacity-50 text-white font-bolt px-4 py-2 rounded disabled:bg-gray-300 disabled:cursor-not-allowed'
+          className='bg-[#11A37F] hover:opacity-50 text-white font-bolt px-4 m-0 py-2 rounded-r-md disabled:bg-gray-300 disabled:cursor-not-allowed'
           disabled={!prompt || !session}
           type='submit'
         >
