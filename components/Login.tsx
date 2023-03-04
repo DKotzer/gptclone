@@ -5,12 +5,17 @@ import Image from "next/image";
 function Login() {
   return (
     <div className='bg-[#11A37F] h-screen flex flex-col items-center justify-center text-center'>
-      <Image src='/../public/openai.png' width={300} height={300} alt='logo' />
+      <img
+        src={"https://i.imgur.com/9Hk3qUg.png"}
+        alt='Logo'
+        onClick={() => signIn("google")}
+        className='h-50 w-50 rounded-3xl cursor-pointed mx-auto mb-2 hover:cursor-pointer'
+      />
       <button
         onClick={() => signIn("google")}
-        className='text-white font-bold text-3xl animate-pulse'
+        className='font-bold text-3xl  rounded-3xl  bg-[#343541] text-white px-5 py-3'
       >
-        Sign In to use DylanGPT
+        <span className='animate-pulse'>Sign In to use DylanGPT</span>
       </button>
     </div>
   );
