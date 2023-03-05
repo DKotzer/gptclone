@@ -1,6 +1,7 @@
+"use client";
 import BetaChat from "@component/components/BetaChat";
 import BetaInput from "@component/components/BetaInput";
-
+import { useState } from "react";
 
 type Props = {
   params: {
@@ -9,10 +10,15 @@ type Props = {
 };
 
 function ChatPage({ params: { id } }: Props) {
+  const [messages, setMessages] = useState([
+    { role: "system", content: "You are a helpful assistant." },
+    { role: "assistant", content: "Hello, I am DylanGPT, how may I help you?" },
+  ]);
+
   return (
     <div className='flex flex-col h-screen overflow-hidden'>
-      <BetaChat chatId={id} />
-      <BetaInput chatId={id} />
+      <BetaChat messages={messages} />
+      <BetaInput setMessages={setMessages} messages={messages} />
     </div>
   );
 }

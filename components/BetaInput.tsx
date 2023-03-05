@@ -8,68 +8,88 @@ import { db } from "@component/firebase";
 import toast, { Toaster } from "react-hot-toast";
 import ModelSelection from "./ModelSelection";
 import useSWR from "swr";
+import { Configuration, OpenAIApi } from "openai";
+import { join } from "path";
 
 type Props = {
-  chatId: string;
+  setMessages: Function;
+  messages: Array<any>;
 };
 
-function BetaInput({ chatId }: Props) {
+function BetaInput({ setMessages, messages }) {
   const [prompt, setPrompt] = useState("");
   const { data: session } = useSession();
+  // const configuration = new Configuration({
+  //   apiKey: process.env.OPENAI_API_KEY,
+  //   organization: "org-qaFpK5RoJjLWjlPBEJSM2yAP",
+  // });
+  // const openai = new OpenAIApi(configuration);
+  const model = "gpt-3.5-turbo";
 
-  const { data: model } = useSWR("model", {
-    fallbackData: "text-davinci-003",
-  });
   const sendMessage = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!prompt) return;
     const input = prompt.trim();
+    setMessages((prevState) => [
+      ...prevState,
+      { role: "user", content: input },
+    ]);
     setPrompt("");
-    const message: Message = {
-      text: input,
-      createdAt: serverTimestamp(),
-      user: {
-        _id: session?.user?.email!,
-        name: session?.user?.name!,
-        avatar:
-          session?.user?.image! ||
-          `https://ui-avatars.com/api/?name=${session?.user?.name}`,
-      },
-    };
-    await addDoc(
-      collection(
-        db,
-        "users",
-        session?.user?.email!,
-        "chats",
-        chatId,
-        "messages"
-      ),
-      message
-    );
-
     //toast notification to say loading
-
     // const notify = () => toast("Here is your toast.");
     const notification = toast.loading("DylanGPT is thinking...");
+    let msgHolder = [...messages, { role: "user", content: input }];
+    console.log("pre completion msg", msgHolder);
+    // const completion = await openai.createChatCompletion({
+    //   model: model,
+    //   messages: [...messages, { role: "user", content: input }],
+    // });
 
-    await fetch("/api/askQuestion", {
+    let response = await fetch("/api/betaQuestion", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        prompt: input,
-        chatId,
         model,
-        session,
+        messages: msgHolder,
       }),
-    }).then(() => {
-      //toast notification to say successfull
-      toast.success("DylanGPT has responded!", {
-        id: notification,
-      });
-    });
+    })
+      .then((res) => {
+        res
+          .json()
+          .then((j) => {
+            setMessages((prevState) => [
+              ...prevState,
+              { role: "assistant", content: j.text },
+            ]);
+          })
+          .catch((e) => console.log("e", e));
+
+        // console.log("new res", response);
+        // console.log("front res", res.body);
+        //toast notification to say successfull
+        toast.success("DylanGPT has responded!", {
+          id: notification,
+        });
+      })
+
+      .catch(
+        (err) =>
+          `DylanGPT was unable to find an answer for that! (Error: ${err.message})`
+      );
+
+
+    // await fetch("/api/betaQuestion", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     model,
+    //     messages,
+    //   }),
+    // })
   };
 
   return (

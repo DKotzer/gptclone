@@ -25,7 +25,7 @@ function ChatInput({ chatId }: Props) {
     if (!prompt) return;
     const input = prompt.trim();
     setPrompt("");
-    const message: Message = {
+    const message = {
       text: input,
       createdAt: serverTimestamp(),
       user: {
