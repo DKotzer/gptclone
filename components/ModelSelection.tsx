@@ -6,7 +6,7 @@ import Select from "react-select";
 const fetchModels = () => fetch("/api/getEngines").then((res) => res.json());
 
 function ModelSelection() {
-  const  models  = ["text-davinci-003", "text-daivinci-004"];
+  const  models  = ["text-davinci-003", "text-daivinci-004"]
 
   const { data: model, mutate: setModel } = useSWR("model", {
     fallbackData: "text-davinci-003",
@@ -22,7 +22,7 @@ function ModelSelection() {
         classNames={{
           control: (state) => "bg-[#434654] border-[#434654] ",
         }}
-        options={models?.modelOptions}
+        options={models}
         onChange={(e) => setModel(e.value)}
       />
     </div>
