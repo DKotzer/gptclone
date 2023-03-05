@@ -6,7 +6,7 @@ type Message = {
   content: string;
 };
 interface BetaQueryRequest {
-  messages: Message[];
+  messages: any;
 }
 
 const betaQuery = async (messages: BetaQueryRequest["messages"]) => {

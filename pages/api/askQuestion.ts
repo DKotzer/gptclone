@@ -27,7 +27,7 @@ export default async function handler(
   //gpt3 query - handled by lib/queryApi
   const response = await query(prompt, chatId, model);
 
-  const message: Message = {
+  const message = {
     text: response || "DylanGPT was unable to find an answer for that!",
     createdAt: admin.firestore.Timestamp.now(),
     user: {
