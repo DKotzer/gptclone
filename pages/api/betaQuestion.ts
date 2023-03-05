@@ -6,6 +6,7 @@ import admin from "firebase-admin";
 
 type Data = {
   answer: string;
+  text: string;
 };
 
 export default async function handler(
