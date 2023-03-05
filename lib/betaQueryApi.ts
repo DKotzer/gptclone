@@ -5,8 +5,11 @@ type Message = {
   role: string;
   content: string;
 };
+interface BetaQueryRequest {
+  messages: Message[];
+}
 
-const betaQuery = async (messages) => {
+const betaQuery = async (messages: BetaQueryRequest["messages"]) => {
   const completion = await openai
     .createChatCompletion({
       model: "gpt-3.5-turbo",

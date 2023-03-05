@@ -9,6 +9,8 @@ type Props = {
   };
 };
 
+
+
 function ChatPage({ params: { id } }: Props) {
   const [messages, setMessages] = useState([
     {
