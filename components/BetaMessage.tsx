@@ -1,6 +1,7 @@
 import { DocumentData } from "firebase/firestore";
 import { useSession } from "next-auth/react";
 import React from "react";
+import MarkdownIt from "markdown-it";
 
 type Props = {
   message: DocumentData;
@@ -8,6 +9,17 @@ type Props = {
 };
 
 function BetaMessage({ message, userImg }: Props) {
+  let md = new MarkdownIt({
+    linkify: true, // Autoconvert URL-like text to links
+
+    typographer: true,
+  });
+  console.log("content before", message.content);
+  let styledMSG = md.render(message.content);
+  function createMarkup() {
+    return { __html: styledMSG };
+  }
+  console.log("content after", styledMSG);
   const isDylanGPT = message.role == "assistant";
   return (
     <div className={`py-5 text-white ${isDylanGPT && "bg-[#434654]"}`}>
@@ -19,9 +31,9 @@ function BetaMessage({ message, userImg }: Props) {
               : userImg
           }
           alt=''
-          className='h-10 w-10 rounded-lg cursor-pointed  '
+          className='h-10 w-10 rounded-lg cursor-pointed'
         />
-        <p className='pt-2 text-sm'>{message.content}</p>
+        <div className={"markdown"} dangerouslySetInnerHTML={createMarkup()} />;
       </div>
     </div>
   );

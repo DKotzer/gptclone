@@ -12,6 +12,33 @@
   }
 }
 
+code {
+  background: #000000;
+  border: 1px solid #ddd;
+  color: #ffffff;
+  page-break-inside: avoid;
+  font-family: monospace;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-left: 1em;
+  margin-bottom: 1.6em;
+  margin-top: 0.8em;
+  max-width: 100%;
+  overflow: auto;
+  padding: 1em 1.5em;
+  display: block;
+  word-wrap: break-word;
+}
+
+.markdown a {
+  text-decoration-line: underline;
+  text-underline-offset: 2px;
+}
+
+.markdown li {
+  margin-top: 0.5em;
+}
+
 /* :root {
   --max-width: 1100px;
   --border-radius: 12px;

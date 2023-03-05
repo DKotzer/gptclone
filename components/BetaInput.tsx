@@ -82,7 +82,7 @@ function BetaInput({ setMessages, messages }) {
           placeholder='Type your message here...'
         />
         <button
-          className='bg-[#11A37F] hover:opacity-50 text-white font-bolt px-4 m-0 py-2 rounded-r-md disabled:bg-gray-300 disabled:cursor-not-allowed'
+          className='bg-[#11A37F] hover:opacity-50 text-white font-bolt px-4 m-0 py-2 rounded-r-md disabled:bg-green-300/20 disabled:cursor-not-allowed'
           disabled={!prompt || !session}
           type='submit'
         >
