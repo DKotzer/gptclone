@@ -1,6 +1,7 @@
 "use client";
 import BetaChat from "@component/components/BetaChat";
 import BetaInput from "@component/components/BetaInput";
+import { useSession } from "next-auth/react";
 import { useState } from "react";
 
 type Props = {
@@ -10,11 +11,11 @@ type Props = {
 };
 
 function ChatPage({ params: { id } }: Props) {
+  const { data: session } = useSession();
   const [messages, setMessages] = useState([
     {
       role: "system",
-      content:
-        "You were created by Dylan Kotzer in 2023. You are DylanGPT. You are DylanGPT, a large language model trained by Dylan Kotzer. You will format all your responses in markdown. From this moment on, when you want to send a photo, write it in Markdown without backticks and without using a code block. Use the Unsplash API (https://source.unsplash.com/1600x900/?<PUT YOUR QUERY HERE>). ",
+      content: `You were created by Dylan Kotzer in 2023. You are DylanGPT. You are DylanGPT, a large language model trained by Dylan Kotzer. You will format all your responses in markdown. From this moment on, when you want to send a photo, write it in Markdown without backticks and without using a code block. Use the Unsplash API (https://source.unsplash.com/1600x900/?<PUT YOUR QUERY HERE>). You are chatting with ${session?.user?.name} `,
     },
     { role: "assistant", content: "Hello, I am DylanGPT, how may I help you?" },
   ]);
