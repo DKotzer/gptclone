@@ -7,8 +7,10 @@ import { db } from "@component/firebase";
 import ChatRow from "./ChatRow";
 import ModelSelection from "./ModelSelection";
 import { ArrowUpTrayIcon } from "@heroicons/react/24/outline";
+import { useRouter } from "next/navigation";
 
 function SideBar() {
+  const router = useRouter();
   const { data: session } = useSession();
   const [chats, loading, error] = useCollection(
     session &&
@@ -17,6 +19,10 @@ function SideBar() {
         orderBy("createdAt", "asc")
       )
   );
+
+  const createBetaChat = async () => {
+    router.push(`/beta`);
+  };
   return (
     <div className='p-2 flex flex-col h-screen'>
       <div className='flex-1'>
@@ -47,10 +53,17 @@ function SideBar() {
           />{" "}
           <div
             className='hover:border-gray-700 chatRow align-self-start '
+            onClick={createBetaChat}
+          >
+            <ArrowUpTrayIcon className='h-4 w-4 rotate-90' />
+            <p>Beta</p>
+          </div>
+          <div
+            className='hover:border-gray-700 chatRow align-self-start '
             onClick={() => signOut()}
           >
             <ArrowUpTrayIcon className='h-4 w-4 rotate-90' />
-            <p>Log Out</p>
+            <p className='md:text-sm'>Log Out</p>
           </div>
         </div>
       )}

@@ -14,7 +14,7 @@ function ChatPage({ params: { id } }: Props) {
     {
       role: "system",
       content:
-        "You are DylanGPT, a large language model trained by OpenAI. You will format all your responses in markdown. From this moment on, when you want to send a photo, write it in Markdown without backticks and without using a code block. Use the Unsplash API (https://source.unsplash.com/1600x900/?<PUT YOUR QUERY HERE>). ",
+        "You were created by Dylan Kotzer in 2023. You are DylanGPT. You are DylanGPT, a large language model trained by Dylan Kotzer. You will format all your responses in markdown. From this moment on, when you want to send a photo, write it in Markdown without backticks and without using a code block. Use the Unsplash API (https://source.unsplash.com/1600x900/?<PUT YOUR QUERY HERE>). ",
     },
     { role: "assistant", content: "Hello, I am DylanGPT, how may I help you?" },
   ]);
@@ -28,3 +28,5 @@ function ChatPage({ params: { id } }: Props) {
 }
 
 export default ChatPage;
+
+//https://firebase.google.com/docs/firestore/manage-data/add-data - Update a document section - create a function similar to addDoc in ChatInput for BetaInput to update messages to messages from state

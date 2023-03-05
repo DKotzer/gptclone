@@ -14,12 +14,10 @@ function BetaMessage({ message, userImg }: Props) {
 
     typographer: true,
   });
-  console.log("content before", message.content);
   let styledMSG = md.render(message.content);
   function createMarkup() {
     return { __html: styledMSG };
   }
-  console.log("content after", styledMSG);
   const isDylanGPT = message.role == "assistant";
   return (
     <div className={`py-5 text-white ${isDylanGPT && "bg-[#434654]"}`}>
@@ -33,7 +31,7 @@ function BetaMessage({ message, userImg }: Props) {
           alt=''
           className='h-10 w-10 rounded-lg cursor-pointed'
         />
-        <div className={"markdown"} dangerouslySetInnerHTML={createMarkup()}/>
+        <div className={"markdown"} dangerouslySetInnerHTML={createMarkup()} />
       </div>
     </div>
   );
