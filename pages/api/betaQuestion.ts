@@ -21,7 +21,6 @@ export default async function handler(
 
   //gpt3 query - handled by lib/queryApi
   const response = await betaQuery(messages);
-  console.log("response 100", response.data.choices[0]);
 
   res.status(200).json({ text: `${response.data.choices[0].message.content}` });
 }

@@ -24,7 +24,7 @@ function BetaInput({ setMessages, messages }) {
   //   organization: "org-qaFpK5RoJjLWjlPBEJSM2yAP",
   // });
   // const openai = new OpenAIApi(configuration);
-  const model = "gpt-3.5-turbo";
+  const model = "gpt-3.5-turbo-0301";
 
   const sendMessage = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -36,14 +36,8 @@ function BetaInput({ setMessages, messages }) {
     ]);
     setPrompt("");
     //toast notification to say loading
-    // const notify = () => toast("Here is your toast.");
     const notification = toast.loading("DylanGPT is thinking...");
     let msgHolder = [...messages, { role: "user", content: input }];
-    console.log("pre completion msg", msgHolder);
-    // const completion = await openai.createChatCompletion({
-    //   model: model,
-    //   messages: [...messages, { role: "user", content: input }],
-    // });
 
     let response = await fetch("/api/betaQuestion", {
       method: "POST",
@@ -64,32 +58,16 @@ function BetaInput({ setMessages, messages }) {
               { role: "assistant", content: j.text },
             ]);
           })
-          .catch((e) => console.log("e", e));
-
-        // console.log("new res", response);
-        // console.log("front res", res.body);
+          .catch((err) => console.log("error:", err));
         //toast notification to say successfull
         toast.success("DylanGPT has responded!", {
           id: notification,
         });
       })
-
       .catch(
         (err) =>
           `DylanGPT was unable to find an answer for that! (Error: ${err.message})`
       );
-
-
-    // await fetch("/api/betaQuestion", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({
-    //     model,
-    //     messages,
-    //   }),
-    // })
   };
 
   return (

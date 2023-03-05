@@ -15,16 +15,14 @@ const betaQuery = async (messages) => {
     .then((res) => {
       res.data.choices[0]?.message?.content! ||
         "There was a problem receiving a response from the AI";
-      console.log("res", res.data.choices[0]);
-      return res
+      return res;
     })
     .catch(
       (err) =>
         `DylanGPT was unable to find an answer for that! (Error: ${err.message})`
     );
 
-    
-    return await completion
+  return await completion;
 };
 
 export default betaQuery;
