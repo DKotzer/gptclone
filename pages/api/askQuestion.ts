@@ -4,6 +4,7 @@ import { adminDb } from "@component/firebaseAdmin";
 import query from "@component/lib/queryApi";
 import type { NextApiRequest, NextApiResponse } from "next";
 import admin from "firebase-admin";
+import { Message } from "@component/typings";
 
 type Data = {
   answer: string;
