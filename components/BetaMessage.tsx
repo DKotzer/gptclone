@@ -33,7 +33,7 @@ function BetaMessage({ message, userImg }: Props) {
           alt=''
           className='h-10 w-10 rounded-lg cursor-pointed'
         />
-        <div className={"markdown"} dangerouslySetInnerHTML={createMarkup()} />;
+        <div className={"markdown"} dangerouslySetInnerHTML={createMarkup()}/>
       </div>
     </div>
   );
