@@ -3,7 +3,6 @@ import { useSession } from "next-auth/react";
 import React from "react";
 import MarkdownIt from "markdown-it";
 import hljs from "highlight.js";
-import atom from "highlight.js/styles/github.css";
 
 type Props = {
   message: DocumentData;

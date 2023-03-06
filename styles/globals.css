@@ -30,6 +30,10 @@ code {
   word-wrap: break-word;
 }
 
+code::backdrop {
+  content: "Code Block";
+}
+
 .markdown a {
   text-decoration-line: underline;
   text-underline-offset: 2px;

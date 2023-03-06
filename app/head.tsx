@@ -11,8 +11,6 @@ export default function Head() {
         rel='stylesheet'
         href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark-reasonable.min.css'
       />
-      <script src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js' />
-      <script>hljs.highlightAll();</script>
     </>
   );
 }
