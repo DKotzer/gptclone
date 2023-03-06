@@ -6,7 +6,11 @@ import { collection, orderBy, query } from "firebase/firestore";
 import { db } from "@component/firebase";
 import ChatRow from "./ChatRow";
 import ModelSelection from "./ModelSelection";
-import { ArrowUpTrayIcon } from "@heroicons/react/24/outline";
+import {
+  ArrowRightOnRectangleIcon,
+  ArrowUpTrayIcon,
+  CubeTransparentIcon,
+} from "@heroicons/react/24/outline";
 import { useRouter } from "next/navigation";
 
 function SideBar() {
@@ -28,9 +32,7 @@ function SideBar() {
       <div className='flex-1'>
         <div>
           <NewChat />
-          <div className='hidden sm:inline'>
-            {/* <ModelSelection /> */}
-          </div>
+          <div className='hidden sm:inline'>{/* <ModelSelection /> */}</div>
 
           <div className='flex flex-col space-y-2 my-2'>
             {loading && (
@@ -55,8 +57,19 @@ function SideBar() {
             className='hover:border-gray-700 chatRow align-self-start '
             onClick={createBetaChat}
           >
-            <ArrowUpTrayIcon className='h-4 w-4 rotate-90' />
+            <CubeTransparentIcon className='h-4 w-4 rotate-90' />
             <p>Beta</p>
+          </div>
+          <div className='hover:border-gray-700 chatRow align-self-start '>
+            <img
+              src='https://www.svgrepo.com/show/391478/linkedin.svg'
+              className='h-6 w-5 m-0 text-white'
+            />
+            <p>
+              <a href='https://www.linkedin.com/in/dylan-kotzer-3a5421190/'>
+                Dylan
+              </a>
+            </p>
           </div>
           <div
             className='hover:border-gray-700 chatRow align-self-start '
