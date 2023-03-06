@@ -2,6 +2,8 @@ import { DocumentData } from "firebase/firestore";
 import { useSession } from "next-auth/react";
 import React from "react";
 import MarkdownIt from "markdown-it";
+import hljs from "highlight.js";
+import atom from "highlight.js/styles/github.css";
 
 type Props = {
   message: DocumentData;
@@ -10,9 +12,15 @@ type Props = {
 
 function BetaMessage({ message, userImg }: Props) {
   let md = new MarkdownIt({
-    linkify: true, // Autoconvert URL-like text to links
+    highlight: function (str, lang) {
+      if (lang && hljs.getLanguage(lang)) {
+        try {
+          return hljs.highlight(str, { language: lang }).value;
+        } catch (__) {}
+      }
 
-    typographer: true,
+      return ""; // use external default escaping
+    },
   });
   let styledMSG = md.render(message.content);
   function createMarkup() {
