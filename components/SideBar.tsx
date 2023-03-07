@@ -29,7 +29,7 @@ function SideBar() {
   };
   return (
     <div className='p-2 flex flex-col h-screen min-w-[130px]'>
-      <div className='flex-1'>
+      <div className='flex-1 max-w-xs'>
         <div>
           <NewChat />
 
