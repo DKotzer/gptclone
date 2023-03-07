@@ -1,15 +1,9 @@
 "use client";
 
 import { PaperAirplaneIcon } from "@heroicons/react/24/solid";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { useSession } from "next-auth/react";
 import { FormEvent, useState } from "react";
-import { db } from "@component/firebase";
 import toast, { Toaster } from "react-hot-toast";
-import ModelSelection from "./ModelSelection";
-import useSWR from "swr";
-import { Configuration, OpenAIApi } from "openai";
-import { join } from "path";
 
 type Props = {
   setMessages: Function;
@@ -19,11 +13,6 @@ type Props = {
 function BetaInput({ setMessages, messages }) {
   const [prompt, setPrompt] = useState("");
   const { data: session } = useSession();
-  // const configuration = new Configuration({
-  //   apiKey: process.env.OPENAI_API_KEY,
-  //   organization: "org-qaFpK5RoJjLWjlPBEJSM2yAP",
-  // });
-  // const openai = new OpenAIApi(configuration);
   const model = "gpt-3.5-turbo-0301";
 
   const sendMessage = async (e: FormEvent<HTMLFormElement>) => {
