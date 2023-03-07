@@ -19,13 +19,13 @@ function HomePage() {
 
           <div className='space-y-2'>
             <p className='infoText'>
-              Explain why single donkeys are kept on farms
+              List the top things to do in Toronto
             </p>
             <p className='infoText'>
-              What is the difference between a dog and a cat
+              What is the difference between icing and frosting
             </p>
             <p className='infoText'>
-              What is the most common color of stars in the milky way
+              Create code for hello world in Python, Javascript and C++.
             </p>
           </div>
         </div>
@@ -36,10 +36,10 @@ function HomePage() {
           </div>
 
           <div className='space-y-2'>
-            <p className='infoText'>Change the DylanGPT model</p>
+            <p className='infoText'>Find and post images</p>
             <p className='infoText'>Chats are stored in a Firestore database</p>
             <p className='infoText'>
-              Hot Toast Notifications while DylanGPT is thinking
+              Advanced text formatting for responses, including code formatting and styling.
             </p>
           </div>
         </div>
@@ -53,7 +53,7 @@ function HomePage() {
             <p className='infoText'>
               May sometimes make up answers or give false information
             </p>
-            <p className='infoText'>May produce biased or harmful content</p>
+            <p className='infoText'>Will frequently post images of the wrong things.</p>
             <p className='infoText'>
               Has very limited knowledge of events after 2021
             </p>
