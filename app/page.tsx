@@ -18,12 +18,8 @@ function HomePage() {
           </div>
 
           <div className='space-y-2'>
-            <p className='infoText'>
-              List the top things to do in Toronto
-            </p>
-            <p className='infoText'>
-              What is the difference between icing and frosting
-            </p>
+            <p className='infoText'>List the top things to do in Toronto</p>
+            <p className='infoText'>Why should I hire Dylan Kotzer.</p>
             <p className='infoText'>
               Create code for hello world in Python, Javascript and C++.
             </p>
@@ -39,7 +35,8 @@ function HomePage() {
             <p className='infoText'>Find and post images</p>
             <p className='infoText'>Chats are stored in a Firestore database</p>
             <p className='infoText'>
-              Advanced text formatting for responses, including code formatting and styling.
+              Advanced text formatting for responses, including code formatting
+              and styling.
             </p>
           </div>
         </div>
@@ -53,7 +50,9 @@ function HomePage() {
             <p className='infoText'>
               May sometimes make up answers or give false information
             </p>
-            <p className='infoText'>Will frequently post images of the wrong things.</p>
+            <p className='infoText'>
+              Will frequently post images of the wrong things.
+            </p>
             <p className='infoText'>
               Has very limited knowledge of events after 2021
             </p>

@@ -74,7 +74,7 @@ function ChatInput({ chatId }: Props) {
 
   return (
     <div className='bg-gray-700/50 text-gray-400 rounded-lg text-sm'>
-      <form onSubmit={sendMessage} className='p-5  flex max-w-2xl mx-auto'>
+      <form onSubmit={sendMessage} className='p-5  flex max-w-[80%] mx-auto'>
         <input
           className='mx-auto stretch rounded-l-md pl-5 pr-5 m-0 bg-[#40414f] focus:outline-none flex-1 disabled:cursor-not-allowed disabled:text-gray-300'
           disabled={!session}
@@ -92,7 +92,7 @@ function ChatInput({ chatId }: Props) {
         </button>
       </form>
       {/* <div className='md:hidden'> */}
-        {/* <ModelSelection></ModelSelection> */}
+      {/* <ModelSelection></ModelSelection> */}
       {/* </div> */}
     </div>
   );
