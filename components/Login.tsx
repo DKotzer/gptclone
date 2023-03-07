@@ -4,7 +4,7 @@ import Image from "next/image";
 
 function Login() {
   return (
-    <div className='bg-[#11A37F] h-screen flex flex-col items-center justify-center text-center'>
+    <div className='bg-[#202123] h-screen flex flex-col items-center justify-center text-center'>
       <img
         src={"https://i.imgur.com/9Hk3qUg.png"}
         alt='Logo'
