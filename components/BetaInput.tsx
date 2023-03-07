@@ -72,9 +72,10 @@ function BetaInput({ setMessages, messages }) {
 
   return (
     <div className='bg-gray-700/50 text-gray-400 rounded-lg text-sm'>
-      <form onSubmit={sendMessage} className='p-5  flex max-w-2xl mx-auto'>
+      <form onSubmit={sendMessage} className='p-5  flex w-2/3 mx-auto'>
         <input
-          className='mx-auto stretch rounded-l-md pl-5 pr-5 m-0 bg-[#40414f] focus:outline-none flex-1 disabled:cursor-not-allowed disabled:text-gray-300'
+          role='textbox'
+          className='mx-auto stretch rounded-l-md pl-5 pr-5 m-git one flex-1 overflow-visible disabled:cursor-not-allowed disabled:text-gray-300'
           disabled={!session}
           type='text'
           value={prompt}
@@ -89,9 +90,7 @@ function BetaInput({ setMessages, messages }) {
           <PaperAirplaneIcon className='w-4 h-4 -rotate-45' />
         </button>
       </form>
-      <div className='md:hidden'>
-        <ModelSelection></ModelSelection>
-      </div>
+      <div className='md:hidden'></div>
     </div>
   );
 }
