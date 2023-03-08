@@ -28,7 +28,8 @@ function Chat({ chatId, messages, setMessages }: Props) {
     doc(db, "users", session?.user?.email!, "chats", chatId)
   );
 
-  setMessages(messagesObj[0]?.messages);
+
+  // setMessages(messagesObj[0]?.messages);
   // console.log("obj", messagesObj)
 
   // useEffect(() => {
