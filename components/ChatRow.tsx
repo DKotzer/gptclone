@@ -3,11 +3,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
-import {
-  useCollection,
-  useDocument,
-  useDocumentData,
-} from "react-firebase-hooks/firestore";
+import { useDocumentData } from "react-firebase-hooks/firestore";
 import { db } from "@component/firebase";
 import { deleteDoc, doc } from "firebase/firestore";
 
@@ -24,7 +20,7 @@ function ChatRow({ id }: Props) {
     doc(db, "users", session?.user?.email!, "chats", id)
   );
 
-  console.log("msgs2", messages[0]?.messages!);
+  // console.log("msgs2", messages[0]?.messages!);
 
   useEffect(() => {
     if (!pathname) return;
@@ -43,7 +39,9 @@ function ChatRow({ id }: Props) {
     >
       <ChatBubbleLeftIcon className='h-5 w-5 justify-start' />
       <p className='flex-1 hidden md:inline-flex truncate max-w-[120px] overflow-ellipsis '>
-        {messages[0]?.messages[messages[0]?.messages.length - 1] || "New Chat"}
+        {messages[0]?.messages.length < 3
+          ? "New Chat"
+          : messages[0]?.messages[messages[0]?.messages.length - 1].content}
       </p>
       <TrashIcon
         onClick={removeChat}

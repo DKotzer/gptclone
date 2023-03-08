@@ -15,6 +15,7 @@ const betaQuery = async (messages: BetaQueryRequest["messages"]) => {
       messages: messages,
     })
     .then((res) => {
+      console.log("beta res", res);
       res.data.choices[0]?.message?.content! ||
         "There was a problem receiving a response from the AI";
       return res;

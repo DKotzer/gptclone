@@ -1,52 +1,60 @@
 "use client";
 
 import { PaperAirplaneIcon } from "@heroicons/react/24/solid";
+import { doc } from "firebase/firestore";
 import { useSession } from "next-auth/react";
 import { FormEvent, useState } from "react";
 import { db } from "@component/firebase";
 import toast, { Toaster } from "react-hot-toast";
-import ModelSelection from "./ModelSelection";
-import useSWR from "swr";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { useDocumentData } from "react-firebase-hooks/firestore";
 
 type Props = {
   chatId: string;
+
+  setMessages: any;
 };
 
-function ChatInput({ chatId }: Props) {
+type Response = {
+  data: any;
+};
+
+function ChatInput({ chatId, setMessages }: Props) {
   const [prompt, setPrompt] = useState("");
   const { data: session } = useSession();
+  const model = "gpt-3.5-turbo-0301";
+  const messagesObj: any = useDocumentData(
+    doc(db, "users", session?.user?.email!, "chats", chatId)
+  );
 
-  const { data: model } = useSWR("model", {
-    fallbackData: "text-davinci-003",
-  });
   const sendMessage = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!prompt) return;
     const input = prompt.trim();
-    setPrompt("");
     const message = {
-      text: input,
-      createdAt: serverTimestamp(),
-      user: {
-        _id: session?.user?.email!,
-        name: session?.user?.name!,
-        avatar:
-          session?.user?.image! ||
-          `https://ui-avatars.com/api/?name=${session?.user?.name}`,
-      },
+      role: "user",
+      content: input,
     };
-    await addDoc(
-      collection(
-        db,
-        "users",
-        session?.user?.email!,
-        "chats",
-        chatId,
-        "messages"
-      ),
-      message
-    );
+    setMessages((prevState) => [...prevState, message]);
+    setPrompt("");
+    const oldMsgs = messagesObj[0]?.messages;
+    const newMsgs = [...oldMsgs, message];
+    console.log("new msgs", newMsgs);
+
+    // const docRef = doc(db, "users", session?.user?.email!, "chats", chatId);
+    // console.log("docRef", docRef);
+    // await updateDoc(docRef, {
+    //   messages: arrayUnion({role: "user", content: input})
+    // })
+    // await setDoc(
+    //   doc(
+    //     db,
+    //     "users",
+    //     session?.user?.email!,
+    //     "chats",
+    //     chatId
+    //   ), {messages: }
+    //   message
+    // );
 
     //toast notification to say loading
 
@@ -59,17 +67,26 @@ function ChatInput({ chatId }: Props) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        prompt: input,
-        chatId,
         model,
-        session,
+        messages: newMsgs,
+        chatId,
+        user: session?.user?.email,
       }),
-    }).then(() => {
-      //toast notification to say successfull
-      toast.success("DylanGPT has responded!", {
-        id: notification,
-      });
-    });
+    })
+      .then((res) => {
+        res
+          .json()
+          .then((j) => {
+            console.log("j", j.text);
+            setMessages(j.text);
+          })
+          .catch((err) => console.log("error:", err));
+        //toast notification to say successfull
+        toast.success("DylanGPT has responded!", {
+          id: notification,
+        });
+      })
+      .catch((err) => console.log(err));
   };
 
   return (

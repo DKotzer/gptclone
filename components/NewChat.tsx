@@ -28,7 +28,6 @@ function NewChat() {
         ],
       }
     );
-    console.log(`new chat: ${doc.id}` )
     router.push(`/chat/${doc.id}`);
   };
   return (

@@ -1,7 +1,6 @@
 "use client";
 import BetaChat from "@component/components/BetaChat";
 import BetaInput from "@component/components/BetaInput";
-import { useSession } from "next-auth/react";
 import { useState } from "react";
 
 type Props = {
@@ -11,7 +10,6 @@ type Props = {
 };
 
 function ChatPage({ params: { id } }: Props) {
-  const { data: session } = useSession();
   const [messages, setMessages] = useState([
     {
       role: "system",

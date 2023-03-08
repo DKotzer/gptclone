@@ -4,6 +4,11 @@ interface QueryRequest {
   messages: any;
 }
 
+type Message = {
+  role: string;
+  content: string;
+};
+
 const query = async (messages: QueryRequest["messages"]) => {
   const completion = await openai
     .createChatCompletion({
