@@ -44,6 +44,7 @@ function SideBar() {
           </div>
         </div>
       </div>
+      <hr className='width=70% mb-3 pb-3 opacity-20'></hr>
       {session && (
         <div className='flex flex-col'>
           <img

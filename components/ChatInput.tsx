@@ -1,6 +1,6 @@
 "use client";
 
-import { PaperAirplaneIcon } from "@heroicons/react/24/solid";
+import { PaperAirplaneIcon } from "@heroicons/react/24/outline";
 import { doc } from "firebase/firestore";
 import { useSession } from "next-auth/react";
 import { FormEvent, useState } from "react";
