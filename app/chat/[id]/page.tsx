@@ -3,7 +3,6 @@ import Chat from "@component/components/Chat";
 import ChatInput from "@component/components/ChatInput";
 import { doc } from "firebase/firestore";
 import { useSession } from "next-auth/react";
-import { useState } from "react";
 import { useDocumentData } from "react-firebase-hooks/firestore";
 import { db } from "@component/firebase";
 
@@ -30,8 +29,8 @@ function ChatPage({ params: { id } }: Props) {
   // }
   return (
     <div className='flex flex-col h-screen overflow-hidden'>
-      <Chat chatId={id} messages={messages[0]?.messages}  />
-      <ChatInput chatId={id}  />
+      <Chat chatId={id} messages={messages[0]?.messages} />
+      <ChatInput chatId={id} />
     </div>
   );
 }

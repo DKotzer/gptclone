@@ -1,6 +1,5 @@
 "use client";
 import { useSession } from "next-auth/react";
-import { useEffect, useState } from "react";
 import { useDocumentData } from "react-firebase-hooks/firestore";
 import { db } from "@component/firebase";
 import { doc } from "firebase/firestore";
@@ -18,7 +17,7 @@ type Props = {
 //   messages: Array<{ role: string; content: string }>;
 // }
 
-function Chat({ chatId, messages, setMessages }: Props) {
+function Chat({ chatId, messages }: Props) {
   const { data: session } = useSession();
   // console.log("db", db);
   // console.log("user", session?.user?.email!);
@@ -27,9 +26,7 @@ function Chat({ chatId, messages, setMessages }: Props) {
     doc(db, "users", session?.user?.email!, "chats", chatId)
   );
 
-
   // console.log("obj", messagesObj)
-
 
   // const messages2 = useDocumentData(
   //   doc(db, "users", session?.user?.email!, "chats", chatId)
@@ -46,7 +43,7 @@ function Chat({ chatId, messages, setMessages }: Props) {
   // ]);
 
   const getMessages = async () => {
-    setMessages(messagesObj[0]?.messages);
+    // setMessages(messagesObj[0]?.messages);
     console.log("after set messages", messages);
     // try {
     //   const docRef = doc(db, "chats", chatId);

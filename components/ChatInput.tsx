@@ -54,7 +54,6 @@ function ChatInput({ chatId }: Props) {
           .json()
           .then((j) => {
             // console.log("j", j.text);
-            setMessages(j.text);
           })
           .catch((err) => console.log("error:", err));
         //toast notification to say successfull
@@ -101,7 +100,7 @@ function ChatInput({ chatId }: Props) {
           .json()
           .then(async (j) => {
             // console.log("j", j.text);
-            setMessages(await j.text);
+            // setMessages(await j.text);
           })
           .catch((err) => console.log("error:", err));
         //toast notification to say successfull
