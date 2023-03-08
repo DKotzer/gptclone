@@ -12,7 +12,6 @@ type Props = {
 };
 
 function ChatRow({ id }: Props) {
-  const pathname = usePathname();
   const router = useRouter();
   const { data: session } = useSession();
   const [active, setActive] = useState(false);
@@ -21,11 +20,6 @@ function ChatRow({ id }: Props) {
   );
 
   // console.log("msgs2", messages[0]?.messages!);
-
-  useEffect(() => {
-    if (!pathname) return;
-    setActive(pathname.includes(id));
-  }, [pathname]);
 
   const removeChat = async () => {
     await deleteDoc(doc(db, "users", session?.user?.email!, "chats", id));
