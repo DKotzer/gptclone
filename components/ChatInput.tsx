@@ -10,15 +10,13 @@ import { useDocumentData } from "react-firebase-hooks/firestore";
 
 type Props = {
   chatId: string;
-
-  setMessages: any;
 };
 
 type Response = {
   data: any;
 };
 
-function ChatInput({ chatId, setMessages }: Props) {
+function ChatInput({ chatId }: Props) {
   const [prompt, setPrompt] = useState("");
   const { data: session } = useSession();
   const model = "gpt-3.5-turbo-0301";
@@ -38,13 +36,6 @@ function ChatInput({ chatId, setMessages }: Props) {
     setPrompt("");
     const oldMsgs = messagesObj[0]?.messages;
     const newMsgs = [...oldMsgs, message];
-
-    async function updateMessages(newMsgs: any) {
-      console.log("n", newMsgs);
-      await setMessages(newMsgs);
-    }
-
-    updateMessages(newMsgs);
 
     await fetch("/api/addQuestion", {
       method: "POST",
@@ -108,7 +99,7 @@ function ChatInput({ chatId, setMessages }: Props) {
       .then((res) => {
         res
           .json()
-          .then(async(j) => {
+          .then(async (j) => {
             // console.log("j", j.text);
             setMessages(await j.text);
           })

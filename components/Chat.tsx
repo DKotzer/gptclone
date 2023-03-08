@@ -10,7 +10,6 @@ import { ArrowDownCircleIcon } from "@heroicons/react/24/outline";
 type Props = {
   chatId: string;
   messages: Array<{ role: string; content: string }>;
-  setMessages: any;
 };
 
 // type Response = { messages: any };
@@ -28,13 +27,9 @@ function Chat({ chatId, messages, setMessages }: Props) {
     doc(db, "users", session?.user?.email!, "chats", chatId)
   );
 
-  let firstMsg = async () => {
-    setMessages(await messagesObj[0]?.messages);
-  };
+
   // console.log("obj", messagesObj)
-  useEffect(() => {
-    firstMsg();
-  }, [messages]);
+
 
   // const messages2 = useDocumentData(
   //   doc(db, "users", session?.user?.email!, "chats", chatId)
