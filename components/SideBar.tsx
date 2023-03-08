@@ -2,16 +2,15 @@
 import NewChat from "./NewChat";
 import { useSession, signOut } from "next-auth/react";
 import { useCollection } from "react-firebase-hooks/firestore";
-import { collection, orderBy, query } from "firebase/firestore";
 import { db } from "@component/firebase";
 import ChatRow from "./ChatRow";
 import ModelSelection from "./ModelSelection";
 import {
-  ArrowRightOnRectangleIcon,
   ArrowUpTrayIcon,
   CubeTransparentIcon,
 } from "@heroicons/react/24/outline";
 import { useRouter } from "next/navigation";
+import { collection, orderBy, query } from "firebase/firestore";
 
 function SideBar() {
   const router = useRouter();

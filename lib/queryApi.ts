@@ -1,23 +1,49 @@
 import openai from "./chatgpt";
 
-const query = async (prompt: string, chatId: string, model: string) => {
-  const res = await openai
-    .createCompletion({
-      model,
-      prompt,
-      temperature: 0.8,
-      max_tokens: 1000,
-      top_p: 1,
-      frequency_penalty: 0.5,
-      presence_penalty: 0.5,
+interface QueryRequest {
+  messages: any;
+}
+
+const query = async (messages: QueryRequest["messages"]) => {
+  const completion = await openai
+    .createChatCompletion({
+      model: "gpt-3.5-turbo",
+      messages: messages,
     })
-    .then((res) => res.data.choices[0].text)
+    .then((res) => {
+      res.data.choices[0]?.message?.content! ||
+        "There was a problem receiving a response from the AI";
+      return res;
+    })
     .catch(
       (err) =>
         `DylanGPT was unable to find an answer for that! (Error: ${err.message})`
     );
 
-  return res;
+  return await completion;
 };
 
 export default query;
+
+
+// const query = async (prompt: string, chatId: string, model: string) => {
+//   const res = await openai
+//     .createCompletion({
+//       model,
+//       prompt,
+//       temperature: 0.8,
+//       max_tokens: 1000,
+//       top_p: 1,
+//       frequency_penalty: 0.5,
+//       presence_penalty: 0.5,
+//     })
+//     .then((res) => res.data.choices[0].text)
+//     .catch(
+//       (err) =>
+//         `DylanGPT was unable to find an answer for that! (Error: ${err.message})`
+//     );
+
+//   return res;
+// };
+
+// export default query;
