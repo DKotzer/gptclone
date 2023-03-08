@@ -1,10 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 // @ts-nocheck
-import { adminDb } from "@component/firebaseAdmin";
-import query from "@component/lib/queryApi";
 import type { NextApiRequest, NextApiResponse } from "next";
-import admin from "firebase-admin";
-import { Message } from "@component/typings";
 import { updateDoc, doc } from "firebase/firestore";
 import { db } from "@component/firebase";
 
@@ -28,13 +24,10 @@ export default async function handler(
   }
 
   //gpt3 query - handled by lib/queryApi
-  const response = await query(messages);
-  const newMsgArr = [...messages, response.data.choices[0].message];
-  console.log("res data 666", response.data.choices[0].message);
-  // console.log("667", newMsgArr);
-
+  
+  //...
   await updateDoc(doc(db, "users", user, "chats", chatId), {
-    messages: newMsgArr,
+    messages: messages,
   });
 
   //fix db entry to edit instead of add
@@ -50,5 +43,5 @@ export default async function handler(
 
   res
     .status(200)
-    .json({ text: [...messages, response.data.choices[0].message] });
+    .json({ text: messages });
 }

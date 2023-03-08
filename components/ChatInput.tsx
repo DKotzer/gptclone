@@ -3,7 +3,7 @@
 import { PaperAirplaneIcon } from "@heroicons/react/24/outline";
 import { doc } from "firebase/firestore";
 import { useSession } from "next-auth/react";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { db } from "@component/firebase";
 import toast, { Toaster } from "react-hot-toast";
 import { useDocumentData } from "react-firebase-hooks/firestore";
@@ -34,10 +34,42 @@ function ChatInput({ chatId, setMessages }: Props) {
       role: "user",
       content: input,
     };
-    setMessages((prevState) => [...prevState, message]);
+    // setMessages((prevState) => [...prevState, message]);
     setPrompt("");
     const oldMsgs = messagesObj[0]?.messages;
     const newMsgs = [...oldMsgs, message];
+
+    async function updateMessages(newMsgs: any) {
+      console.log("n", newMsgs);
+      await setMessages(newMsgs);
+    }
+
+    updateMessages(newMsgs);
+
+    await fetch("/api/addQuestion", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        model,
+        messages: newMsgs,
+        chatId,
+        user: session?.user?.email,
+      }),
+    })
+      .then((res) => {
+        res
+          .json()
+          .then((j) => {
+            // console.log("j", j.text);
+            setMessages(j.text);
+          })
+          .catch((err) => console.log("error:", err));
+        //toast notification to say successfull
+      })
+      .catch((err) => console.log(err));
+
     console.log("new msgs", newMsgs);
 
     // const docRef = doc(db, "users", session?.user?.email!, "chats", chatId);
@@ -76,9 +108,9 @@ function ChatInput({ chatId, setMessages }: Props) {
       .then((res) => {
         res
           .json()
-          .then((j) => {
-            console.log("j", j.text);
-            setMessages(j.text);
+          .then(async(j) => {
+            // console.log("j", j.text);
+            setMessages(await j.text);
           })
           .catch((err) => console.log("error:", err));
         //toast notification to say successfull
