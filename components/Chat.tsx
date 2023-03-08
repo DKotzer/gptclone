@@ -28,13 +28,13 @@ function Chat({ chatId, messages, setMessages }: Props) {
     doc(db, "users", session?.user?.email!, "chats", chatId)
   );
 
-
-  // setMessages(messagesObj[0]?.messages);
+  let firstMsg = async () => {
+    setMessages(await messagesObj[0]?.messages);
+  };
   // console.log("obj", messagesObj)
-
-  // useEffect(() => {
-  //   getMessages();
-  // }, []);
+  useEffect(() => {
+    firstMsg();
+  }, [messages]);
 
   // const messages2 = useDocumentData(
   //   doc(db, "users", session?.user?.email!, "chats", chatId)

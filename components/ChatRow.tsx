@@ -15,9 +15,15 @@ function ChatRow({ id }: Props) {
   const router = useRouter();
   const { data: session } = useSession();
   const [active, setActive] = useState(false);
+  const pathname = usePathname();
   const messages = useDocumentData(
     doc(db, "users", session?.user?.email!, "chats", id)
   );
+
+  useEffect(() => {
+    if (!pathname) return;
+    setActive(pathname.includes(id));
+  }, [pathname]);
 
   // console.log("msgs2", messages[0]?.messages!);
 
