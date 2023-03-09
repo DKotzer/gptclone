@@ -1,5 +1,6 @@
-import React from "react";
+"use client";
 
+import { useEffect, useState } from "react";
 import {
   SunIcon,
   BoltIcon,
@@ -7,8 +8,14 @@ import {
 } from "@heroicons/react/24/outline";
 
 function HomePage() {
+  const [winHeight, setWinHeight] = useState("h-screen");
+  useEffect(() => {
+    setWinHeight(`h-[${window.innerHeight}px]`);
+  }, []);
   return (
-    <div className={`flex flex-col items-center justify-center h-[${window.innerHeight}] text-white px-2`}>
+    <div
+      className={`flex flex-col items-center justify-center h-[${window.innerHeight}] text-white px-2`}
+    >
       <h1 className='text-5xl font-bold mb-20'>DylanGPT</h1>
       <div className='flex space-x-2 text-center'>
         <div>

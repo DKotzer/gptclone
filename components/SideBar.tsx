@@ -19,6 +19,7 @@ function SideBar() {
   const router = useRouter();
   const [hidden, setHidden] = useState(false);
   const { data: session } = useSession();
+  const [winHeight, setWinHeight] = useState("h-screen");
   const [chats, loading, error] = useCollection(
     session &&
       query(
@@ -27,7 +28,7 @@ function SideBar() {
       )
   );
   useEffect(() => {
-    console.log("window.innerHeight", window.innerHeight);
+    setWinHeight(`h-[${window.innerHeight}px]`);
   }, []);
 
   const createBetaChat = async () => {
@@ -36,9 +37,7 @@ function SideBar() {
   return (
     <div>
       <div
-        className={`${hidden && "hidden"} p-2 flex flex-col h-[${
-          window.innerHeight
-        }] max-h-screen min-w-[200px] relative`}
+        className={`${hidden && "hidden"} p-2 flex flex-col ${winHeight} max-h-screen min-w-[200px] relative`}
       >
         <button
           type='button'
