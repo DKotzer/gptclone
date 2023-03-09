@@ -10,13 +10,14 @@ import { useDocumentData } from "react-firebase-hooks/firestore";
 
 type Props = {
   chatId: string;
+  messages: Array<{ role: string; content: string }>;
 };
 
 type Response = {
   data: any;
 };
 
-function ChatInput({ chatId }: Props) {
+function ChatInput({ chatId, messages}: Props) {
   const [prompt, setPrompt] = useState("");
   const { data: session } = useSession();
   const model = "gpt-3.5-turbo-0301";
@@ -34,8 +35,7 @@ function ChatInput({ chatId }: Props) {
     };
     // setMessages((prevState) => [...prevState, message]);
     setPrompt("");
-    const oldMsgs = messagesObj[0]?.messages;
-    const newMsgs = [...oldMsgs, message];
+    const newMsgs = [...messages, message];
 
     await fetch("/api/addQuestion", {
       method: "POST",
@@ -56,7 +56,7 @@ function ChatInput({ chatId }: Props) {
             // console.log("j", j.text);
           })
           .catch((err) => console.log("error:", err));
-        //toast notification to say successfull
+        //toast notification to say successful
       })
       .catch((err) => console.log(err));
 
@@ -103,7 +103,7 @@ function ChatInput({ chatId }: Props) {
             // setMessages(await j.text);
           })
           .catch((err) => console.log("error:", err));
-        //toast notification to say successfull
+        //toast notification to say successful
         toast.success("DylanGPT has responded!", {
           id: notification,
         });

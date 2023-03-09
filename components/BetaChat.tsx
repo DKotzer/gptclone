@@ -12,7 +12,7 @@ function BetaChat({ messages }: Props) {
 
   return (
     <div className='flex-1 overflow-y-auto overflow-x-hidden'>
-      {messages?.length < 3 &&
+      {messages?.length > 1 &&
         messages?.map(
           (message, i) =>
             message.role != "system" && (

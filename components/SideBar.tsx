@@ -50,7 +50,7 @@ function SideBar() {
           <img
             src={session.user?.image! || "https://i.imgur.com/dTJ67HS.png"}
             alt='Profile Picture'
-            className='h-12 w-12 rounded-full cursor-pointed mx-auto mb-2 hover:opacity-50'
+            className='h-13 w-13 rounded-full cursor-pointed mx-auto mb-2 hover:opacity-50'
           />{" "}
           <div
             className='hover:border-gray-700 chatRow align-self-start '

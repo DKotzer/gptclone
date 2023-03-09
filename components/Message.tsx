@@ -3,7 +3,6 @@ import React from "react";
 import MarkdownIt from "markdown-it";
 import hljs from "highlight.js";
 
-
 type Props = {
   message: DocumentData;
   userImg: string;
@@ -27,7 +26,11 @@ function Message({ message, userImg }: Props) {
   }
   const isDylanGPT = message.role == "assistant";
   return (
-    <div className={`py-5 text-white ${isDylanGPT && "bg-[#434654]"}`}>
+    <div
+      className={`py-5 text-white bb ${isDylanGPT && "bg-[#434654]"} ${
+        !isDylanGPT && "divide-solid > * + *"
+      }}`}
+    >
       <div className='flex space-x-5 px-10 max-w-wxl mx-auto'>
         <img
           src={

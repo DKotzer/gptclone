@@ -69,6 +69,9 @@ code::backdrop {
   list-style-type: square;
 }
 
+.bb {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.267);
+}
 /* :root {
   --max-width: 1100px;
   --border-radius: 12px;
