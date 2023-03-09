@@ -79,7 +79,7 @@ function ChatPage({ params: { id } }: Props) {
   // console.log("sess test", session);
 
   return (
-    <div className='flex flex-col h-screen overflow-hidden'>
+    <div className='flex flex-col h-[100%] overflow-hidden'>
       <Chat chatId={id} divHeight={divHeight} />
       <ChatInput chatId={id} divHeight={divHeight} />
     </div>
