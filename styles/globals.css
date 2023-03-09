@@ -8,7 +8,7 @@
   }
 
   .chatRow {
-    @apply rounded-lg px-5 py-3 text-sm flex items-start justify-center space-x-2 hover:bg-gray-700/70 cursor-pointer text-gray-300 transition-all duration-200 ease-out;
+    @apply rounded-lg px-5 py-3 text-sm flex items-start justify-center space-x-4 hover:bg-gray-700/70 cursor-pointer text-gray-300 transition-all duration-200 ease-out;
   }
 }
 
@@ -47,13 +47,13 @@ code::backdrop {
   margin-bottom: 0.5em;
 }
 
-.markdown img {
+/* .markdown img {
   max-width: inherit;
   max-height: inherit;
   height: inherit;
   width: inherit;
-  object-fit: scale-down;
-}
+  object-fit: contain;
+} */
 
 .markdown ul {
   margin-bottom: 1em;
