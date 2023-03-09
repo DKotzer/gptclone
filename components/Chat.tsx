@@ -24,7 +24,7 @@ function Chat({ chatId, divHeight }: Props) {
   // );
 
   return (
-    <div className='flex-1 overflow-y-auto overflow-x-hidden'>
+    <div className='flex-1 overflow-y-auto overflow-x-hidden h-[100%]'>
       {messages[0]?.messages?.map(
         (message, i) =>
           message.role != "system" && (

@@ -46,7 +46,7 @@ function ChatPage({ params: { id } }: Props) {
     return (
       <div
         id='panel'
-        className={`h-[${divHeight}px] w-screen flex flex-col items-center justify-center text-center `}
+        className={`h-screen w-screen flex flex-col items-center justify-center text-center `}
       >
         <span id='loading1'>
           <span id='outerCircle' className='animate-pulse'></span>
@@ -79,7 +79,7 @@ function ChatPage({ params: { id } }: Props) {
   // console.log("sess test", session);
 
   return (
-    <div className='flex flex-col h-[100%] overflow-hidden'>
+    <div className={`flex flex-col h-full overflow-hidden`}>
       <Chat chatId={id} divHeight={divHeight} />
       <ChatInput chatId={id} divHeight={divHeight} />
     </div>
