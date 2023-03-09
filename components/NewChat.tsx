@@ -24,7 +24,8 @@ function NewChat() {
           },
           {
             role: "assistant",
-            content: "Hello, I am DylanGPT, how may I help you?",
+            content: `Hello ${session?.user
+              ?.name!}, I am DylanGPT, how may I help you?`,
           },
         ],
       }
