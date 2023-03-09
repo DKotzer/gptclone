@@ -15,29 +15,32 @@ type Props = {
 
 function ChatPage({ params: { id } }: Props) {
   const { data: session, status } = useSession();
-const [menuHeight, setMenuHeight] = useState<number>(0);
-const [viewportHeight, setViewportHeight] = useState<number>(0);
-const [divHeight, setDivHeight] = useState<number>(0);
+  const [menuHeight, setMenuHeight] = useState<number>(0);
+  const [viewportHeight, setViewportHeight] = useState<number>(0);
+  const [divHeight, setDivHeight] = useState<number>(0);
 
-useEffect(() => {
-  const onResize = () => setViewportHeight(window.innerHeight);
-  const onMenuToggle = () =>
-    setMenuHeight(document.querySelector(".menu")?.offsetHeight ?? 0);
-  window.addEventListener("resize", onResize);
-  document
-    .querySelector(".menu-toggle")
-    ?.addEventListener("click", onMenuToggle);
-  return () => {
-    window.removeEventListener("resize", onResize);
+  useEffect(() => {
+    const onResize = () => setViewportHeight(window.innerHeight);
+    const onMenuToggle = () => {
+      const menu = document.querySelector(".menu") as HTMLElement; // add type assertion
+      setMenuHeight(menu.offsetHeight);
+    };
+
+    window.addEventListener("resize", onResize);
     document
       .querySelector(".menu-toggle")
-      ?.removeEventListener("click", onMenuToggle);
-  };
-}, []);
+      ?.addEventListener("click", onMenuToggle);
+    return () => {
+      window.removeEventListener("resize", onResize);
+      document
+        .querySelector(".menu-toggle")
+        ?.removeEventListener("click", onMenuToggle);
+    };
+  }, []);
 
-useEffect(() => {
-  setDivHeight(viewportHeight - menuHeight);
-}, [menuHeight, viewportHeight]);
+  useEffect(() => {
+    setDivHeight(viewportHeight - menuHeight);
+  }, [menuHeight, viewportHeight]);
 
   if (status === "loading") {
     return (
@@ -77,8 +80,8 @@ useEffect(() => {
 
   return (
     <div className='flex flex-col h-screen overflow-hidden'>
-      <Chat chatId={id} />
-      <ChatInput chatId={id} />
+      <Chat chatId={id} divHeight={divHeight} />
+      <ChatInput chatId={id} divHeight={divHeight}/>
     </div>
   );
 }

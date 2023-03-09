@@ -7,9 +7,10 @@ import { ArrowDownCircleIcon } from "@heroicons/react/24/outline";
 
 type Props = {
   chatId: string;
+  divHeight: number;
 };
 
-function Chat({ chatId }: Props) {
+function Chat({ chatId, divHeight }: Props) {
   const { data: session } = useSession();
 
   const messages = useDocumentData(

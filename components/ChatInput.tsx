@@ -10,13 +10,14 @@ import { useDocumentData } from "react-firebase-hooks/firestore";
 
 type Props = {
   chatId: string;
+  divHeight: number;
 };
 
 type Response = {
   data: any;
 };
 
-function ChatInput({ chatId }: Props) {
+function ChatInput({ chatId, divHeight }: Props) {
   const [prompt, setPrompt] = useState("");
   const { data: session } = useSession();
   const model = "gpt-3.5-turbo-0301";
