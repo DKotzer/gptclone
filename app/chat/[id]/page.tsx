@@ -20,6 +20,7 @@ function ChatPage({ params: { id } }: Props) {
   const [divHeight, setDivHeight] = useState<number>(0);
 
   useEffect(() => {
+    setViewportHeight(window.innerHeight);
     const onResize = () => setViewportHeight(window.innerHeight);
     const onMenuToggle = () => {
       const menu = document.querySelector(".menu") as HTMLElement; // add type assertion
@@ -40,6 +41,7 @@ function ChatPage({ params: { id } }: Props) {
 
   useEffect(() => {
     setDivHeight(viewportHeight - menuHeight);
+    console.log(divHeight, viewportHeight, menuHeight);
   }, [menuHeight, viewportHeight]);
 
   if (status === "loading") {
@@ -79,7 +81,7 @@ function ChatPage({ params: { id } }: Props) {
   // console.log("sess test", session);
 
   return (
-    <div className={`flex flex-col h-full overflow-hidden`}>
+    <div className={`flex flex-col h-screen overflow-hidden`}>
       <Chat chatId={id} divHeight={divHeight} />
       <ChatInput chatId={id} divHeight={divHeight} />
     </div>

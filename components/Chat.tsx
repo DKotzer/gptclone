@@ -4,6 +4,7 @@ import { db } from "@component/firebase";
 import { doc } from "firebase/firestore";
 import Message from "./Message";
 import { ArrowDownCircleIcon } from "@heroicons/react/24/outline";
+import { useEffect, useState } from "react";
 
 type Props = {
   chatId: string;
@@ -11,19 +12,27 @@ type Props = {
 };
 
 function Chat({ chatId, divHeight }: Props) {
+  const [heightHolder, setHeightHolder] = useState(divHeight - 225);
   const { data: session } = useSession();
+  console.log("div height2", divHeight);
+
+  useEffect(() => {
+    () => {
+      setHeightHolder(divHeight - 295);
+      console.log("new height", divHeight);
+    };
+  }, [divHeight]);
 
   const messages = useDocumentData(
     doc(db, "users", session?.user?.email!, "chats", chatId)
   );
-
 
   // const messagesObj: any = useDocumentData(
   //   doc(db, "users", session?.user?.email!, "chats", chatId)
   // );
 
   return (
-    <div className={`flex-1 overflow-y-scroll overflow-x-hidden  `}>
+    <div className='flex-1 overflow-y-auto overflow-x-hidden'>
       {messages[0]?.messages?.map(
         (message, i) =>
           message.role != "system" && (
