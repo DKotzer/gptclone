@@ -26,6 +26,9 @@ function SideBar() {
         orderBy("createdAt", "asc")
       )
   );
+  useEffect(() => {
+    console.log("window.innerHeight", window.innerHeight);
+  }, []);
 
   const createBetaChat = async () => {
     router.push(`/beta`);
