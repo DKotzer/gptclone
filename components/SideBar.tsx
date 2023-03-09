@@ -29,6 +29,7 @@ function SideBar() {
   );
   useEffect(() => {
     setWinHeight(`h-[${window.innerHeight}px]`);
+    console.log("height change", window.innerHeight);
   }, []);
 
   const createBetaChat = async () => {
@@ -37,7 +38,9 @@ function SideBar() {
   return (
     <div>
       <div
-        className={`${hidden && "hidden"} p-2 flex flex-col ${winHeight} max-h-screen min-w-[200px] relative`}
+        className={`${
+          hidden && "hidden"
+        } p-2 flex flex-col h-[100%] max-h-screen min-w-[200px] relative`}
       >
         <button
           type='button'

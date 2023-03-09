@@ -5,6 +5,7 @@ import { doc } from "firebase/firestore";
 import { useSession } from "next-auth/react";
 import { useDocumentData } from "react-firebase-hooks/firestore";
 import { db } from "@component/firebase";
+import { useEffect, useState } from "react";
 
 type Props = {
   params: {
@@ -14,11 +15,35 @@ type Props = {
 
 function ChatPage({ params: { id } }: Props) {
   const { data: session, status } = useSession();
+const [menuHeight, setMenuHeight] = useState<number>(0);
+const [viewportHeight, setViewportHeight] = useState<number>(0);
+const [divHeight, setDivHeight] = useState<number>(0);
+
+useEffect(() => {
+  const onResize = () => setViewportHeight(window.innerHeight);
+  const onMenuToggle = () =>
+    setMenuHeight(document.querySelector(".menu")?.offsetHeight ?? 0);
+  window.addEventListener("resize", onResize);
+  document
+    .querySelector(".menu-toggle")
+    ?.addEventListener("click", onMenuToggle);
+  return () => {
+    window.removeEventListener("resize", onResize);
+    document
+      .querySelector(".menu-toggle")
+      ?.removeEventListener("click", onMenuToggle);
+  };
+}, []);
+
+useEffect(() => {
+  setDivHeight(viewportHeight - menuHeight);
+}, [menuHeight, viewportHeight]);
+
   if (status === "loading") {
     return (
       <div
         id='panel'
-        className='h-screen w-screen flex flex-col items-center justify-center text-center '
+        className={`h-${divHeight}px w-screen flex flex-col items-center justify-center text-center `}
       >
         <span id='loading1'>
           <span id='outerCircle' className='animate-pulse'></span>
