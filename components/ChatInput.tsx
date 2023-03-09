@@ -21,11 +21,13 @@ function ChatInput({ chatId, messages }: Props) {
   const [prompt, setPrompt] = useState("");
   const { data: session } = useSession();
   const model = "gpt-3.5-turbo-0301";
+  const [disabled, setDisabled] = useState(false);
   const messagesObj: any = useDocumentData(
     doc(db, "users", session?.user?.email!, "chats", chatId)
   );
 
   const sendMessage = async (e: FormEvent<HTMLFormElement>) => {
+    setDisabled(true);
     e.preventDefault();
     if (!prompt) return;
     const input = prompt.trim();
@@ -48,17 +50,7 @@ function ChatInput({ chatId, messages }: Props) {
         chatId,
         user: session?.user?.email,
       }),
-    })
-      .then((res) => {
-        res
-          .json()
-          .then((j) => {
-            // console.log("j", j.text);
-          })
-          .catch((err) => console.log("error:", err));
-        //toast notification to say successful
-      })
-      .catch((err) => console.log(err));
+    }).catch((err) => console.log(err));
 
     console.log("new msgs", newMsgs);
 
@@ -95,14 +87,9 @@ function ChatInput({ chatId, messages }: Props) {
         user: session?.user?.email,
       }),
     })
-      .then((res) => {
-        res
-          .json()
-          .then(async (j) => {
-            // console.log("j", j.text);
-            // setMessages(await j.text);
-          })
-          .catch((err) => console.log("error:", err));
+      .then(() => {
+        setDisabled(false);
+
         //toast notification to say successful
         toast.success("DylanGPT has responded!", {
           id: notification,
@@ -127,7 +114,7 @@ function ChatInput({ chatId, messages }: Props) {
         />
         <button
           className='bg-[#11A37F] hover:opacity-50 text-white font-bolt px-4 m-0 py-2 rounded-r-md disabled:bg-gray-300 disabled:cursor-not-allowed'
-          disabled={!prompt || !session}
+          disabled={!prompt || !session || disabled}
           type='submit'
         >
           <PaperAirplaneIcon className='w-4 h-4 -rotate-45' />

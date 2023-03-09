@@ -14,8 +14,10 @@ function BetaInput({ setMessages, messages }) {
   const [prompt, setPrompt] = useState("");
   const { data: session } = useSession();
   const model = "gpt-3.5-turbo-0301";
+  const [disabled, setDisabled] = useState(false);
 
   const sendMessage = async (e: FormEvent<HTMLFormElement>) => {
+    setDisabled(true);
     e.preventDefault();
     if (!prompt) return;
     const input = prompt.trim();
@@ -39,6 +41,7 @@ function BetaInput({ setMessages, messages }) {
       }),
     })
       .then((res) => {
+        setDisabled(false);
         res
           .json()
           .then((j) => {
@@ -73,7 +76,7 @@ function BetaInput({ setMessages, messages }) {
         />
         <button
           className='bg-[#11A37F] hover:opacity-50 text-white font-bolt px-4 m-0 py-2 rounded-r-md disabled:bg-green-300/20 disabled:cursor-not-allowed'
-          disabled={!prompt || !session}
+          disabled={!prompt || !session || disabled}
           type='submit'
         >
           <PaperAirplaneIcon className='w-4 h-4 -rotate-45' />
