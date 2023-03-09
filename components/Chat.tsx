@@ -7,19 +7,24 @@ import { ArrowDownCircleIcon } from "@heroicons/react/24/outline";
 
 type Props = {
   chatId: string;
-  messages: Array<{ role: string; content: string }>;
 };
 
-
-function Chat({ chatId, messages }: Props) {
+function Chat({ chatId }: Props) {
   const { data: session } = useSession();
-  const messagesObj: any = useDocumentData(
+
+  const messages = useDocumentData(
     doc(db, "users", session?.user?.email!, "chats", chatId)
   );
 
+  console.log("msgs test", messages);
+
+  // const messagesObj: any = useDocumentData(
+  //   doc(db, "users", session?.user?.email!, "chats", chatId)
+  // );
+
   return (
     <div className='flex-1 overflow-y-auto overflow-x-hidden'>
-      {messages?.map(
+      {messages[0]?.messages?.map(
         (message, i) =>
           message.role != "system" && (
             <Message
@@ -29,7 +34,7 @@ function Chat({ chatId, messages }: Props) {
             />
           )
       )}
-      {messages?.length < 3 && (
+      {messages[0]?.messages?.length < 3 && (
         <>
           <p className='mt-10 text-center text-white py-auto'>
             Type a prompt in below to get started!
