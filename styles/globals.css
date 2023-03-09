@@ -15,6 +15,8 @@
 html {
   overflow-y: hidden;
   position: fixed;
+  height: 100%;
+  width: 100%;
 }
 body {
   overflow-y: hidden;
