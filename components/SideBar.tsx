@@ -13,7 +13,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { useRouter } from "next/navigation";
 import { collection, orderBy, query } from "firebase/firestore";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function SideBar() {
   const router = useRouter();
@@ -33,9 +33,9 @@ function SideBar() {
   return (
     <div>
       <div
-        className={`${
-          hidden && "hidden"
-        } p-2 flex flex-col h-[100%] max-h-screen min-w-[200px] relative`}
+        className={`${hidden && "hidden"} p-2 flex flex-col h-[${
+          window.innerHeight
+        }] max-h-screen min-w-[200px] relative`}
       >
         <button
           type='button'
