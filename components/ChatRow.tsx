@@ -38,7 +38,7 @@ function ChatRow({ id }: Props) {
       href={`/chat/${id}`}
     >
       <ChatBubbleLeftIcon className='h-5 w-5 justify-start' />
-      <p className='flex-1 hidden md:inline-flex truncate max-w-[120px] overflow-ellipsis '>
+      <p className='flex-1 md:inline-flex truncate max-w-[120px] overflow-ellipsis '>
         {messages[0]?.messages.length < 3
           ? "New Chat"
           : messages[0]?.messages[messages[0]?.messages.length - 2].content}
