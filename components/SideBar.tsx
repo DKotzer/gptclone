@@ -35,7 +35,7 @@ function SideBar() {
       <div
         className={`${
           hidden && "hidden"
-        } p-2 flex flex-col h-full max-h-screen min-w-[200px] relative`}
+        } p-2 flex flex-col h-screen max-h-screen min-w-[200px] relative`}
       >
         <button
           type='button'
@@ -77,7 +77,7 @@ function SideBar() {
         </div>
         <hr className='width=70% mb-3 pb-3 opacity-20'></hr>
         {session && (
-          <div className='flex flex-col justify-end h-full'>
+          <div className='flex flex-col justify-end'>
             <img
               src={session.user?.image! || "https://i.imgur.com/dTJ67HS.png"}
               alt='Profile Picture'

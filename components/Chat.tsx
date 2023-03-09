@@ -17,14 +17,13 @@ function Chat({ chatId, divHeight }: Props) {
     doc(db, "users", session?.user?.email!, "chats", chatId)
   );
 
-  console.log("msgs test", messages);
 
   // const messagesObj: any = useDocumentData(
   //   doc(db, "users", session?.user?.email!, "chats", chatId)
   // );
 
   return (
-    <div className='flex-1 overflow-y-auto overflow-x-hidden h-[100%]'>
+    <div className={`flex-1 overflow-y-scroll overflow-x-hidden  `}>
       {messages[0]?.messages?.map(
         (message, i) =>
           message.role != "system" && (
