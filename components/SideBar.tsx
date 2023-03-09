@@ -45,10 +45,10 @@ function SideBar() {
           <svg
             stroke='currentColor'
             fill='none'
-            stroke-width='1.5'
+            strokeWidth='1.5'
             viewBox='0 0 24 24'
-            stroke-linecap='round'
-            stroke-linejoin='round'
+            strokeLinecap='round'
+            strokeLinejoin='round'
             className='h-6 w-6 text-white'
             height='0.5em'
             width='0.5em'
@@ -90,17 +90,15 @@ function SideBar() {
               <CubeTransparentIcon className='h-4 w-4 rotate-90' />
               <p>Beta</p>
             </div>
-            <div className='hover:border-gray-700 chatRow align-self-start '>
-              <img
-                src='https://www.svgrepo.com/show/391478/linkedin.svg'
-                className='h-6 w-5 m-0 text-white'
-              />
-              <p>
-                <a href='https://www.linkedin.com/in/dylan-kotzer-3a5421190/'>
-                  Dylan
-                </a>
-              </p>
-            </div>
+            <a href='https://www.linkedin.com/in/dylan-kotzer-3a5421190/'>
+              <div className='hover:border-gray-700 chatRow align-self-start '>
+                <img
+                  src='https://www.svgrepo.com/show/391478/linkedin.svg'
+                  className='h-6 w-5 m-0 text-white'
+                />
+                <p>Dylan</p>
+              </div>
+            </a>
             <div
               className='hover:border-gray-700 chatRow align-self-start '
               onClick={() => signOut()}
@@ -124,13 +122,12 @@ function SideBar() {
               className='h-10 w-10 rounded-full cursor-pointed mx-auto mb-2 hover:opacity-50'
             />{" "}
             <div className='hover:border-gray-700 chatRow  '>
-              <img
-                src='https://www.svgrepo.com/show/391478/linkedin.svg'
-                className='h-4 w-4  text-white m-auto'
-              />
-              <p>
-                <a href='https://www.linkedin.com/in/dylan-kotzer-3a5421190/'></a>
-              </p>
+              <a href='https://www.linkedin.com/in/dylan-kotzer-3a5421190/'>
+                <img
+                  src='https://www.svgrepo.com/show/391478/linkedin.svg'
+                  className='h-4 w-4  text-white m-auto'
+                />
+              </a>
             </div>
             <div
               className='hover:border-gray-700 chatRow align-self-start '
