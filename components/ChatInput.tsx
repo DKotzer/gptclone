@@ -17,7 +17,7 @@ type Response = {
   data: any;
 };
 
-function ChatInput({ chatId, messages}: Props) {
+function ChatInput({ chatId, messages }: Props) {
   const [prompt, setPrompt] = useState("");
   const { data: session } = useSession();
   const model = "gpt-3.5-turbo-0301";
@@ -113,7 +113,10 @@ function ChatInput({ chatId, messages}: Props) {
 
   return (
     <div className='bg-gray-700/50 text-gray-400 rounded-lg text-sm'>
-      <form onSubmit={sendMessage} className='p-5  flex max-w-[80%] mx-auto'>
+      <form
+        onSubmit={sendMessage}
+        className='pt-5 pb-5  flex max-w-[80%] mx-auto'
+      >
         <input
           className='mx-auto stretch rounded-l-md pl-5 pr-5 m-0 bg-[#40414f] focus:outline-none flex-1 disabled:cursor-not-allowed disabled:text-gray-300'
           disabled={!session}
