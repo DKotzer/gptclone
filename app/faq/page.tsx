@@ -296,9 +296,9 @@ function FAQPage() {
                         href='https://www.dylankotzer.com/#/overview'
                         className='text-blue-300 underline'
                       >
-                        homepage
+                        homepage.
                       </a>
-                      . Or a link to my linkedin on the sidebar, or click{" "}
+                      Or a link to my linkedin on the sidebar, or click{" "}
                       <a
                         href='https://www.linkedin.com/in/dylan-kotzer-3a5421190/'
                         className='text-blue-400 underline'
