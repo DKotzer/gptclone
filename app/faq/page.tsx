@@ -1,4 +1,5 @@
 "use client";
+/* eslint react/no-unescaped-entities */
 
 import { useSession } from "next-auth/react";
 import Head from "next/head";
