@@ -66,7 +66,7 @@ video {
 
 .markdown p {
   margin-bottom: 0.5em;
-  margin-right: 1em;
+  padding-right: 10px;
 }
 
 .markdown img {
