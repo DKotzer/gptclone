@@ -28,7 +28,7 @@ function BetaMessage({ message, userImg }: Props) {
   const isDylanGPT = message.role == "assistant";
   return (
     <div className={`py-5 text-white ${isDylanGPT && "bg-[#434654]"}`}>
-      <div className='flex space-x-5 px-10 max-w-wxl mx-auto'>
+      <div className='flex space-x-5 px-10 max-w-[80%] mx-auto'>
         <img
           src={
             message.role == "assistant"

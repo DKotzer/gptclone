@@ -27,11 +27,11 @@ function Message({ message, userImg }: Props) {
   const isDylanGPT = message.role == "assistant";
   return (
     <div
-      className={`py-5 text-white bb ${isDylanGPT && "bg-[#434654]"} ${
+      className={`py-5 text-white bb  ${isDylanGPT && "bg-[#434654]"} ${
         !isDylanGPT && "divide-solid > * + *"
       }}`}
     >
-      <div className='flex space-x-5 px-10 max-w-wxl mx-auto'>
+      <div className='flex max-w-[95%] mx-auto justify-between;'>
         <img
           src={
             message.role == "assistant"
@@ -39,7 +39,7 @@ function Message({ message, userImg }: Props) {
               : userImg
           }
           alt=''
-          className='h-10 w-10 rounded-lg cursor-pointed'
+          className='h-10 w-10 rounded-lg cursor-pointed mr-3'
         />
         <div className={"markdown"} dangerouslySetInnerHTML={createMarkup()} />
       </div>

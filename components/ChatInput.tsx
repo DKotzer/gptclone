@@ -100,10 +100,10 @@ function ChatInput({ chatId, divHeight }: Props) {
   };
 
   return (
-    <div className='bg-gray-700/50 text-gray-400 rounded-lg text-sm'>
+    <div className='bg-gray-700/50 text-gray-400 rounded-lg text-sm max-w-full'>
       <form
         onSubmit={sendMessage}
-        className='pt-5 pb-5  flex max-w-[80%] mx-auto'
+        className='pt-5 pb-5  flex max-w-full mx-auto pl-5 pr-5'
       >
         <input
           className='mx-auto stretch  rounded-l-md pl-5 pr-4 m-0 bg-[#40414f] focus:outline-none flex-1 disabled:cursor-not-allowed disabled:text-gray-300'
@@ -121,7 +121,7 @@ function ChatInput({ chatId, divHeight }: Props) {
           <PaperAirplaneIcon className='w-4 h-4 -rotate-45' />
         </button>
       </form>
-      <div className='h-[70px] md:hidden' />
+      <div className='h-[70px] md:h-[25px]' />
       {/* <div className='md:hidden'> */}
       {/* <ModelSelection></ModelSelection> */}
       {/* </div> */}

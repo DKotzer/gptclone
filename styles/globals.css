@@ -35,7 +35,7 @@ code {
   margin-left: 1em;
   margin-bottom: 1.6em;
   margin-top: 0.8em;
-  max-width: 100%;
+  max-width: 95%;
   overflow: auto;
   padding: 1em 1.5em;
   display: block;
@@ -46,6 +46,15 @@ code::backdrop {
   content: "Code Block";
 }
 
+img,
+video {
+  max-width: 60%;
+  height: auto;
+}
+
+.markdown {
+  max-width: 90%;
+}
 .markdown a {
   text-decoration-line: underline;
   text-underline-offset: 2px;
@@ -57,15 +66,13 @@ code::backdrop {
 
 .markdown p {
   margin-bottom: 0.5em;
+  max-width: 90%;
 }
 
-/* .markdown img {
-  max-width: inherit;
-  max-height: inherit;
-  height: inherit;
-  width: inherit;
+.markdown img {
+  max-width: 95%;
   object-fit: contain;
-} */
+}
 
 .markdown ul {
   margin-bottom: 1em;

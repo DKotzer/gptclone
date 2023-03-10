@@ -106,7 +106,7 @@ function SideBar() {
               <ArrowUpTrayIcon className='h-4 w-4 rotate-90' />
               <p className='md:text-sm'>Log Out</p>
             </div>
-            <div className='h-[70px] md:hidden'></div>
+            <div className='h-[70px] md:h-[25px]'></div>
           </div>
         )}
       </div>
@@ -136,7 +136,7 @@ function SideBar() {
             >
               <ArrowUpTrayIcon className='h-4 w-4 rotate-90' />
             </div>
-            <div className='h-[70px]  md:hidden'></div>
+            <div className='h-[70px]  md:h-[25px]'></div>
           </div>
         )}
       </div>
