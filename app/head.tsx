@@ -6,7 +6,8 @@ export default function Head() {
       <title>DylanGPT</title>
       <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
       <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-      <link rel='icon' href='https://i.imgur.com/jfLbi1b.png' />
+      <meta name='description' content='An AI-powered Chatbot' />
+      <link rel='icon' href='%PUBLIC_URL%/dgpt.png' />
       <link
         rel='stylesheet'
         href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark-reasonable.min.css'
