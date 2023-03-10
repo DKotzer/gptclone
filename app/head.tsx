@@ -6,9 +6,14 @@ export default function Head() {
       <title>DylanGPT</title>
       <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
       <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-      <meta name='description' content='An AI-powered Chatbot' />
       <link rel='icon' href='/dgpt.png' />
-      <meta property='og:image' content='https://i.imgur.com/jfLbi1b.png' />
+      <meta property='og:image' content='/DylanGPTLogo.png' />
+      <meta property='og:title' content='DylanGPT' />
+      <meta name='description' content='A cutting edge AI-powered Chatbot' />
+      <meta
+        property='description'
+        content='A cutting edge AI-powered Chatbot'
+      />
 
       <link
         rel='stylesheet'
