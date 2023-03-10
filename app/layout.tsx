@@ -25,7 +25,6 @@ export default async function RootLayout({
         property='og:description'
         content='An above average GPT-powered Chatbot'
       />
-      <meta property='og:url' content='https://gpt.dylankotzer.com' />
       <head />
       <body>
         <SessionProvider session={session}>
