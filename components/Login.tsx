@@ -6,10 +6,10 @@ function Login() {
   return (
     <div className='bg-[#202123] h-screen flex flex-col items-center justify-center text-center'>
       <img
-        src={"https://i.imgur.com/9Hk3qUg.png"}
+        src={"https://i.imgur.com/jfLbi1b.png"}
         alt='Logo'
         onClick={() => signIn("google")}
-        className='h-50 w-50 rounded-3xl cursor-pointed mx-auto mb-2 hover:cursor-pointer'
+        className='h-50 w-50 rounded-3xl cursor-pointed mx-auto mb-2 hover:cursor-pointer max-w-[50%] max-h-[50%]'
       />
       <button
         onClick={() => signIn("google")}

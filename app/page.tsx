@@ -6,6 +6,7 @@ import {
   BoltIcon,
   ExclamationTriangleIcon,
 } from "@heroicons/react/24/outline";
+import NewChatInput from "@component/components/NewChatInput";
 
 function HomePage() {
   const [winHeight, setWinHeight] = useState("h-screen");
@@ -70,6 +71,7 @@ function HomePage() {
           </div>
         </div>
       </div>
+      <NewChatInput />
       {/* create NewChatInput that creates a new chat i<NewChatInput chatId={id} divHeight={divHeight} /> */}
     </div>
   );

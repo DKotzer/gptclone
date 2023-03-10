@@ -30,23 +30,13 @@ export default async function handler(
   //gpt3 query - handled by lib/queryApi
   const response = await query(messages);
   const newMsgArr = [...messages, response.data.choices[0].message];
-  console.log("res data 666", response.data.choices[0].message);
+  // console.log("res data 666", response.data.choices[0].message);
   // console.log("667", newMsgArr);
 
   await updateDoc(doc(db, "users", user, "chats", chatId), {
     messages: newMsgArr,
   });
 
-  //fix db entry to edit instead of add
-  // await adminDb
-  //   .collection("users")
-  //   .doc(session?.user?.email)
-  //   .collection("chats")
-  //   .doc(chatId)
-  //   .set(
-  //     { messages: [...messages, response.data.choices[0].message] },
-  //     { merge: true }
-  //   );
 
   res
     .status(200)

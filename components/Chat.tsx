@@ -12,16 +12,15 @@ type Props = {
 };
 
 function Chat({ chatId, divHeight }: Props) {
-  const [heightHolder, setHeightHolder] = useState(divHeight - 225);
+  // const [heightHolder, setHeightHolder] = useState(divHeight - 225);
   const { data: session } = useSession();
-  console.log("div height2", divHeight);
+  console.log("screen height:", divHeight);
 
-  useEffect(() => {
-    () => {
-      setHeightHolder(divHeight - 295);
-      console.log("new height", divHeight);
-    };
-  }, [divHeight]);
+  // useEffect(() => {
+  //   () => {
+  //     setHeightHolder(divHeight - 295);
+  //   };
+  // }, [divHeight]);
 
   const messages = useDocumentData(
     doc(db, "users", session?.user?.email!, "chats", chatId)

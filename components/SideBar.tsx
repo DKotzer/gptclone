@@ -82,7 +82,7 @@ function SideBar() {
         {session && (
           <div className='flex flex-col justify-end'>
             <img
-              src={session.user?.image! || "https://i.imgur.com/dTJ67HS.png"}
+              src={session.user?.image! || "https://i.imgur.com/jfLbi1b.png"}
               alt='Profile Picture'
               className='h-13 w-13 rounded-full cursor-pointed mx-auto mb-2 hover:opacity-50'
             />{" "}
@@ -121,7 +121,7 @@ function SideBar() {
         {session && (
           <div className='flex flex-col justify-end h-[90%] '>
             <img
-              src={session.user?.image! || "https://i.imgur.com/dTJ67HS.png"}
+              src={session.user?.image! || "https://i.imgur.com/jfLbi1b.png"}
               alt='Profile Picture'
               className='h-10 w-10 rounded-full cursor-pointed mx-auto mb-2 hover:opacity-50'
             />{" "}

@@ -32,7 +32,7 @@ function BetaMessage({ message, userImg }: Props) {
         <img
           src={
             message.role == "assistant"
-              ? "https://i.imgur.com/9Hk3qUg.png"
+              ? "https://i.imgur.com/jfLbi1b.png"
               : userImg
           }
           alt=''

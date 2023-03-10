@@ -41,7 +41,6 @@ function ChatPage({ params: { id } }: Props) {
 
   useEffect(() => {
     setDivHeight(viewportHeight - menuHeight);
-    console.log(divHeight, viewportHeight, menuHeight);
   }, [menuHeight, viewportHeight]);
 
   if (status === "loading") {

@@ -12,18 +12,18 @@ function FAQPage() {
   const [box4, setBox4] = useState(false);
 
   return (
-    <div>
+    <div className='h-full bg-slate-700'>
       <div>
-        <img
+        {/* <img
           src='https://ciberseguridad.blog/content/images/2017/10/autenticaci-n-blockchain.jpg'
           alt='blue pattern background'
-          className='absolute w-full h-64 md:h-96 object-center object-fit z-0'
-        />
+          className='absolute w-full h-64 md:h-96 object-center  object-fit z-0'
+        /> */}
         <div className='relative flex flex-col items-center justify-center sm:px-0 px-6 z-20 pb-32'>
           <div className='md:py-36 py-20'>
             <h1
               role='heading'
-              className='xl:text-6xl md:text-5xl text-xl font-bold leading-10 text-black'
+              className='xl:text-6xl md:text-5xl text-xl font-bold leading-10 text-white'
             >
               Frequently asked questions
             </h1>

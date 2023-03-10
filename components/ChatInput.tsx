@@ -28,6 +28,8 @@ function ChatInput({ chatId, divHeight }: Props) {
 
   const sendMessage = async (e: FormEvent<HTMLFormElement>) => {
     setDisabled(true);
+    const notification = toast.loading("DylanGPT is thinking...");
+
     e.preventDefault();
     if (!prompt) return;
     const input = prompt.trim();
@@ -55,26 +57,6 @@ function ChatInput({ chatId, divHeight }: Props) {
 
     console.log("new msgs", newMsgs);
 
-    // const docRef = doc(db, "users", session?.user?.email!, "chats", chatId);
-    // console.log("docRef", docRef);
-    // await updateDoc(docRef, {
-    //   messages: arrayUnion({role: "user", content: input})
-    // })
-    // await setDoc(
-    //   doc(
-    //     db,
-    //     "users",
-    //     session?.user?.email!,
-    //     "chats",
-    //     chatId
-    //   ), {messages: }
-    //   message
-    // );
-
-    //toast notification to say loading
-
-    // const notify = () => toast("Here is your toast.");
-    const notification = toast.loading("DylanGPT is thinking...");
 
     await fetch("/api/askQuestion", {
       method: "POST",
