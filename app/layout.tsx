@@ -19,6 +19,9 @@ export default async function RootLayout({
   const session = await getServerSession(authOptions);
   return (
     <html lang='en'>
+      <meta property='og:image' content='/DylanGPTLogo.png' />
+      <meta property='og:title' content='DylanGPT' />
+      <meta name='description' content='A cutting edge AI-powered Chatbot' />
       <head />
       <body>
         <SessionProvider session={session}>
