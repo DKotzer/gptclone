@@ -8,7 +8,7 @@ export default function Head() {
       <meta name='viewport' content='width=device-width, initial-scale=1.0' />
       <meta name='description' content='An AI-powered Chatbot' />
       <link rel='icon' href='/dgpt.png' />
-      <meta property='og:image' content='/DylanGPTLogo.png' />
+      <meta property='og:image' content='https://i.imgur.com/jfLbi1b.png' />
 
       <link
         rel='stylesheet'
