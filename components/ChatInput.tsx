@@ -103,7 +103,7 @@ function ChatInput({ chatId, divHeight }: Props) {
     <div className='bg-gray-700/50 text-gray-400 rounded-lg text-sm max-w-full'>
       <form
         onSubmit={sendMessage}
-        className='pt-5 pb-5  flex mx-auto pl-5 pr-5'
+        className='pt-5 pb-5  flex mx-auto pl-[5%] pr-[20%]'
       >
         <input
           className='mx-auto stretch  rounded-l-md pl-5 pr-4 m-0 bg-[#40414f] focus:outline-none flex width-[100%] disabled:cursor-not-allowed disabled:text-gray-300'
