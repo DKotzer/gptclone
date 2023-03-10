@@ -30,16 +30,7 @@ export default async function handler(
     messages: messages,
   });
 
-  //fix db entry to edit instead of add
-  // await adminDb
-  //   .collection("users")
-  //   .doc(session?.user?.email)
-  //   .collection("chats")
-  //   .doc(chatId)
-  //   .set(
-  //     { messages: [...messages, response.data.choices[0].message] },
-  //     { merge: true }
-  //   );
+
 
   res
     .status(200)

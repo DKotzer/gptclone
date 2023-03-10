@@ -11,22 +11,10 @@ type Props = {
 };
 
 function Chat({ chatId }: Props) {
-  // const [heightHolder, setHeightHolder] = useState(divHeight - 225);
   const { data: session } = useSession();
-
-  // useEffect(() => {
-  //   () => {
-  //     setHeightHolder(divHeight - 295);
-  //   };
-  // }, [divHeight]);
-
   const messages = useDocumentData(
     doc(db, "users", session?.user?.email!, "chats", chatId)
   );
-
-  // const messagesObj: any = useDocumentData(
-  //   doc(db, "users", session?.user?.email!, "chats", chatId)
-  // );
 
   return (
     <div className='flex-1 overflow-y-auto overflow-x-hidden'>

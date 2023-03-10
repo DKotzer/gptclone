@@ -36,7 +36,6 @@ function ChatInput({ chatId }: Props) {
       role: "user",
       content: input,
     };
-    // setMessages((prevState) => [...prevState, message]);
     setPrompt("");
     const newMsgs = [...messages[0]?.messages, message];
     console.log("new", newMsgs);
@@ -102,9 +101,6 @@ function ChatInput({ chatId }: Props) {
         </button>
       </form>
       <div className='h-[70px] md:h-[25px]' />
-      {/* <div className='md:hidden'> */}
-      {/* <ModelSelection></ModelSelection> */}
-      {/* </div> */}
     </div>
   );
 }

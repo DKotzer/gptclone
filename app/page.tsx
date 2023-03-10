@@ -68,7 +68,6 @@ function HomePage() {
         </div>
       </div>
       <NewChatInput />
-      {/* create NewChatInput that creates a new chat i<NewChatInput chatId={id} divHeight={divHeight} /> */}
     </div>
   );
 }

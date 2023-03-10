@@ -35,8 +35,7 @@ export default async function RootLayout({
               <div className='bg-[#202123] max-w-xs min-w-fit h-screen overflow-y-hidden overflow-x-hidden '>
                 <SideBar />
               </div>
-              {/*sidebar*/}
-              {/*client provider - notification*/}
+              {/* client provider is used to send notifications toasts on screen - can persist on difference pages thanks to wrapper */}
               <ClientProvider />
               <div className='bg-[#343541] flex-1'>{children}</div>
             </div>

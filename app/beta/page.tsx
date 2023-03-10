@@ -16,9 +16,7 @@ type Props = {
 function ChatPage({ params: { id } }: Props) {
   const { data: session } = useSession();
 
-  // const messagesObj: any = useDocumentData(
-  //   doc(db, "users", session?.user?.email!, "chats", id)
-  // );
+
   const [messages, setMessages] = useState([
     {
       role: "system",

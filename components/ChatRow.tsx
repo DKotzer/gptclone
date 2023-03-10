@@ -25,7 +25,6 @@ function ChatRow({ id }: Props) {
     setActive(pathname.includes(id));
   }, [pathname]);
 
-  // console.log("msgs2", messages[0]?.messages!);
 
   const removeChat = async () => {
     await deleteDoc(doc(db, "users", session?.user?.email!, "chats", id));

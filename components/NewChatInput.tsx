@@ -110,9 +110,7 @@ function NewChatInput() {
         </button>
       </form>
       <div className='h-[70px] md:h-[25px]' />
-      {/* <div className='md:hidden'> */}
-      {/* <ModelSelection></ModelSelection> */}
-      {/* </div> */}
+
     </div>
   );
 }
