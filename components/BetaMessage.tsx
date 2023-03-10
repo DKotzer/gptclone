@@ -30,11 +30,7 @@ function BetaMessage({ message, userImg }: Props) {
     <div className={`py-5 text-white ${isDylanGPT && "bg-[#434654]"}`}>
       <div className='flex space-x-5 px-10 max-w-[80%] mx-auto'>
         <img
-          src={
-            message.role == "assistant"
-              ? "https://i.imgur.com/jfLbi1b.png"
-              : userImg
-          }
+          src={message.role == "assistant" ? "/dgpt" : userImg}
           alt=''
           className='h-10 w-10 rounded-lg cursor-pointed'
         />

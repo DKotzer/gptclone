@@ -22,9 +22,10 @@ export default async function RootLayout({
       <meta property='og:image' content='/DylanGPTLogo.png' />
       <meta property='og:title' content='DylanGPT' />
       <meta
-        property='description'
+        property='og:description'
         content='An above average GPT-powered Chatbot'
       />
+      <meta property='og:url' content='https://gpt.dylankotzer.com' />
       <head />
       <body>
         <SessionProvider session={session}>
