@@ -8,13 +8,11 @@ import { useEffect, useState } from "react";
 
 type Props = {
   chatId: string;
-  divHeight: number;
 };
 
-function Chat({ chatId, divHeight }: Props) {
+function Chat({ chatId }: Props) {
   // const [heightHolder, setHeightHolder] = useState(divHeight - 225);
   const { data: session } = useSession();
-  console.log("screen height:", divHeight);
 
   // useEffect(() => {
   //   () => {

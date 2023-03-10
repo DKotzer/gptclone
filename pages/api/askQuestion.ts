@@ -37,7 +37,6 @@ export default async function handler(
     messages: newMsgArr,
   });
 
-
   res
     .status(200)
     .json({ text: [...messages, response.data.choices[0].message] });

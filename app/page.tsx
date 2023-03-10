@@ -9,10 +9,6 @@ import {
 import NewChatInput from "@component/components/NewChatInput";
 
 function HomePage() {
-  const [winHeight, setWinHeight] = useState("h-screen");
-  useEffect(() => {
-    setWinHeight(`h-[${window.innerHeight}px]`);
-  }, []);
   return (
     <div className={`flex flex-col h-screen overflow-hidden`}>
       <div

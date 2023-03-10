@@ -10,14 +10,13 @@ import { useDocumentData } from "react-firebase-hooks/firestore";
 
 type Props = {
   chatId: string;
-  divHeight: number;
 };
 
 type Response = {
   data: any;
 };
 
-function ChatInput({ chatId, divHeight }: Props) {
+function ChatInput({ chatId }: Props) {
   const [prompt, setPrompt] = useState("");
   const { data: session } = useSession();
   const model = "gpt-3.5-turbo-0301";
@@ -56,7 +55,6 @@ function ChatInput({ chatId, divHeight }: Props) {
     }).catch((err) => console.log(err));
 
     console.log("new msgs", newMsgs);
-
 
     await fetch("/api/askQuestion", {
       method: "POST",
