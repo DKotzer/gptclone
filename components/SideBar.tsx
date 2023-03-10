@@ -4,12 +4,10 @@ import { useSession, signOut } from "next-auth/react";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { db } from "@component/firebase";
 import ChatRow from "./ChatRow";
-import ModelSelection from "./ModelSelection";
 import {
   ArrowUpTrayIcon,
   Bars3Icon,
-  CubeTransparentIcon,
-  XCircleIcon,
+  QuestionMarkCircleIcon,
 } from "@heroicons/react/24/outline";
 import { useRouter } from "next/navigation";
 import { collection, orderBy, query } from "firebase/firestore";
@@ -30,6 +28,11 @@ function SideBar() {
   const createBetaChat = async () => {
     router.push(`/beta`);
   };
+
+  const toFAQ = async () => {
+    router.push(`/faq`);
+  };
+
   return (
     <div>
       <div
@@ -85,16 +88,16 @@ function SideBar() {
             />{" "}
             <div
               className='hover:border-gray-700 chatRow align-self-start '
-              onClick={createBetaChat}
+              onClick={toFAQ}
             >
-              <CubeTransparentIcon className='h-4 w-4 rotate-90' />
-              <p>Beta</p>
+              <QuestionMarkCircleIcon className='h-6 w-6' />
+              <p>FAQ</p>
             </div>
             <a href='https://www.linkedin.com/in/dylan-kotzer-3a5421190/'>
               <div className='hover:border-gray-700 chatRow align-self-start '>
                 <img
                   src='https://www.svgrepo.com/show/391478/linkedin.svg'
-                  className='h-6 w-5 m-0 text-white'
+                  className='h-6 w-6 m-0 text-white'
                 />
                 <p>Dylan</p>
               </div>
@@ -103,7 +106,7 @@ function SideBar() {
               className='hover:border-gray-700 chatRow align-self-start '
               onClick={() => signOut()}
             >
-              <ArrowUpTrayIcon className='h-4 w-4 rotate-90' />
+              <ArrowUpTrayIcon className='h-5 w-6 rotate-90' />
               <p className='md:text-sm'>Log Out</p>
             </div>
             <div className='h-[70px] md:h-[25px]'></div>
@@ -122,6 +125,12 @@ function SideBar() {
               alt='Profile Picture'
               className='h-10 w-10 rounded-full cursor-pointed mx-auto mb-2 hover:opacity-50'
             />{" "}
+            <div
+              className='hover:border-gray-700 chatRow align-self-start '
+              onClick={toFAQ}
+            >
+              <QuestionMarkCircleIcon className='h-6 w-6' />
+            </div>
             <div className='hover:border-gray-700 chatRow  '>
               <a href='https://www.linkedin.com/in/dylan-kotzer-3a5421190/'>
                 <img
