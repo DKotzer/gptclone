@@ -1,5 +1,4 @@
 "use client";
-/* eslint react/no-unescaped-entities */
 
 import { useSession } from "next-auth/react";
 import Head from "next/head";
@@ -156,14 +155,14 @@ function FAQPage() {
                 <ul>
                   <li>
                     <p className='text-base leading-normal text-gray-600 mt-4 '>
-                      These models were trained on vast amounts of data from the
+                      {`These models were trained on vast amounts of data from the
                       internet written by humans, including conversations, so
                       the responses it provides may sound human-like. It is
                       important to keep in mind that this is a direct result of
                       the system's design (i.e. maximizing the similarity
                       between outputs and the dataset the models were trained
                       on) and that such outputs may be inaccurate, untruthful,
-                      and otherwise misleading at times.
+                      and otherwise misleading at times.`}
                     </p>
                   </li>
                 </ul>
@@ -226,12 +225,12 @@ function FAQPage() {
                 <ul>
                   <li>
                     <p className='text-base leading-normal text-gray-600 mt-4 '>
-                      DylanGPT is not connected to the internet, and it can
+                      {`DylanGPT is not connected to the internet, and it can
                       occasionally produce incorrect answers. It has limited
                       knowledge of world and events after 2021 and may also
                       occasionally produce harmful instructions or biased
                       content. We'd recommend checking whether responses from
-                      the model are accurate or not.
+                      the model are accurate or not.`}
                     </p>
                   </li>
                 </ul>
