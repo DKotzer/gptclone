@@ -1,19 +1,40 @@
 import { useSession } from "next-auth/react";
-import { useDocumentData } from "react-firebase-hooks/firestore";
+import { useCollection, useDocumentData } from "react-firebase-hooks/firestore";
 import { db } from "@component/firebase";
-import { doc } from "firebase/firestore";
+import { collection, orderBy, query, doc } from "firebase/firestore";
 import Message from "./Message";
 import { ArrowDownCircleIcon } from "@heroicons/react/24/outline";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 type Props = {
   chatId: string;
 };
 
 function Chat({ chatId }: Props) {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
+  const router = useRouter();
   const messages = useDocumentData(
     doc(db, "users", session?.user?.email!, "chats", chatId)
   );
+
+  const [chats, loading, error] = useCollection(
+    session &&
+      query(
+        collection(db, "users", session.user?.email!, "chats"),
+        orderBy("createdAt", "asc")
+      )
+  );
+
+  //if done loading, and no errors, check if chat id exists inside chats, if not, go back to home page. - this handles people manually entering in the wrong chat or going to chats they have deleted in the past
+  useEffect(() => {
+    if (!loading && !error && chats) {
+      const chatIds = chats.docs.map((doc) => doc.id);
+      if (!chatIds.includes(chatId)) {
+        router.push("/");
+      }
+    }
+  }, [chats]);
 
   return (
     <div className='flex-1 overflow-y-auto overflow-x-hidden'>
