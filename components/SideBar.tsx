@@ -84,7 +84,7 @@ function SideBar() {
             <img
               src={session.user?.image! || "https://i.imgur.com/jfLbi1b.png"}
               alt='Profile Picture'
-              className='h-13 w-13 rounded-full cursor-pointed mx-auto mb-2 hover:opacity-50'
+              className='h-13 w-13 rounded-full cursor-pointed mx-auto border-white mb-2 border:1 border-opacity-0 hover:scale-105 hover:animate-pulse'
             />{" "}
             <div
               className='hover:border-gray-700 chatRow align-self-start '
@@ -93,7 +93,10 @@ function SideBar() {
               <QuestionMarkCircleIcon className='h-6 w-6' />
               <p>FAQ</p>
             </div>
-            <a href='https://www.linkedin.com/in/dylan-kotzer-3a5421190/'>
+            <a
+              href='https://www.linkedin.com/in/dylan-kotzer-3a5421190/'
+              target='_blank'
+            >
               <div className='hover:border-gray-700 chatRow align-self-start '>
                 <img
                   src='https://www.svgrepo.com/show/391478/linkedin.svg'

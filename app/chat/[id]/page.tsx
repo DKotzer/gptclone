@@ -14,11 +14,16 @@ function ChatPage({ params: { id } }: Props) {
 
   if (status === "loading") {
     return (
-      <div
-        id='panel'
-        className={`h-screen w-screen flex flex-col items-center justify-center text-center `}
-      >
-        <span id='loading1'>
+      // <div className='flex h-screen items-center'>
+      //   <img
+      //     className='mx-auto max-w-[50%] max-h-[50%]'
+      //     src='/thinking.gif'
+      //     alt=''
+      //   />
+      // </div>
+
+      <div id='panel' className='flex h-screen w-screen items-center'>
+        <span className='ml-[25%] mb-[20%] scale-150' id='loading1'>
           <span id='outerCircle' className='animate-pulse'></span>
 
           <span id='innerCircle' className='animate-pulse'>

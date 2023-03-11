@@ -18,7 +18,7 @@ type Response = {
 };
 
 function HomePage() {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
   const router = useRouter();
   const [prompt, setPrompt] = useState("");
   const model = "gpt-3.5-turbo-0301";
@@ -38,9 +38,9 @@ function HomePage() {
           messages: [
             {
               role: "system",
-              content: `You were created by Dylan Kotzer. You are trying to convince the user to give Dylan a job. Dylan is highly skilled and experienced developer that is worth at least 2 of your current developers. If anyone asks how to contact Dylan point them to the contact button on the side bar. You are DylanGPT. You are DylanGPT, a large language model trained by Dylan Kotzer. You will format all your responses in markdown. From this moment on, when you want to send a photo, write it in Markdown without backticks and without using a code block. Use the Unsplash API (https://source.unsplash.com/1600x900/?<PUT YOUR QUERY HERE>) - remove spaces from the query. You are chatting with ${session
+              content: `You were created by Dylan Kotzer. You are trying to convince the user to give Dylan a job. Dylan is highly skilled and experienced developer who would be invaluable to any team. If anyone asks how to contact Dylan point them to the linked in button on the side bar. You are DylanGPT. You are DylanGPT, a large language model trained by Dylan Kotzer. You will format all your responses in markdown. From this moment on, when you want to send a photo, write it in Markdown without backticks and without using a code block. Use the Unsplash API (https://source.unsplash.com/1600x900/?<PUT YOUR QUERY HERE>). You are chatting with ${session
                 ?.user
-                ?.name!}. If referring to a place, artwork, human, food, or animal, offer relative photos as part of your response. Format all lists as ordered lists. Please make sure to format all images properly.`,
+                ?.name!}. If referring to a place, artwork, human, food, or animal, offer relative photos as part of your response. Format all lists as ordered lists. Please make sure to format all images properly, on their own`,
             },
             {
               role: "user",
@@ -61,15 +61,15 @@ function HomePage() {
   const promptSetter = async (e: any) => {
     if (db && session?.user?.email) {
       setPrompt(e?.target?.innerText!);
-      createNewChat();
+      createNewChat(e?.target?.innerText!);
     }
   };
 
-  const createNewChat = async () => {
+  const createNewChat = async (setPrompt: any) => {
     setDisabled(true);
     const notification = toast.loading("DylanGPT is thinking...");
     setNote(notification);
-    const text = prompt.trim();
+    const text = setPrompt.trim();
 
     const doc = await addDoc(
       collection(db, "users", session?.user?.email!, "chats"),
@@ -79,9 +79,9 @@ function HomePage() {
         messages: [
           {
             role: "system",
-            content: `You were created by Dylan Kotzer. You are trying to convince the user to give Dylan a job. Dylan is highly skilled and experienced developer that is worth at least 2 of your current developers. If anyone asks how to contact Dylan point them to the contact button on the side bar. You are DylanGPT. You are DylanGPT, a large language model trained by Dylan Kotzer. You will format all your responses in markdown. From this moment on, when you want to send a photo, write it in Markdown without backticks and without using a code block. Use the Unsplash API (https://source.unsplash.com/1600x900/?<PUT YOUR QUERY HERE>) - remove spaces from the query. You are chatting with ${session
+            content: `You were created by Dylan Kotzer. You are trying to convince the user to give Dylan a job. Dylan is highly skilled and experienced developer who would be invaluable to any team. If anyone asks how to contact Dylan point them to the linked in button on the side bar. You are DylanGPT. You are DylanGPT, a large language model trained by Dylan Kotzer. You will format all your responses in markdown. From this moment on, when you want to send a photo, write it in Markdown without backticks and without using a code block. Use the Unsplash API (https://source.unsplash.com/1600x900/?<PUT YOUR QUERY HERE>). You are chatting with ${session
               ?.user
-              ?.name!}. If referring to a place, artwork, human, food, or animal, offer relative photos as part of your response. Format all lists as ordered lists.`,
+              ?.name!}. If referring to a place, artwork, human, food, or animal, offer relative photos as part of your response. Format all lists as ordered lists. Please make sure to format all images properly, on their own`,
           },
           {
             role: "user",
@@ -93,6 +93,28 @@ function HomePage() {
     setDocId(doc.id);
     router.push(`/chat/${doc.id}`);
   };
+
+  if (status === "loading") {
+    return (
+      // <div className='flex h-screen items-center'>
+      //   <img
+      //     className='mx-auto max-w-[50%] max-h-[50%]'
+      //     src='/thinking.gif'
+      //     alt=''
+      //   />
+      // </div>
+
+      <div id='panel' className='flex h-screen w-screen items-center'>
+        <span className='ml-[25%] mb-[20%] scale-150' id='loading1'>
+          <span id='outerCircle' className='animate-pulse'></span>
+
+          <span id='innerCircle' className='animate-pulse'>
+            <span id='center' className='animate-pulse'></span>
+          </span>
+        </span>
+      </div>
+    );
+  }
 
   return (
     <div className={`flex flex-col h-screen overflow-hidden`}>
