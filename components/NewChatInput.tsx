@@ -85,10 +85,7 @@ function NewChatInput() {
 
   return (
     <div className='bg-gray-700/50 text-gray-400 rounded-lg text-sm max-w-full'>
-      <div className='mx-auto text-center mr-[8%] ml-[8%] mt-2 text-white'>
-        Start a new chat by clicking one of the example buttons above or typing
-        in to the input below.
-      </div>
+      {/* <div className='mx-auto text-center mr-[8%] ml-[8%] mt-2 text-white'></div> */}
       <form
         onSubmit={createNewChat}
         className='pt-5 pb-5  flex mx-auto pl-[12%] pr-[12%]'
