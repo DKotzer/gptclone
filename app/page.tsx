@@ -129,7 +129,7 @@ function HomePage() {
       <div
         className={`flex flex-col items-center justify-center h-full text-white px-2`}
       >
-        <h1 className='text-5xl font-bold mb-20'>DylanGPT</h1>
+        <h1 className='text-5xl font-bold mb-[5%]'>DylanGPT</h1>
         <div className='flex space-x-2 text-center'>
           <div>
             <div className='flex flex-col items-center justify-center mb-5'>
