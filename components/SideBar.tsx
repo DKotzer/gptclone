@@ -33,6 +33,10 @@ function SideBar() {
     router.push(`/faq`);
   };
 
+  const toHome = async () => {
+    router.push(`/`);
+  };
+
   return (
     <div>
       <div
@@ -82,6 +86,7 @@ function SideBar() {
         {session && (
           <div className='flex flex-col justify-end'>
             <img
+              onClick={toHome}
               src={session.user?.image! || "https://i.imgur.com/jfLbi1b.png"}
               alt='Profile Picture'
               className='h-13 w-13 rounded-full cursor-pointed mx-auto border-white mb-2 border:1 border-opacity-0 hover:scale-105 hover:animate-pulse'

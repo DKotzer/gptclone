@@ -14,6 +14,14 @@ function ChatPage({ params: { id } }: Props) {
 
   if (status === "loading") {
     return (
+      <div id='loader' className='overlay-loader'>
+        <div className='loader-background color-flip'></div>
+        <img
+          className='loader-icon spinning-cog'
+          src='/cog05.svg'
+          data-cog='cog05'
+        />
+      </div>
       // <div className='flex h-screen items-center'>
       //   <img
       //     className='mx-auto max-w-[50%] max-h-[50%]'
@@ -22,10 +30,10 @@ function ChatPage({ params: { id } }: Props) {
       //   />
       // </div>
 
-      <div className='flex h-screen items-center scale-150'>
-        <span className='loader'></span>
-      </div>
-      
+      // <div className='flex h-screen items-center scale-150'>
+      //   <span className='loader'></span>
+      // </div>
+
       // <div
       //   id='panel'
       //   className='flex h-screen w-screen justify-center items-center'
