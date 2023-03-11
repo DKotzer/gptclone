@@ -1,8 +1,8 @@
 import { DocumentData } from "firebase/firestore";
-import { useSession } from "next-auth/react";
 import React from "react";
 import MarkdownIt from "markdown-it";
 import hljs from "highlight.js";
+import Image from "next/image";
 
 type Props = {
   message: DocumentData;
@@ -29,7 +29,7 @@ function BetaMessage({ message, userImg }: Props) {
   return (
     <div className={`py-5 text-white ${isDylanGPT && "bg-[#434654]"}`}>
       <div className='flex space-x-5 px-10 max-w-[80%] mx-auto'>
-        <img
+        <Image
           src={message.role == "assistant" ? "/dgpt" : userImg}
           alt=''
           className='h-10 w-10 rounded-lg cursor-pointed'

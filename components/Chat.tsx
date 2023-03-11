@@ -4,7 +4,6 @@ import { db } from "@component/firebase";
 import { doc } from "firebase/firestore";
 import Message from "./Message";
 import { ArrowDownCircleIcon } from "@heroicons/react/24/outline";
-import { useEffect, useState } from "react";
 
 type Props = {
   chatId: string;
