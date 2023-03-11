@@ -5,7 +5,7 @@ import { collection, orderBy, query, doc } from "firebase/firestore";
 import Message from "./Message";
 import { ArrowDownCircleIcon } from "@heroicons/react/24/outline";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 type Props = {
   chatId: string;
@@ -17,6 +17,7 @@ function Chat({ chatId }: Props) {
   const messages = useDocumentData(
     doc(db, "users", session?.user?.email!, "chats", chatId)
   );
+  const messagesEndRef = useRef<HTMLDivElement>(null); // Create a ref for the last message element
 
   const [chats, loading, error] = useCollection(
     session &&
@@ -36,28 +37,36 @@ function Chat({ chatId }: Props) {
     }
   }, [chats]);
 
+  // Scroll to the second to last message when the component updates
+  useEffect(() => {
+    const messagesEnd = messagesEndRef.current;
+    if (messagesEnd) {
+      const secondToLastMessage = messagesEnd.previousSibling as HTMLElement;
+      if (secondToLastMessage) {
+        secondToLastMessage.scrollIntoView();
+      }
+    }
+  }, [messages]);
+
   return (
     <div className='flex-1 overflow-y-auto overflow-x-hidden'>
-      {messages[0]?.messages?.map(
-        (message, i) =>
-          message.role != "system" && (
-            <Message
-              userImg={session?.user?.image!}
-              key={i}
-              message={message}
-            />
-          )
+      {messages[0]?.messages?.map((message, i) =>
+        message.role !== "system" ? (
+          <Message userImg={session?.user?.image!} key={i} message={message} />
+        ) : null
       )}
       {messages[0]?.messages?.length < 3 &&
-        messages[0]?.messages[messages[0]?.messages?.length - 1].role !=
-          "user" && (
-          <>
-            <p className='mt-10 text-center text-white py-auto'>
-              Type a prompt in below to get started!
-            </p>
-            <ArrowDownCircleIcon className='h-10 w-10 mx-auto mt-5 text-white animate-bounce ' />
-          </>
-        )}
+      messages[0]?.messages[messages[0]?.messages?.length - 1].role !==
+        "user" ? (
+        <>
+          <p className='mt-10 text-center text-white py-auto'>
+            Type a prompt in below to get started!
+          </p>
+          <ArrowDownCircleIcon className='h-10 w-10 mx-auto mt-5 text-white animate-bounce ' />
+        </>
+      ) : null}
+      <div ref={messagesEndRef} />{" "}
+      {/* Add a div with ref for the last message element */}
     </div>
   );
 }
