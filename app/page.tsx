@@ -104,15 +104,23 @@ function HomePage() {
       //   />
       // </div>
 
-      <div id='panel' className='flex h-screen w-screen items-center'>
-        <span className='ml-[25%] mb-[20%] scale-150' id='loading1'>
-          <span id='outerCircle' className='animate-pulse'></span>
-
-          <span id='innerCircle' className='animate-pulse'>
-            <span id='center' className='animate-pulse'></span>
-          </span>
-        </span>
+      <div className='flex h-screen items-center scale-150'>
+        <span className='loader'></span>
       </div>
+
+      // <div id='panel' className='flex h-screen items-center justify-center'>
+      //   <div className='text-center'>
+      //     <span
+      //       className='inline-block scale-150 flex-shrink-0 translate-x-1/2 translate-y-1/2'
+      //       id='loading1'
+      //     >
+      //       <span id='outerCircle' className='animate-pulse'></span>
+      //       <span id='innerCircle' className='animate-pulse'>
+      //         <span id='center' className='animate-pulse'></span>
+      //       </span>
+      //     </span>
+      //   </div>
+      // </div>
     );
   }
 

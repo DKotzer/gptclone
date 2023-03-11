@@ -38,7 +38,6 @@ function ChatInput({ chatId }: Props) {
     };
     setPrompt("");
     const newMsgs = [...messages[0]?.messages, message];
-    console.log("new", newMsgs);
 
     await fetch("/api/addQuestion", {
       method: "POST",
@@ -52,8 +51,6 @@ function ChatInput({ chatId }: Props) {
         user: session?.user?.email,
       }),
     }).catch((err) => console.log(err));
-
-    console.log("new msgs", newMsgs);
 
     await fetch("/api/askQuestion", {
       method: "POST",
