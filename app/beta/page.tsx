@@ -30,7 +30,7 @@ function ChatPage({ params: { id } }: Props) {
             - 3D World: 3D World is a 3D model sharing site with social media features. It was built using Django and Python and uses the google 3d viewer api to allow user interaction with 3d models, including augmented reality view. Link to deployment: [https://threedworld.herokuapp.com/](3D World)
             - DCrypto: Crypto trading app that allows you to trade crypto in real time with practice money via API calls to the kraken exchange for real time price updates. Built with CryptoCurrency eXchange TradingAPI. Link to deployment: [https://dcrypto-app.herokuapp.com/auth/signin](DCrypto)
             - Exile Builder: A Character builder for the game Path of Exile. It uses the path of exile API to get real time data on the items and prices/images. Deployment Link: [https://exile-builder.herokuapp.com](Exile Builder)
-            - Homepage: A homepage built with next.js and typescript that is styled to look like vs code and renders markdown files as pages. All the infromation you want about Dylan can be found at the Deployment Link: [https://www.dylankotzer.com/#/overview](Overview Page)
+            - Homepage: A homepage built with next.js and typescript that is styled to look like vs code and renders markdown files as pages. All the information you want about Dylan can be found at the Deployment Link: [https://www.dylankotzer.com/#/overview](Overview Page)
             - DylanGPT: Leveraging his previous experience building with AI and Next.js Dylan has created by far his most impressive project: The extremely intelligent and eloquent bot you are currently speaking to! Pretty impressive?
             Render the above markdown links as links.
             `,
