@@ -69,7 +69,7 @@ function HomePage() {
     setDisabled(true);
     const notification = toast.loading("DylanGPT is thinking...");
     setNote(notification);
-    const text = prompt.trim()
+    const text = prompt.trim();
 
     const doc = await addDoc(
       collection(db, "users", session?.user?.email!, "chats"),
@@ -89,7 +89,7 @@ function HomePage() {
           },
         ],
       }
-    )
+    );
     setDocId(doc.id);
     router.push(`/chat/${doc.id}`);
   };
@@ -108,13 +108,22 @@ function HomePage() {
             </div>
 
             <div className='space-y-2'>
-              <p onClick={promptSetter} className='infoText'>
+              <p
+                onClick={promptSetter}
+                className='infoText border-slate-300/50 hover:border hover:scale-105 hover:cursor-pointer '
+              >
                 List the top things to do in Toronto
               </p>
-              <p onClick={promptSetter} className='infoText'>
+              <p
+                onClick={promptSetter}
+                className='infoText border-slate-300/50 hover:border hover:scale-105 hover:cursor-pointer'
+              >
                 Why should I hire Dylan Kotzer.
               </p>
-              <p onClick={promptSetter} className='infoText'>
+              <p
+                onClick={promptSetter}
+                className='infoText border-slate-300/50 hover:border hover:scale-105 hover:cursor-pointer'
+              >
                 Create code for hello world in Python, Javascript and C++.
               </p>
             </div>
@@ -126,7 +135,10 @@ function HomePage() {
             </div>
 
             <div className='space-y-2'>
-              <p onClick={promptSetter}  className='infoText'>
+              <p
+                onClick={promptSetter}
+                className='infoText border-slate-300/50 hover:border hover:scale-105 hover:cursor-pointer'
+              >
                 Find and post images
               </p>
               <p className='infoText'>
