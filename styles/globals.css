@@ -106,7 +106,11 @@ code::before {
   /* border: 1px solid #ddd; */
   border-left: 1px solid #ddd;
   border-top: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+
   border-top-right-radius: 0.3em;
+  border-top-left-radius: 0.3em;
 
   color: white;
   font-size: 0.8rem;
@@ -115,6 +119,18 @@ code::before {
   top: -0.75rem;
   left: 0.94rem;
 }
+/* pre::before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #ddd;
+  border-top-right-radius: 0.3em;
+  z-index: 5;
+  top: -0.75rem;
+  left: 20px;
+} */
+
 pre {
   position: relative;
   margin-top: 1rem;
