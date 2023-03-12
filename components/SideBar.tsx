@@ -42,12 +42,12 @@ function SideBar() {
       <div
         className={`${
           hidden && "hidden"
-        } p-2 flex flex-col h-screen max-h-screen min-w-[200px] relative`}
+        } p-2 flex flex-col h-screen max-h-screen min-w-[200px] relative mt-[8%]`}
       >
         <button
           type='button'
           onClick={() => setHidden(true)}
-          className='flex h-10 w-10 items-center justify-center hover:animate-spin  focus:animate-ping absolute -top-2 -right-3 overflow-x-auto'
+          className='flex h-10 w-10 items-center justify-center hover:animate-spin  focus:animate-ping absolute -top-[1.4%] -right-[2.5%] overflow-x-auto'
         >
           <svg
             stroke='currentColor'
@@ -89,7 +89,7 @@ function SideBar() {
               onClick={toHome}
               src={session.user?.image! || "https://i.imgur.com/jfLbi1b.png"}
               alt='Profile Picture'
-              className='h-13 w-13 rounded-full cursor-pointed mx-auto border-white mb-2 border:1 border-opacity-0 hover:scale-105 hover:animate-pulse'
+              className='h-12 w-12 rounded-full cursor-pointed mx-auto border-white mb-2 border:1 border-opacity-0 hover:scale-105 hover:animate-pulse'
             />{" "}
             <div
               className='hover:border-gray-700 chatRow align-self-start '
@@ -129,6 +129,7 @@ function SideBar() {
         {session && (
           <div className='flex flex-col justify-end h-[90%] '>
             <img
+              onClick={toHome}
               src={session.user?.image! || "https://i.imgur.com/jfLbi1b.png"}
               alt='Profile Picture'
               className='h-10 w-10 rounded-full cursor-pointed mx-auto mb-2 hover:opacity-50'

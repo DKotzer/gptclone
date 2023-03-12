@@ -13,7 +13,7 @@ type Props = {
 function BetaInput({ setMessages, messages }) {
   const [prompt, setPrompt] = useState("");
   const { data: session } = useSession();
-  const model = "gpt-3.5-turbo-0301";
+  const model = "gpt-3.5-turbo";
   const [disabled, setDisabled] = useState(false);
 
   const sendMessage = async (e: FormEvent<HTMLFormElement>) => {

@@ -15,7 +15,7 @@ function NewChatInput() {
   const { data: session } = useSession();
   const router = useRouter();
   const [prompt, setPrompt] = useState("");
-  const model = "gpt-3.5-turbo-0301";
+  const model = "gpt-3.5-turbo";
   const [disabled, setDisabled] = useState(false);
   const [docId, setDocId] = useState("");
   const [note, setNote] = useState("");
