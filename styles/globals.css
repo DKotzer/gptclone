@@ -22,6 +22,7 @@ body {
   position: fixed;
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
 }
 
 /*  below section is to edit the html that the chat bot will dynamically create, cant do it with tailwind */
@@ -97,6 +98,11 @@ input {
 
 .bb {
   border-bottom: 1px solid rgba(0, 0, 0, 0.267);
+}
+
+.chatBox {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
 }
 
 /* below adds labels above the code blocks */

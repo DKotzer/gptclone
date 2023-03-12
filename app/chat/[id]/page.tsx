@@ -22,30 +22,6 @@ function ChatPage({ params: { id } }: Props) {
           data-cog='cog05'
         />
       </div>
-      // <div className='flex h-screen items-center'>
-      //   <img
-      //     className='mx-auto max-w-[50%] max-h-[50%]'
-      //     src='/thinking.gif'
-      //     alt=''
-      //   />
-      // </div>
-
-      // <div className='flex h-screen items-center scale-150'>
-      //   <span className='loader'></span>
-      // </div>
-
-      // <div
-      //   id='panel'
-      //   className='flex h-screen w-screen justify-center items-center'
-      // >
-      //   <span className=' scale-150' id='loading1'>
-      //     <span id='outerCircle' className='animate-pulse'></span>
-
-      //     <span id='innerCircle' className='animate-pulse'>
-      //       <span id='center' className='animate-pulse'></span>
-      //     </span>
-      //   </span>
-      // </div>
     );
   }
 
