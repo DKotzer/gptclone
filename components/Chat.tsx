@@ -55,9 +55,9 @@ function Chat({ chatId }: Props) {
           <Message userImg={session?.user?.image!} key={i} message={message} />
         ) : null
       )}
-      {messages[0]?.messages?.length < 3 &&
-      messages[0]?.messages[messages[0]?.messages?.length - 1].role !==
-        "user" ? (
+      {messages[0]?.messages?.length < 7 &&
+      messages[0]?.messages[messages[0]?.messages?.length - 1].role ==
+        "assistant" ? (
         <>
           <p className='mt-10 text-center text-white py-auto'>
             Type a prompt in below to get started!
