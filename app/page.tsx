@@ -232,19 +232,19 @@ function HomePage() {
                 onClick={promptSetter}
                 className='infoText border-slate-300/50 hover:border hover:scale-105 hover:cursor-pointer '
               >
-                List the top things to do in Toronto
+                List the top things to do in Toronto, including images.
               </p>
               <p
                 onClick={promptSetter}
                 className='infoText border-slate-300/50 hover:border hover:scale-105 hover:cursor-pointer'
               >
-                Why should I hire Dylan Kotzer.
+                Tell me about Dylan Kotzers projects.
               </p>
               <p
                 onClick={promptSetter}
                 className='infoText border-slate-300/50 hover:border hover:scale-105 hover:cursor-pointer'
               >
-                Create code for hello world in Python, Javascript and C++.
+                Create code for hello world in 5 random programming languages.
               </p>
             </div>
           </div>
@@ -259,10 +259,10 @@ function HomePage() {
                 onClick={promptSetter}
                 className='infoText border-slate-300/50 hover:border hover:scale-105 hover:cursor-pointer'
               >
-                Find and post images
+                Find and post images, with limited accuracy.
               </p>
               <p className='infoText'>
-                Chats are stored in a Firestore database
+                Has in depth knowledge of Dylan Kotzer.
               </p>
               <p className='infoText'>
                 Advanced text formatting for responses, including code
