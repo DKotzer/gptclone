@@ -126,7 +126,7 @@ function SideBar() {
           className='w-11 h-11 text-gray-300/50 border-gray-300/50 border-2 rounded-2xl m-4 p-1 hover:text-gray-300 hover:border-white hover:animate-pulse focus:animate-ping'
         />
         {session && (
-          <div className='flex flex-col justify-end h-[90%] '>
+          <div className='flex flex-col justify-end  '>
             <img
               onClick={toHome}
               src={session.user?.image! || "https://i.imgur.com/jfLbi1b.png"}

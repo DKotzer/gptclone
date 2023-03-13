@@ -12,14 +12,14 @@ function FAQPage() {
   const [box4, setBox4] = useState(false);
 
   return (
-    <div className='h-full overflow-y-scroll bg-slate-700'>
-      <div>
+    <div className='h-full  bg-slate-700 overflow-y-scroll'>
+      <div className='overflow-y-scroll'>
         {/* <img
           src='https://ciberseguridad.blog/content/images/2017/10/autenticaci-n-blockchain.jpg'
           alt='blue pattern background'
           className='absolute w-full h-64 md:h-96 object-center  object-fit z-0'
         /> */}
-        <div className='relative flex flex-col items-center justify-center sm:px-0 px-6 z-20 pb-32'>
+        <div className='relative flex flex-col items-center justify-center sm:px-0 px-6 z-20 pb-32 overflow-y-scroll '>
           <div className='md:py-36 py-20'>
             <h1
               role='heading'
