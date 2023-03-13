@@ -25,7 +25,6 @@ function ChatRow({ id }: Props) {
     setActive(pathname.includes(id));
   }, [pathname]);
 
-
   const removeChat = async () => {
     await deleteDoc(doc(db, "users", session?.user?.email!, "chats", id));
     router.replace("/");
@@ -38,7 +37,7 @@ function ChatRow({ id }: Props) {
     >
       <ChatBubbleLeftIcon className='h-5 w-5 justify-start' />
       <p className='flex-1 md:inline-flex truncate max-w-[120px] overflow-ellipsis '>
-        {messages[0]?.messages.length < 7
+        {messages[0]?.messages.length < 4
           ? "Empty Chat"
           : messages[0]?.messages[messages[0]?.messages.length - 2].content}
       </p>

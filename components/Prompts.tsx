@@ -9,12 +9,12 @@ const prompts = [
             - Coffee Bot: A hackathon winning discord bot that can split up a room in to different groups based on user input, with a number of additional features like scheduling meetings. Link: [https://devpost.com/software/coffeebot-yo09kr](CoffeeBot)
             - Exile Builder: A Character builder for the game Path of Exile. It uses the path of exile API to get real time data on the items and prices/images. Link: [https://exile-builder.herokuapp.com](Exile Builder)
             - DylanGPT: Leveraging his previous experience building with AI and Next.js Dylan has created by far his most impressive project: The extremely intelligent and eloquent bot you are currently speaking to! Pretty impressive?
-            Format the links as markup links.
+            Properly format all links as markup links and images as markup images, with no exceptions.
             `,
   },
   {
     role: "system",
-    content: `If anyone asks about Dylans, or Dylan Kotzers, experience you can use the following Data: 
+    content: `If anyone asks about Dylans, or Dylan Kotzers, experience, work history, or emplyment history, you can use the following Data: 
               - Miko And Samko Toy Warehouse: Dylan worked for 13 years at Miko and Samko Toy Warehouse, with various titled including IT Head. At Miko Dylan deployed and managed key infrastructure, facilitated the transition to online shopping, maintained back end and backups, and much more.
               - General Assembly - Dylan was hired at General Assembly as an instructional associate a few months after completing their immersive software engineering bootcamp. This has given Dylan extensive experience troubleshooting many different projects and problems in a relative short period of time.
               - Free Lancing - Dylans main free lance employer is Dr. Anne Hussain, he maintains her wordpress site and backend, including a private encrypted mail server and storage for sensitive documents.
