@@ -76,13 +76,10 @@ function ChatInput({ chatId }: Props) {
   };
 
   return (
-    <div className='bg-gray-700/50 text-gray-400 rounded-lg text-sm max-w-full'>
-      <form
-        onSubmit={sendMessage}
-        className='pt-5 pb-5  flex mx-auto pl-[12%] pr-[12%]'
-      >
+    <div className='bg-[#353a48] text-gray-400 rounded-lg text-sm max-w-[90%] min-w-[70%] mx-auto'>
+      <form onSubmit={sendMessage} className='pt-5 pb-5  flex mx-auto '>
         <input
-          className='mx-auto stretch  rounded-l-md pl-5 pr-4 m-0 bg-[#40414f] focus:outline-none flex width-[100%] disabled:cursor-not-allowed disabled:text-gray-300'
+          className='mx-auto stretch  rounded-l-md pl-5 pr-4 m-0 bg-[#40414f] focus:outline-none flex width-[80%] disabled:cursor-not-allowed disabled:text-gray-300'
           disabled={!session}
           type='text'
           value={prompt}

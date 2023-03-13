@@ -91,7 +91,7 @@ function NewChatInput() {
   };
 
   return (
-    <div className='bg-gray-700/50 text-gray-400 rounded-lg text-sm max-w-full'>
+    <div className='bg-[#353a48] text-gray-400 rounded-lg text-sm max-w-[90%] min-w-[70%] mx-auto'>
       {/* <div className='mx-auto text-center mr-[8%] ml-[8%] mt-2 text-white'></div> */}
       <form
         onSubmit={createNewChat}

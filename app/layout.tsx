@@ -32,12 +32,14 @@ export default async function RootLayout({
             <Login />
           ) : (
             <div className='flex'>
-              <div className='bg-[#202123] max-w-xs min-w-fit h-screen overflow-y-hidden overflow-x-hidden '>
+              <div className='bg-[#202123] max-w-xs min-w-fit h-screen overflow-y-hidden overflow-x-scroll '>
                 <SideBar />
               </div>
               {/* client provider is used to send notifications toasts on screen - can persist on difference pages thanks to wrapper */}
               <ClientProvider />
-              <div className='bg-[#343541] flex-1'>{children}</div>
+              <div className='bg-[#353a48] flex-1 overflow-x-scroll'>
+                {children}
+              </div>
             </div>
           )}
         </SessionProvider>
