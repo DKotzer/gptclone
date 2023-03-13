@@ -38,11 +38,11 @@ function SideBar() {
   };
 
   return (
-    <div className='max-h-screen'>
+    <div className='max-h-screen overflow-y-scroll'>
       <div
         className={`${
           hidden && "hidden"
-        } p-2 flex flex-col h-screen max-h-screen min-w-[200px] relative mt-[8%]`}
+        } p-2 flex flex-col h-screen min-w-[200px] relative mt-[8%]`}
       >
         <button
           type='button'
@@ -66,7 +66,7 @@ function SideBar() {
           </svg>
         </button>
         <NewChat />
-        <div className='flex-1 max-w-xs pt-2  overflow-y-scroll max-h-[50%]'>
+        <div className='flex-1 max-w-xs pt-2  overflow-y-scroll'>
           <div className='pt-1 '>
             <div className='flex flex-col space-y-2 my-2 '>
               {loading && (
