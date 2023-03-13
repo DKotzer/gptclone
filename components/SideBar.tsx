@@ -68,7 +68,7 @@ function SideBar() {
         <NewChat />
         <div className='flex-1 max-w-xs pt-2  overflow-y-scroll'>
           <div className='pt-1 '>
-            <div className='flex flex-col space-y-2 my-2 '>
+            <div className='flex flex-col space-y-2 my-2 max-h-[100%] overflow-clip'>
               {loading && (
                 <div className='animate-pulse text-center text-white'>
                   <p>Loading Chats...</p>
