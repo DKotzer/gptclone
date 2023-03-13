@@ -38,7 +38,7 @@ function SideBar() {
   };
 
   return (
-    <div className='max-h-screen '>
+    <div className='max-h-screen overflow-y-clip '>
       <div
         className={`${
           hidden && "hidden"
