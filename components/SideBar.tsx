@@ -47,7 +47,7 @@ function SideBar() {
         <button
           type='button'
           onClick={() => setHidden(true)}
-          className='flex h-10 w-10 items-center justify-center hover:animate-spin  focus:animate-ping absolute -top-[1.4%] -right-[2.5%] overflow-x-auto'
+          className='flex h-10 w-10 items-center justify-center hover:animate-spin  focus:animate-ping absolute -top-[1.8%] -right-[2.5%] overflow-x-auto'
         >
           <svg
             stroke='currentColor'
@@ -65,11 +65,9 @@ function SideBar() {
             <line x1='6' y1='6' x2='18' y2='18'></line>
           </svg>
         </button>
-
-        <div className='flex-1 max-w-xs pt-2 overflow-y-auto max-h-fit'>
+        <NewChat />
+        <div className='flex-1 max-w-xs pt-2  overflow-y-scroll'>
           <div className='pt-1 '>
-            <NewChat />
-
             <div className='flex flex-col space-y-2 my-2 '>
               {loading && (
                 <div className='animate-pulse text-center text-white'>

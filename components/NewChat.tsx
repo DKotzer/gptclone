@@ -39,9 +39,9 @@ function NewChat() {
   return (
     <div
       onClick={createNewChat}
-      className='border-gray-700 bg-[#343541]  border chatRow mr-3 ml-3 hover:scale-105'
+      className='border-gray-700 bg-[#343541]  border chatRow mr-3 ml-3 mt-3 hover:scale-105'
     >
-      <PlusIcon className='h-4 w-4  text-white my-auto' />
+      <PlusIcon className='h-5 w-5  text-white my-auto' />
       <p>New Chat</p>
     </div>
   );
