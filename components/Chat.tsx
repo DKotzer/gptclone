@@ -46,7 +46,6 @@ function Chat({ chatId }: Props) {
         secondToLastMessage.scrollIntoView();
       }
     }
-    console.log("msgs", messages[0]);
   }, [messages]);
 
   return (
