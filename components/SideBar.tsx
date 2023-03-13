@@ -44,7 +44,6 @@ function SideBar() {
           hidden && "hidden"
         } p-2 flex flex-col h-screen min-w-[200px] md:min-w-[250px] relative pt-[8%]`}
       >
-        <div className='h-[2%]'>""</div>
         <button
           type='button'
           onClick={() => setHidden(true)}
