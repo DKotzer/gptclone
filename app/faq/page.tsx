@@ -313,6 +313,7 @@ function FAQPage() {
           </div>
         </div>
       </div>
+      <div className='max-h-[70px] min-h-[35px]  md:h-[35px]'></div>
     </div>
   );
 }

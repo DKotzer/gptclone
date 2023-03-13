@@ -38,11 +38,11 @@ function SideBar() {
   };
 
   return (
-    <div className='max-h-screen overflow-y-clip '>
+    <div className='max-h-screen overflow-y-hidden'>
       <div
         className={`${
           hidden && "hidden"
-        } p-2 flex flex-col h-screen min-w-[200px] relative mt-[8%]`}
+        } p-2 flex flex-col h-screen min-w-[200px] relative pt-[8%]`}
       >
         <button
           type='button'
