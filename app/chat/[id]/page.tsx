@@ -20,14 +20,14 @@ function ChatPage({ params: { id } }: Props) {
           className='loader-icon spinning-cog'
           src='/cog05.svg'
           data-cog='cog05'
-          alt=""
+          alt=''
         />
       </div>
     );
   }
 
   return (
-    <div className={`flex flex-col h-screen overflow-hidden`}>
+    <div className={`flex flex-col h-screen overflow-x-scroll`}>
       <Chat chatId={id} />
       <ChatInput chatId={id} />
     </div>
