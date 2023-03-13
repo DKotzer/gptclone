@@ -20,7 +20,6 @@ body {
   width: 100%;
   position: fixed;
   -webkit-overflow-scrolling: touch;
-  overscroll-behavior: contain;
 }
 
 /*  below section is to edit the html that the chat bot will dynamically create, cant do it with tailwind */

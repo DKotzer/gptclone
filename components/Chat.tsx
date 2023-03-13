@@ -49,7 +49,7 @@ function Chat({ chatId }: Props) {
   }, [messages]);
 
   return (
-    <div className='chatBox flex-1 overflow-y-scroll overflow-x-hidden h-full'>
+    <div className='chatBox flex-1 overflow-y-scroll overflow-x-scroll h-full'>
       {messages[0]?.messages?.map((message, i) =>
         message.role !== "system" ? (
           <Message userImg={session?.user?.image!} key={i} message={message} />
