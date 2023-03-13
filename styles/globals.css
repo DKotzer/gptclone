@@ -24,6 +24,9 @@ body {
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
   max-height: 100vh;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
 }
 
 /*  below section is to edit the html that the chat bot will dynamically create, cant do it with tailwind */
