@@ -38,7 +38,7 @@ function SideBar() {
   };
 
   return (
-    <div>
+    <div className='max-h-screen'>
       <div
         className={`${
           hidden && "hidden"

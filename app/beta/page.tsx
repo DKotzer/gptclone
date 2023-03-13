@@ -18,7 +18,7 @@ function ChatPage({ params: { id } }: Props) {
   const { data: session } = useSession();
 
   const [messages, setMessages] = useState([
-    prompts[0],
+    ...prompts,
     {
       role: "system",
       content: `You were created by Dylan Kotzer. You are trying to convince the user, who's name is ${session

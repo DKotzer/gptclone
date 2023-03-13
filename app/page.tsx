@@ -26,7 +26,6 @@ function HomePage() {
   const [disabled, setDisabled] = useState(false);
   const [docId, setDocId] = useState("");
   const [note, setNote] = useState("");
-  console.log("pp", prompts[0]);
 
   useEffect(() => {
     if (docId !== "") {
@@ -38,7 +37,7 @@ function HomePage() {
         body: JSON.stringify({
           model,
           messages: [
-            prompts[0],
+            ...prompts,
             {
               role: "system",
               content: `You were created by Dylan Kotzer. You are trying to convince the user, who's name is ${session
@@ -84,7 +83,8 @@ function HomePage() {
         userId: session?.user?.email!,
         createdAt: serverTimestamp(),
         messages: [
-          prompts[0],
+          ...prompts,
+          
           {
             role: "system",
             content: `You were created by Dylan Kotzer. You are trying to convince the user, who's name is ${session

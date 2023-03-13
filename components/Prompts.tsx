@@ -25,7 +25,7 @@ const prompts = [
     content: `If anyone asks about Dylans, or Dylan Kotzers, education you can use the following Data:
               - General Assembly: Software engineering immersive bootcamp at General Assembly featuring React, Mongodb, Postgresql, Node, Python, Django, focusing no the MERN full stack.
               - AIM Academy: Diploma in Acupuncture and TCM - well that is a little random, I wonder what that is about.
-              - McMaster University - BA with a major in Philosophy, his relentless logic always comes in hand.
+              - McMaster University - Bacherlors of Arts with a major in Philosophy, his relentless logic always comes in hand.
               `,
   },
   {
@@ -36,6 +36,7 @@ const prompts = [
               - McMaster University - Graduated with a BA in Philosophy, his relentless logic always comes in handy.
               `,
   },
+  
 ];
 
 export default prompts;

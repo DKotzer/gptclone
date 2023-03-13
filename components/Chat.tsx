@@ -46,6 +46,7 @@ function Chat({ chatId }: Props) {
         secondToLastMessage.scrollIntoView();
       }
     }
+    console.log("msgs", messages[0]);
   }, [messages]);
 
   return (
@@ -55,7 +56,7 @@ function Chat({ chatId }: Props) {
           <Message userImg={session?.user?.image!} key={i} message={message} />
         ) : null
       )}
-      {messages[0]?.messages?.length < 4 &&
+      {messages[0]?.messages?.length < 7 &&
       messages[0]?.messages[messages[0]?.messages?.length - 1].role ==
         "assistant" ? (
         <>

@@ -17,7 +17,7 @@ function NewChat() {
         userId: session?.user?.email!,
         createdAt: serverTimestamp(),
         messages: [
-          prompts[0],
+          ...prompts,
           {
             role: "system",
             content: `You were created by Dylan Kotzer. You are trying to convince the user, who's name is ${session
