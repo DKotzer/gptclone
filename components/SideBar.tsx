@@ -38,7 +38,7 @@ function SideBar() {
   };
 
   return (
-    <div className='max-h-screen overflow-y-hidden'>
+    <div className='max-h-screen overflow-y-hidden overflow-x-hidden'>
       <div
         className={`${
           hidden && "hidden"
@@ -153,7 +153,7 @@ function SideBar() {
             >
               <ArrowUpTrayIcon className='h-4 w-4 rotate-90' />
             </div>
-            <div className='max-h-[70px] min-h-[10px]  md:h-[35px]'></div>
+            <div className='h-[70px]   md:h-[35px]'></div>
           </div>
         )}
       </div>
