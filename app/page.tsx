@@ -146,7 +146,7 @@ function HomePage() {
                 onClick={promptSetter}
                 className='infoText border-slate-300/50 hover:border hover:scale-105 hover:cursor-pointer'
               >
-                Code hello world in 10 random programming languages.
+                Code hello world in 5 random programming languages.
               </p>
             </div>
           </div>
@@ -158,10 +158,11 @@ function HomePage() {
 
             <div className='space-y-1'>
               <p className='infoText border-slate-300/50 hover:border'>
-                Find and post relevant images.
+                Find and post relevant images and format them into markdown.
               </p>
               <p className='infoText'>
-                Can answer questions about Dylan Kotzer.
+                Can answer questions about Dylan Kotzer based on vectorized
+                data.
               </p>
               <p className='infoText'>
                 Dynamic text formatting of AI responses, including code blocks.
