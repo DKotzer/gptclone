@@ -12,7 +12,7 @@ function FAQPage() {
   const [box4, setBox4] = useState(false);
 
   return (
-    <div className='h-full bg-slate-700'>
+    <div className='h-full overflow-y-scroll bg-slate-700'>
       <div>
         {/* <img
           src='https://ciberseguridad.blog/content/images/2017/10/autenticaci-n-blockchain.jpg'
