@@ -148,6 +148,7 @@ function SideBar() {
                 <img
                   src='https://www.svgrepo.com/show/391478/linkedin.svg'
                   className='h-4 w-4  text-white m-auto'
+                  alt='LinkedIn'
                 />
               </a>
             </div>
