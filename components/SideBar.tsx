@@ -153,7 +153,7 @@ function SideBar() {
             >
               <ArrowUpTrayIcon className='h-4 w-4 rotate-90' />
             </div>
-            <div className='h-[70px]  md:h-[35px]'></div>
+            {/* <div className='h-[70px]  md:h-[35px]'></div> */}
           </div>
         )}
       </div>
