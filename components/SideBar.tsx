@@ -42,8 +42,9 @@ function SideBar() {
       <div
         className={`${
           hidden && "hidden"
-        } p-2 flex flex-col h-screen min-w-[200px] relative pt-[8%]`}
+        } p-2 flex flex-col h-screen min-w-[200px] md:min-w-[250px] relative pt-[8%]`}
       >
+        <div className='h-[2%]'>""</div>
         <button
           type='button'
           onClick={() => setHidden(true)}
@@ -82,7 +83,7 @@ function SideBar() {
         </div>
         <hr className='width=70% mb-3 pb-3 opacity-20'></hr>
         {session && (
-          <div className='flex flex-col justify-end'>
+          <div className='flex flex-col'>
             <img
               onClick={toHome}
               src={session.user?.image! || "https://i.imgur.com/jfLbi1b.png"}
@@ -120,13 +121,17 @@ function SideBar() {
           </div>
         )}
       </div>
-      <div className={`${!hidden && "hidden"} h-screen`}>
+      <div
+        className={`${
+          !hidden && "hidden"
+        } h-screen flex flex-col justify-between`}
+      >
         <Bars3Icon
           onClick={() => setHidden(false)}
           className='w-11 h-11 text-gray-300/50 border-gray-300/50 border-2 rounded-2xl m-4 p-1 hover:text-gray-300 hover:border-white hover:animate-pulse focus:animate-ping'
         />
         {session && (
-          <div className='flex flex-col justify-end  '>
+          <div className='flex flex-col bottom '>
             <img
               onClick={toHome}
               src={session.user?.image! || "https://i.imgur.com/jfLbi1b.png"}

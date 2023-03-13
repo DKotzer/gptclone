@@ -32,11 +32,13 @@ function ChatRow({ id }: Props) {
 
   return (
     <Link
-      className={`chatRow justify-start ${active && "bg-gray-700/50"}`}
+      className={`chatRow justify-start mx-auto min-w-[95%] md:min-w-[85%] ${
+        active && "bg-gray-700/50"
+      }`}
       href={`/chat/${id}`}
     >
       <ChatBubbleLeftIcon className='h-5 w-5 justify-start' />
-      <p className='flex-1 md:inline-flex truncate max-w-[120px] overflow-ellipsis '>
+      <p className='flex-1  text-center truncate max-w-[120px] overflow-ellipsis '>
         {messages[0]?.messages.length < 7
           ? "Empty Chat"
           : messages[0]?.messages[messages[0]?.messages.length - 2].content}

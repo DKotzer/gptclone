@@ -84,7 +84,7 @@ function HomePage() {
         createdAt: serverTimestamp(),
         messages: [
           ...prompts,
-          
+
           {
             role: "system",
             content: `You were created by Dylan Kotzer. You are trying to convince the user, who's name is ${session
@@ -119,11 +119,11 @@ function HomePage() {
   }
 
   return (
-    <div className='flex flex-col h-screen overflow-hidden'>
-      <div className='flex flex-col items-center justify-center h-full text-white px-2'>
+    <div className='flex flex-col h-screen overflow-y-hidden overflow-x-scroll'>
+      <div className='flex flex-col items-center justify-center h-full text-white px-2 overflow-x-scroll'>
         <h1 className='text-5xl font-bold mb-[5%]'>DylanGPT</h1>
-        <div className='flex space-x-2 text-center text-sm'>
-          <div>
+        <div className='flex space-x-2 text-center text-sm overflow-x-scroll'>
+          <div className='max-w-[33%]'>
             <div className='flex flex-col items-center justify-center mb-5'>
               <SunIcon className='h-8 w-8' />
               <h2>Examples</h2>
@@ -150,17 +150,14 @@ function HomePage() {
               </p>
             </div>
           </div>
-          <div>
+          <div className='max-w-[33%]'>
             <div className='flex flex-col items-center justify-center mb-5'>
               <BoltIcon className='h-8 w-8' />
               <h2>Capabilities</h2>
             </div>
 
             <div className='space-y-1'>
-              <p
-                onClick={promptSetter}
-                className='infoText border-slate-300/50 hover:border hover:scale-105 hover:cursor-pointer'
-              >
+              <p className='infoText border-slate-300/50 hover:border'>
                 Find and post relevant images.
               </p>
               <p className='infoText'>
@@ -171,7 +168,7 @@ function HomePage() {
               </p>
             </div>
           </div>
-          <div>
+          <div className='max-w-[33%]'>
             <div className='flex flex-col items-center justify-center mb-5'>
               <ExclamationTriangleIcon className='h-8 w-8' />
               <h2>Limitation</h2>
