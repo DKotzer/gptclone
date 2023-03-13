@@ -20,6 +20,7 @@ function ChatPage({ params: { id } }: Props) {
           className='loader-icon spinning-cog'
           src='/cog05.svg'
           data-cog='cog05'
+          alt=""
         />
       </div>
     );

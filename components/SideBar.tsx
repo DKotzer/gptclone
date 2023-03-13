@@ -11,7 +11,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { useRouter } from "next/navigation";
 import { collection, orderBy, query } from "firebase/firestore";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 function SideBar() {
   const router = useRouter();
@@ -88,7 +88,7 @@ function SideBar() {
             <img
               onClick={toHome}
               src={session.user?.image! || "https://i.imgur.com/jfLbi1b.png"}
-              alt='Profile Picture'
+              alt='Home Page'
               className='h-12 w-12 rounded-full cursor-pointed mx-auto border-white mb-2 border:1 border-opacity-0 hover:scale-105 hover:animate-pulse'
             />{" "}
             <div
@@ -106,6 +106,7 @@ function SideBar() {
                 <img
                   src='https://www.svgrepo.com/show/391478/linkedin.svg'
                   className='h-6 w-6 m-0 text-white'
+                  alt='LinkedIn'
                 />
                 <p>Dylan</p>
               </div>
