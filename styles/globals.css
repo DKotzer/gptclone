@@ -48,7 +48,7 @@ video {
 .markdown p {
   margin-bottom: 0.5em;
   padding-right: 1rem;
-  max-width: 90%;
+  max-width: 98%;
 }
 
 .markdown ul {
@@ -87,11 +87,11 @@ code {
   font-family: monospace;
   font-size: 15px;
   line-height: 1.6;
-  margin-left: 1em;
+  margin-left: -5%;
+  /* margin-right: 2px; */
   margin-bottom: 1.6em;
   margin-top: 0.8em;
-  width: 82%;
-  margin-right: 1em;
+  width: 95%;
   padding: 1em 1.5em;
   display: block;
   word-wrap: break-word;

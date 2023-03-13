@@ -76,7 +76,7 @@ function ChatInput({ chatId }: Props) {
   };
 
   return (
-    <div className='bg-[#353a48] text-gray-400 rounded-lg text-sm max-w-[90%] min-w-[70%] mx-auto'>
+    <div className='bg-[#353a48] text-gray-400 rounded-lg text-sm max-w-[90%] min-w-[70%] mx-auto overflow-x-hidden'>
       <form onSubmit={sendMessage} className='pt-5 pb-5  flex mx-auto '>
         <input
           className='mx-auto stretch  rounded-l-md pl-5 pr-4 m-0 bg-[#40414f] focus:outline-none flex width-[80%] disabled:cursor-not-allowed disabled:text-gray-300'

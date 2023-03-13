@@ -91,12 +91,9 @@ function NewChatInput() {
   };
 
   return (
-    <div className='bg-[#353a48] text-gray-400 rounded-lg text-sm max-w-[90%] min-w-[70%] mx-auto'>
+    <div className='bg-[#353a48] text-gray-400 rounded-lg text-sm max-w-[90%] min-w-[70%] mx-auto overflow-x-hidden overflow-y-hidden'>
       {/* <div className='mx-auto text-center mr-[8%] ml-[8%] mt-2 text-white'></div> */}
-      <form
-        onSubmit={createNewChat}
-        className='pt-5 pb-5  flex mx-auto pl-[12%] pr-[12%]'
-      >
+      <form onSubmit={createNewChat} className='pt-5 pb-5  flex mx-auto '>
         <input
           className='mx-auto stretch  rounded-l-md pl-5 pr-4 m-0 bg-[#40414f] focus:outline-none flex width-[100%] disabled:cursor-not-allowed disabled:text-gray-300'
           disabled={!session}
