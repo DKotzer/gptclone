@@ -55,11 +55,10 @@ function Chat({ chatId }: Props) {
           <Message userImg={session?.user?.image!} key={i} message={message} />
         ) : null
       )}
-      {messages[0]?.messages?.length > 5 &&
-      messages[0]?.messages[messages[0]?.messages?.length - 1].role ==
-        "assistant" ? (
+      {messages[0]?.messages[messages[0]?.messages?.length - 1].content ==
+      "Hello Dylan Kotzer, I am DylanGPT, how may I help you?" ? (
         <>
-          <p className='mt-10 text-center text-white py-auto'>
+          <p className='mt-[25%] text-center text-white py-auto'>
             Type a prompt in below to get started!
           </p>
           <ArrowDownCircleIcon className='h-10 w-10 mx-auto mt-5 text-white animate-bounce ' />
