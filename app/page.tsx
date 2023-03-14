@@ -123,7 +123,7 @@ function HomePage() {
       <div className='flex flex-col items-center justify-center h-full text-white px-2 overflow-x-scroll'>
         <h1 className='text-5xl font-bold mb-[5%]'>DylanGPT</h1>
         <div className='flex space-x-2 text-center text-sm overflow-x-scroll'>
-          <div className='max-w-[33%]'>
+          <div className=''>
             <div className='flex flex-col items-center justify-center mb-5'>
               <SunIcon className='h-8 w-8' />
               <h2>Examples</h2>
@@ -150,7 +150,7 @@ function HomePage() {
               </p>
             </div>
           </div>
-          <div className='max-w-[33%]'>
+          <div className=''>
             <div className='flex flex-col items-center justify-center mb-5'>
               <BoltIcon className='h-8 w-8' />
               <h2>Capabilities</h2>
@@ -158,18 +158,15 @@ function HomePage() {
 
             <div className='space-y-1'>
               <p className='infoText border-slate-300/50 hover:border'>
-                Find and post relevant images and format them into markdown.
+                Find and post relevant images formatted into markdown.
               </p>
               <p className='infoText'>
-                Can answer questions about Dylan Kotzer based on vectorized
-                data.
+                Can answer questions about Dylan Kotzer.
               </p>
-              <p className='infoText'>
-                Dynamic text formatting of AI responses, including code blocks.
-              </p>
+              <p className='infoText'>Dynamic formatting of AI responses.</p>
             </div>
           </div>
-          <div className='max-w-[33%]'>
+          <div className=''>
             <div className='flex flex-col items-center justify-center mb-5'>
               <ExclamationTriangleIcon className='h-8 w-8' />
               <h2>Limitation</h2>

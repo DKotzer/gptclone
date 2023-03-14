@@ -33,38 +33,46 @@ video {
 }
 
 .markdown {
-  width: 95% !important;
+  width: 100% !important;
 }
 .markdown a {
   text-decoration-line: underline;
   text-underline-offset: 2px;
+  max-width: 100%;
+
   /* max-width: 90%; */
 }
 
 .markdown li {
   margin-top: 0.5em;
+  max-width: 100%;
+
   /* max-width: 90%; */
 }
 
 .markdown p {
   margin-bottom: 0.5em;
   padding-right: 1rem;
-  max-width: 98%;
+  max-width: 100%;
 }
 
 .markdown ul {
   margin-bottom: 1em;
+  max-width: 100%;
+
   /* max-width: 90%; */
 }
 
 .markdown ol {
   margin-bottom: 1em;
+  max-width: 100%;
+
   /* max-width: 90%; */
 }
 
 .markdown li {
-  margin-left: 2em;
-
+  margin-left: 1em;
+  max-width: 100%;
   list-style-type: square;
 }
 
@@ -88,11 +96,11 @@ code {
   font-family: monospace;
   font-size: 15px;
   line-height: 1.6;
-  margin-left: -5%;
-  /* margin-right: 2px; */
+  margin-left: -50px;
+  margin-right: 15px;
   margin-bottom: 1.6em;
   margin-top: 0.8em;
-  width: 95%;
+  /* width: 95%; */
   padding: 1em 1.5em;
   display: block;
   word-wrap: break-word;
