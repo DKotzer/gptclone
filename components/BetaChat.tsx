@@ -23,7 +23,7 @@ function BetaChat({ messages }: Props) {
               />
             )
         )}
-      {messages?.length < 3 && (
+      {messages?.length < 6 && (
         <>
           <p className='mt-10 text-center text-white py-auto'>
             Type a prompt in below to get started!
