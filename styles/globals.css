@@ -22,6 +22,10 @@ body {
   -webkit-overflow-scrolling: touch;
 }
 
+.library {
+  background-image: url("https://i.imgur.com/VIlxqHB.jpg");
+}
+
 /*  below section is to edit the html that the chat bot will dynamically create, cant do it with tailwind */
 
 .markdown img,
