@@ -131,19 +131,19 @@ function HomePage() {
             <div className='space-y-1 ml-[12px]'>
               <p
                 onClick={promptSetter}
-                className='infoText ring-2 ring-slate-500/50 ring-inset  hover:border-opacity-100 hover:cursor-pointer hover:scale-105 hover:ring-white hover:ring-3 '
+                className='infoText bg-[#40414f] ring-2 ring-slate-500/50 ring-inset  hover:border-opacity-100 hover:cursor-pointer hover:scale-105 hover:ring-white hover:ring-3 '
               >
                 List the 5 largest cities in Canada, including images.
               </p>
               <p
                 onClick={promptSetter}
-                className='infoText ring-2 ring-slate-500/50 ring-inset  hover:border-opacity-100 hover:cursor-pointer hover:scale-105 hover:ring-white hover:ring-3'
+                className='infoText bg-[#40414f] ring-2 ring-slate-500/50 ring-inset  hover:border-opacity-100 hover:cursor-pointer hover:scale-105 hover:ring-white hover:ring-3'
               >
                 {`Tell me about Dylan Kotzer's projects and skills`}
               </p>
               <p
                 onClick={promptSetter}
-                className='infoText ring-2 ring-slate-500/50 ring-inset  hover:border-opacity-100 hover:cursor-pointer hover:scale-105 hover:ring-white hover:ring-3'
+                className='infoText bg-[#40414f] ring-2 ring-slate-500/50 ring-inset  hover:border-opacity-100 hover:cursor-pointer hover:scale-105 hover:ring-white hover:ring-3'
               >
                 Code hello world in 5 random programming languages.
               </p>
@@ -156,13 +156,13 @@ function HomePage() {
             </div>
 
             <div className='space-y-1'>
-              <p className='infoText ring-2 ring-slate-500/50 ring-inset'>
+              <p className='infoText bg-[#40414f] ring-2 ring-slate-500/50 ring-inset'>
                 Find and post relevant images formatted into markdown.
               </p>
-              <p className='infoText ring-2 ring-slate-500/50 ring-inset'>
+              <p className='infoText bg-[#40414f] ring-2 ring-slate-500/50 ring-inset'>
                 Can answer questions about Dylan Kotzer.
               </p>
-              <p className='infoText ring-2 ring-slate-500/50 ring-inset'>
+              <p className='infoText bg-[#40414f] ring-2 ring-slate-500/50 ring-inset'>
                 Dynamic formatting of AI responses.
               </p>
             </div>
@@ -174,13 +174,13 @@ function HomePage() {
             </div>
 
             <div className='space-y-1 mr-[12px]'>
-              <p className='infoText ring-2 ring-slate-500/50 ring-inset'>
+              <p className='infoText bg-[#40414f] ring-2 ring-slate-500/50 ring-inset'>
                 May sometimes make up answers or give false information
               </p>
-              <p className='infoText ring-2 ring-slate-500/50 ring-inset'>
+              <p className='infoText bg-[#40414f] ring-2 ring-slate-500/50 ring-inset'>
                 Will frequently post images of the wrong things.
               </p>
-              <p className='infoText ring-2 ring-slate-500/50 ring-inset'>
+              <p className='infoText bg-[#40414f] ring-2 ring-slate-500/50 ring-inset'>
                 Has very limited knowledge of events after 2021
               </p>
             </div>

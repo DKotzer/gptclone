@@ -37,7 +37,7 @@ export default async function RootLayout({
               </div>
               {/* client provider is used to send notifications toasts on screen - can persist on difference pages thanks to wrapper */}
               <ClientProvider />
-              <div className='bg-[#353a48] flex-1 overflow-x-scroll'>
+              <div className='bg-[#353a48] flex-1 overflow-x-auto '>
                 {children}
               </div>
             </div>

@@ -12,24 +12,24 @@ function FAQPage() {
   const [box4, setBox4] = useState(false);
 
   return (
-    <div className='h-full  bg-slate-700 overflow-y-scroll'>
-      <div className='overflow-y-scroll'>
+    <div className='h-full bg-slate-700'>
+      <div className='h-full faqScroll h-screen overflow-x-auto overflow-y-auto '>
         {/* <img
           src='https://ciberseguridad.blog/content/images/2017/10/autenticaci-n-blockchain.jpg'
           alt='blue pattern background'
           className='absolute w-full h-64 md:h-96 object-center  object-fit z-0'
         /> */}
-        <div className='relative flex flex-col items-center justify-center sm:px-0 px-6 z-20 pb-32 overflow-y-scroll '>
-          <div className='md:py-36 py-20'>
+        <div className=' flex flex-col items-center justify-center sm:px-5 px-6 z-20 pb-5 '>
+          <div className='py-10 md:py-15 text-center'>
             <h1
               role='heading'
-              className='xl:text-6xl md:text-5xl text-xl font-bold leading-10 text-white'
+              className='xl:text-6xl md:text-5xl text-xl font-bold text-white'
             >
               Frequently asked questions
             </h1>
           </div>
           <div className='lg:w-1/2 md:w-8/12 sm:w-9/12 w-full'>
-            <div className='bg-white shadow rounded p-8'>
+            <div className='bg-white shadow rounded p-5'>
               <div className='flex items-center justify-between'>
                 <div>
                   <h2 className='text-base font-semibold leading-none text-gray-800'>
@@ -313,7 +313,6 @@ function FAQPage() {
           </div>
         </div>
       </div>
-      <div className='max-h-[70px] min-h-[35px]  md:h-[35px]'></div>
     </div>
   );
 }

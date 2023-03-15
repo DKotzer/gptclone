@@ -8,7 +8,7 @@
   }
 
   .chatRow {
-    @apply rounded-lg  py-3 px-2 text-sm flex items-start justify-center space-x-1.5 hover:bg-gray-700/70 cursor-pointer text-gray-300 transition-all duration-200 ease-out;
+    @apply rounded-lg bg-gray-700/10  py-3 px-2 text-sm flex items-start justify-center space-x-1.5 hover:bg-gray-700/70 cursor-pointer text-gray-300 transition-all duration-200 ease-out;
   }
 }
 
@@ -127,6 +127,24 @@ input {
   border-radius: 20px;
   /* Background */
   background: #434654;
+}
+.faqScroll::-webkit-scrollbar {
+  width: 10px; /* Mostly for vertical scrollbars */
+  height: 10px; /* Mostly for horizontal scrollbars */
+}
+.faqScroll::-webkit-scrollbar-thumb {
+  border-radius: 20px;
+  /* Foreground */
+  background: #20212342;
+}
+.faqScroll::-webkit-scrollbar-track {
+  border-radius: 20px;
+  /* Background */
+  background: #434654;
+}
+
+.faqScroll {
+  max-height: 100%;
 }
 
 code {
