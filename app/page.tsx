@@ -139,7 +139,7 @@ function HomePage() {
                 onClick={promptSetter}
                 className='infoText border border-slate-300/50 hover:border-opacity-100 hover:cursor-pointer'
               >
-                Tell me about Dylan Kotzer's other projects.
+                {`Tell me about Dylan Kotzer's other projects.`}
               </p>
               <p
                 onClick={promptSetter}
@@ -156,7 +156,7 @@ function HomePage() {
             </div>
 
             <div className='space-y-1'>
-              <p className='infoText border-slate-300/50 hover:border'>
+              <p className='infoText'>
                 Find and post relevant images formatted into markdown.
               </p>
               <p className='infoText'>
