@@ -156,7 +156,7 @@ function HomePage() {
             </div>
 
             <div className='space-y-1'>
-              <p className='infoText'>
+              <p className='infoText outline-1'>
                 Find and post relevant images formatted into markdown.
               </p>
               <p className='infoText'>
