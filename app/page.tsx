@@ -139,7 +139,7 @@ function HomePage() {
                 onClick={promptSetter}
                 className='infoText border border-slate-300/50 hover:border-opacity-100 hover:cursor-pointer'
               >
-                {`Tell me about Dylan Kotzer's other projects.`}
+                {`Tell me about Dylan Kotzer's projects and skills`}
               </p>
               <p
                 onClick={promptSetter}
