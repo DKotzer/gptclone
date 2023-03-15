@@ -17,7 +17,6 @@ import prompts from "@component/components/Prompts";
 type Response = {
   data: any;
 };
-
 function HomePage() {
   const { data: session, status } = useSession();
   const router = useRouter();
@@ -122,29 +121,29 @@ function HomePage() {
     <div className='flex flex-col h-screen overflow-x-scroll '>
       <div className='flex flex-col items-center justify-center h-full text-white px-2 overflow-x-scroll'>
         <h1 className='text-5xl font-bold mb-[5%]'>DylanGPT</h1>
-        <div className='flex space-x-2 text-center text-sm overflow-x-scroll'>
+        <div className='flex space-x-2 text-center text-sm'>
           <div className=''>
             <div className='flex flex-col items-center justify-center mb-5'>
               <SunIcon className='h-8 w-8' />
               <h2>Examples</h2>
             </div>
 
-            <div className='space-y-1'>
+            <div className='space-y-1 ml-[12px]'>
               <p
                 onClick={promptSetter}
-                className='infoText border-slate-300/50 hover:border hover:scale-105 hover:cursor-pointer '
+                className='infoText border border-opacity-0 border-slate-300/50 hover:border-opacity-100 hover:cursor-pointer '
               >
                 List the 5 largest cities in Canada, including images.
               </p>
               <p
                 onClick={promptSetter}
-                className='infoText border-slate-300/50 hover:border hover:scale-105 hover:cursor-pointer'
+                className='infoText border border-slate-300/50 hover:border-opacity-100 hover:cursor-pointer'
               >
-                Tell me about Dylan Kotzers other projects.
+                Tell me about Dylan Kotzer's other projects.
               </p>
               <p
                 onClick={promptSetter}
-                className='infoText border-slate-300/50 hover:border hover:scale-105 hover:cursor-pointer'
+                className='infoText border border-slate-300/50 hover:border-opacity-100 hover:cursor-pointer'
               >
                 Code hello world in 5 random programming languages.
               </p>
@@ -172,7 +171,7 @@ function HomePage() {
               <h2>Limitation</h2>
             </div>
 
-            <div className='space-y-1'>
+            <div className='space-y-1 mr-[12px]'>
               <p className='infoText'>
                 May sometimes make up answers or give false information
               </p>
