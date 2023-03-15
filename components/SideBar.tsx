@@ -66,7 +66,7 @@ function SideBar() {
           </svg>
         </button>
         <NewChat />
-        <div className='flex-1 max-w-xs pt-2  overflow-y-scroll'>
+        <div className='chatSelectScroll flex-1 max-w-xs pt-2 overflow-y-auto'>
           <div className='pt-1 '>
             <div className='flex flex-col space-y-2 my-2 max-h-[100%] overflow-clip'>
               {loading && (
@@ -82,7 +82,7 @@ function SideBar() {
         </div>
         <hr className='width=70% mb-3 pb-3 opacity-20'></hr>
         {session && (
-          <div className='flex flex-col'>
+          <div className='flex flex-col overflow-x-hidden'>
             <img
               onClick={toHome}
               src={session.user?.image! || "https://i.imgur.com/jfLbi1b.png"}

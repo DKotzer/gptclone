@@ -118,8 +118,8 @@ function HomePage() {
   }
 
   return (
-    <div className='flex flex-col h-screen overflow-x-scroll '>
-      <div className='flex flex-col items-center justify-center h-full text-white px-2 overflow-x-scroll'>
+    <div className='flex flex-col h-screen'>
+      <div className='flex flex-col items-center justify-center h-full text-white px-2 overflow-x-auto overflow-y-auto chatSelectScroll '>
         <h1 className='text-5xl font-bold mb-[5%]'>DylanGPT</h1>
         <div className='flex space-x-2 text-center text-sm'>
           <div className=''>
@@ -131,19 +131,19 @@ function HomePage() {
             <div className='space-y-1 ml-[12px]'>
               <p
                 onClick={promptSetter}
-                className='infoText border border-opacity-0 border-slate-300/50 hover:border-opacity-100 hover:cursor-pointer '
+                className='infoText ring-2 ring-slate-500/50 ring-inset  hover:border-opacity-100 hover:cursor-pointer hover:scale-105 hover:ring-white hover:ring-3 '
               >
                 List the 5 largest cities in Canada, including images.
               </p>
               <p
                 onClick={promptSetter}
-                className='infoText border border-slate-300/50 hover:border-opacity-100 hover:cursor-pointer'
+                className='infoText ring-2 ring-slate-500/50 ring-inset  hover:border-opacity-100 hover:cursor-pointer hover:scale-105 hover:ring-white hover:ring-3'
               >
                 {`Tell me about Dylan Kotzer's projects and skills`}
               </p>
               <p
                 onClick={promptSetter}
-                className='infoText border border-slate-300/50 hover:border-opacity-100 hover:cursor-pointer'
+                className='infoText ring-2 ring-slate-500/50 ring-inset  hover:border-opacity-100 hover:cursor-pointer hover:scale-105 hover:ring-white hover:ring-3'
               >
                 Code hello world in 5 random programming languages.
               </p>
@@ -156,13 +156,15 @@ function HomePage() {
             </div>
 
             <div className='space-y-1'>
-              <p className='infoText outline-1'>
+              <p className='infoText ring-2 ring-slate-500/50 ring-inset'>
                 Find and post relevant images formatted into markdown.
               </p>
-              <p className='infoText'>
+              <p className='infoText ring-2 ring-slate-500/50 ring-inset'>
                 Can answer questions about Dylan Kotzer.
               </p>
-              <p className='infoText'>Dynamic formatting of AI responses.</p>
+              <p className='infoText ring-2 ring-slate-500/50 ring-inset'>
+                Dynamic formatting of AI responses.
+              </p>
             </div>
           </div>
           <div className=''>
@@ -172,13 +174,13 @@ function HomePage() {
             </div>
 
             <div className='space-y-1 mr-[12px]'>
-              <p className='infoText'>
+              <p className='infoText ring-2 ring-slate-500/50 ring-inset'>
                 May sometimes make up answers or give false information
               </p>
-              <p className='infoText'>
+              <p className='infoText ring-2 ring-slate-500/50 ring-inset'>
                 Will frequently post images of the wrong things.
               </p>
-              <p className='infoText'>
+              <p className='infoText ring-2 ring-slate-500/50 ring-inset'>
                 Has very limited knowledge of events after 2021
               </p>
             </div>

@@ -93,6 +93,42 @@ input {
   -webkit-overflow-scrolling: touch;
 }
 
+.chatBox::-webkit-scrollbar {
+  width: 10px; /* Mostly for vertical scrollbars */
+  height: 10px; /* Mostly for horizontal scrollbars */
+  border-radius: 20px;
+}
+.chatBox::-webkit-scrollbar-thumb {
+  border-radius: 20px;
+  /* Foreground */
+  background: #20212342;
+}
+.chatBox::-webkit-scrollbar-track {
+  /* Background */
+  border-radius: 20px;
+  background: #434654;
+}
+
+.chatSelectScroll {
+  -webkit-overflow-scrolling: touch;
+  border-radius: 20px;
+}
+
+.chatSelectScroll::-webkit-scrollbar {
+  width: 10px; /* Mostly for vertical scrollbars */
+  height: 10px; /* Mostly for horizontal scrollbars */
+}
+.chatSelectScroll::-webkit-scrollbar-thumb {
+  border-radius: 20px;
+  /* Foreground */
+  background: #20212342;
+}
+.chatSelectScroll::-webkit-scrollbar-track {
+  border-radius: 20px;
+  /* Background */
+  background: #434654;
+}
+
 code {
   background: #000000;
   border: 1px solid #ddd;
@@ -109,7 +145,8 @@ code {
   padding: 1em 1.5em;
   display: block;
   word-wrap: break-word;
-  overflow: scroll;
+  overflow-x: auto;
+  overflow-y: hide;
 }
 
 /* below adds labels above the code blocks */
