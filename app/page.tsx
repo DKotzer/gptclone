@@ -120,9 +120,9 @@ function HomePage() {
   return (
     <div className='flex flex-col h-screen'>
       <div className='flex flex-col items-center justify-center h-full text-white px-2 overflow-x-auto overflow-y-auto chatSelectScroll '>
-        <h1 className='text-5xl font-bold mb-[5%]'>DylanGPT</h1>
-        <div className='flex space-x-2 text-center text-sm'>
-          <div className=''>
+        <h1 className='text-5xl font-bold mt-5 mb-[5%]'>DylanGPT</h1>
+        <div className='flex space-x-2 text-center text-sm flex-col md:flex-row'>
+          <div className='pb-5 md:pb-0'>
             <div className='flex flex-col items-center justify-center mb-5'>
               <SunIcon className='h-8 w-8' />
               <h2>Examples</h2>
@@ -149,7 +149,7 @@ function HomePage() {
               </p>
             </div>
           </div>
-          <div className=''>
+          <div className='pb-5'>
             <div className='flex flex-col items-center justify-center mb-5'>
               <BoltIcon className='h-8 w-8' />
               <h2>Capabilities</h2>
@@ -167,7 +167,7 @@ function HomePage() {
               </p>
             </div>
           </div>
-          <div className=''>
+          <div className='pb-5'>
             <div className='flex flex-col items-center justify-center mb-5'>
               <ExclamationTriangleIcon className='h-8 w-8' />
               <h2>Limitation</h2>

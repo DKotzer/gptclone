@@ -13,7 +13,7 @@ function FAQPage() {
 
   return (
     <div className='h-full bg-slate-700'>
-      <div className='h-full faqScroll h-screen overflow-x-auto overflow-y-auto '>
+      <div className='h-full faqScroll overflow-x-auto overflow-y-auto '>
         {/* <img
           src='https://ciberseguridad.blog/content/images/2017/10/autenticaci-n-blockchain.jpg'
           alt='blue pattern background'
@@ -313,6 +313,7 @@ function FAQPage() {
           </div>
         </div>
       </div>
+      <div className='h-[70px] md:h-[25px]' />
     </div>
   );
 }
