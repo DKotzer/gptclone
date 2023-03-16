@@ -119,7 +119,7 @@ function HomePage() {
 
   return (
     <div className='flex flex-col h-screen'>
-      <div className='flex flex-col items-center justify-center h-full text-white px-2 overflow-x-auto overflow-y-auto chatSelectScroll '>
+      <div className='flex flex-col items-center md:justify-center h-full text-white px-2 mr-3 overflow-x-auto overflow-y-auto chatSelectScroll '>
         <h1 className='text-5xl font-bold mt-5 mb-[5%]'>DylanGPT</h1>
         <div className='flex space-x-2 text-center text-sm flex-col md:flex-row'>
           <div className='pb-5 md:pb-0'>
