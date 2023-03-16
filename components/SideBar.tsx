@@ -42,7 +42,7 @@ function SideBar() {
       <div
         className={`${
           hidden && "hidden"
-        } p-2 flex flex-col h-screen min-w-[200px] md:min-w-[250px] relative pt-[8%]`}
+        } flex flex-col h-screen min-w-[200px] md:min-w-[250px] relative pt-[8%]`}
       >
         <button
           type='button'
