@@ -87,7 +87,7 @@ function SideBar() {
               onClick={toHome}
               src={session.user?.image! || "https://i.imgur.com/jfLbi1b.png"}
               alt='Home Page'
-              className='h-12 w-12 rounded-full cursor-pointed mx-auto border-white mb-2 border:1 border-opacity-0 hover:scale-105 hover:animate-pulse'
+              className='h-12 w-12 rounded-full cursor-pointed mx-auto border-white mb-2 border:1 border-opacity-0 hover:scale-105'
             />{" "}
             <div
               className='hover:border-gray-700 chatRow align-self-start '

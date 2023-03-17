@@ -10,7 +10,7 @@ function Login() {
         src={"/DylanGPTLogo.png"}
         alt='Logo'
         onClick={() => signIn("google")}
-        className='hover:scale-105 rounded-full cursor-pointed mx-auto mt-[10%] hover:cursor-pointer max-h-[65%] max-w-[50%] '
+        className='hover:scale-105 rounded-xl cursor-pointed mx-auto mt-[10%] hover:cursor-pointer max-h-[65%] max-w-[50%] '
       />
       <button
         onClick={() => signIn("google")}

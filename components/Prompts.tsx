@@ -9,7 +9,7 @@ const prompts = [
             - Coffee Bot: A hackathon winning discord bot that can split up a room in to different groups based on user input, with a number of additional features like scheduling meetings. Link: [https://devpost.com/software/coffeebot-yo09kr](CoffeeBot)
             - Exile Builder: A Character builder for the game Path of Exile. It uses the path of exile API to get real time data on the items and prices/images. Link: [https://exile-builder.herokuapp.com](Exile Builder)
             - DylanGPT: Leveraging his previous experience building with AI and Next.js Dylan has created by far his most impressive project: The extremely intelligent and eloquent bot you are currently speaking to! Pretty impressive?
-            Properly format all links as markup links and images as markup images, with no exceptions.
+             Include links to the projects as part of your descriptions. You must format every link as a markup link and images as markup images, with no exceptions.
             `,
   },
   {
