@@ -42,12 +42,12 @@ function SideBar() {
       <div
         className={`${
           hidden && "hidden"
-        } flex flex-col h-screen min-w-[200px] md:min-w-[250px] relative pt-[8%]`}
+        } flex flex-col h-screen min-w-[200px] md:min-w-[210px] relative pt-[8%]`}
       >
         <button
           type='button'
           onClick={() => setHidden(true)}
-          className='flex h-10 w-10 items-center justify-center hover:animate-spin  focus:animate-ping absolute -top-[0] -right-[2.5%] overflow-x-hidden'
+          className='flex h-10 w-10 items-center justify-center hover:animate-spin  focus:animate-ping absolute -top-[0.5%] -right-[4%] overflow-x-hidden'
         >
           <svg
             stroke='currentColor'

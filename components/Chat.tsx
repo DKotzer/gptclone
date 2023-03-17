@@ -57,12 +57,12 @@ function Chat({ chatId }: Props) {
       )}
       {messages[0]?.messages[messages[0]?.messages?.length - 1].content ==
       "Hello Dylan Kotzer, I am DylanGPT, how may I help you?" ? (
-        <>
-          <p className='mt-[25%] text-center text-white py-auto'>
-            Type a prompt in below to get started!
+        <div>
+          <p className='relative mt-[5em] text-center text-white py-auto'>
+            Type a prompt below to get started!
           </p>
           <ArrowDownCircleIcon className='h-10 w-10 mx-auto mt-5 text-white animate-bounce ' />
-        </>
+        </div>
       ) : null}
       <div ref={messagesEndRef} />{" "}
       {/* Add a div with ref for the last message element */}

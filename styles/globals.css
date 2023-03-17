@@ -116,12 +116,12 @@ input {
 .chatSelectScroll::-webkit-scrollbar-thumb {
   border-radius: 20px;
   /* Foreground */
-  background: #20212342;
+  background: #43465474;
 }
 .chatSelectScroll::-webkit-scrollbar-track {
   border-radius: 20px;
   /* Background */
-  background: #434654;
+  background: #20212342;
 }
 .faqScroll::-webkit-scrollbar {
   width: 10px; /* Mostly for vertical scrollbars */

@@ -8,13 +8,7 @@ import { useState } from "react";
 import { useDocumentData } from "react-firebase-hooks/firestore";
 import prompts from "@component/components/Prompts";
 
-type Props = {
-  params: {
-    id: string;
-  };
-};
-
-function ChatPage({ params: { id } }: Props) {
+function ChatPage() {
   const { data: session } = useSession();
 
   const [messages, setMessages] = useState([

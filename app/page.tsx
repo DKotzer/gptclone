@@ -25,6 +25,27 @@ function HomePage() {
   const [disabled, setDisabled] = useState(false);
   const [docId, setDocId] = useState("");
   const [note, setNote] = useState("");
+  const [dylanLog, setDylanLog] = useState(true);
+
+  if (dylanLog) {
+    console.log(
+      `%c
+8888888b.           888                       888    d8P           888                              
+888  "Y88b          888                       888   d8P            888                              
+888    888          888                       888  d8P             888                              
+888    888 888  888 888  8888b.  88888b.      888d88K      .d88b.  888888 88888888  .d88b.  888d888 
+888    888 888  888 888     "88b 888 "88b     8888888b    d88""88b 888       d88P  d8P  Y8b 888P"   
+888    888 888  888 888 .d888888 888  888     888  Y88b   888  888 888      d88P   88888888 888     
+888  .d88P Y88b 888 888 888  888 888  888     888   Y88b  Y88..88P Y88b.   d88P    Y8b.     888     
+8888888P"   "Y88888 888 "Y888888 888  888     888    Y88b  "Y88P"   "Y888 88888888  "Y8888  888     
+                888                                                                                 
+           Y8b d88P                                                                                 
+            "Y88P"                                                                                  
+`,
+      "color:green"
+    );
+    setDylanLog(false);
+  }
 
   useEffect(() => {
     if (docId !== "") {
@@ -105,7 +126,7 @@ function HomePage() {
 
   if (status === "loading") {
     return (
-      <div id='loader' className='overlay-loader'>
+      <div className='overlay-loader'>
         <div className='loader-background color-flip'></div>
         <img
           className='loader-icon spinning-cog'
