@@ -7,7 +7,7 @@ function Login() {
     <div className='bg-[#202123] h-screen flex flex-col items-center justify-center text-center relative library bg-no-repeat bg-cover bg-center '>
       {/* <div className=' relative library bg-no-repeat bg-center rounded-lg max-w-[1024px] max-h-[1024px] min-h-[50%] min-w-[50%] bg-cover'> */}
       <img
-        src={"/DylanGPTLogo.png"}
+        src={"/DylanGPTLogo.webp"}
         alt='Logo'
         onClick={() => signIn("google")}
         className='hover:scale-105 rounded-xl cursor-pointed mx-auto mt-[10%] hover:cursor-pointer max-h-[65%] max-w-[50%] '

@@ -6,10 +6,10 @@ export default function Head() {
       <title>DylanGPT</title>
       <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
       <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-      <link rel='icon' href='/dgpt.png' />
+      <link rel='icon' href='/dgpt.webp' />
       <meta
         property='og:image'
-        content='https://gpt.dylankotzer.com/DylanGPTLogo.png'
+        content='https://gpt.dylankotzer.com/DylanGPTLogo.webp'
       />
       <meta property='og:title' content='DylanGPT' />
       <meta name='description' content='A cutting edge AI-powered Chatbot' />
