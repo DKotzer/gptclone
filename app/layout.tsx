@@ -20,7 +20,11 @@ export default async function RootLayout({
 
   return (
     <html lang='en'>
-      <meta property='og:image' content='/DylanGPTLogo.png' />
+      <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+      <meta
+        property='og:image'
+        content='https://gpt.dylankotzer.com/DylanGPTLogo.png'
+      />
       <meta property='og:title' content='DylanGPT' />
       <meta
         property='og:description'
