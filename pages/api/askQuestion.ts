@@ -29,7 +29,23 @@ export default async function handler(
 
   //gpt3 query - handled by lib/queryApi
   const response = await query(messages);
-  const newMsgArr = [...messages, response.data.choices[0].message];
+
+  const newMsgArr = response?.data?.choices[0]?.message
+    ? [...messages, response.data.choices[0].message]
+    : [
+        ...messages,
+        {
+          role: "assistant",
+          content:
+            "I am sorry, the maximum chat length has been reached. Please start a new chat to continue.",
+        },
+      ];
+
+  // if (!response?.data?.choices[0]?.message) {
+  //   const newMsgArr = [...messages, response.data.choices[0].message];
+  // } else{
+
+  // }
   // console.log("res data 666", response.data.choices[0].message);
   // console.log("667", newMsgArr);
 

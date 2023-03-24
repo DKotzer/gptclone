@@ -30,7 +30,6 @@ const query = async (messages: QueryRequest["messages"]) => {
 
 export default query;
 
-
 // const query = async (prompt: string, chatId: string, model: string) => {
 //   const res = await openai
 //     .createCompletion({

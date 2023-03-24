@@ -8,9 +8,11 @@
   }
 
   .chatRow {
-    @apply rounded-lg bg-gray-700/10  py-3 px-2 text-sm flex items-start justify-center space-x-1.5 hover:bg-gray-700/70 cursor-pointer text-gray-300 transition-all duration-200 ease-out;
+    @apply rounded-lg  py-3 px-2 text-sm flex items-start justify-center space-x-1.5 hover:bg-gray-700/70 cursor-pointer text-gray-300 transition-all duration-200 ease-out;
   }
 }
+
+/* bg-gray-700/10 to add backgrounds back to chatrow buttons pre hover */
 
 html {
   height: 100%;

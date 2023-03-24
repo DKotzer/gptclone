@@ -37,7 +37,7 @@ function ChatRow({ id }: Props) {
       }`}
       href={`/chat/${id}`}
     >
-      <ChatBubbleLeftIcon className='h-5 w-5 justify-start' />
+      <ChatBubbleLeftIcon className='h-5 w-5 justify-start hover:scale-105 hover:text-green-500' />
       <p className='flex-1  text-center truncate max-w-[120px] overflow-ellipsis '>
         {messages[0]?.messages[messages[0]?.messages?.length - 1].content ==
         "Hello Dylan Kotzer, I am DylanGPT, how may I help you?"
@@ -46,7 +46,7 @@ function ChatRow({ id }: Props) {
       </p>
       <TrashIcon
         onClick={removeChat}
-        className='h-5 w-5 ml-0 pl-0 text-gray-700 hover:text-red-700'
+        className='h-5 w-5 ml-0 pl-0 text-gray-300 hover:text-red-700'
       />
     </Link>
   );
