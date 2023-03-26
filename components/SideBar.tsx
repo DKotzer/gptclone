@@ -138,28 +138,36 @@ function SideBar() {
               alt='Profile Picture'
               className='h-10 w-10 rounded-full cursor-pointed mx-auto mb-2 hover:opacity-50'
             />{" "}
-            <div
-              className='hover:border-gray-700 chatRow align-self-start '
-              onClick={toFAQ}
-            >
-              <QuestionMarkCircleIcon className='h-6 w-6' />
+            <div className='wrapper'>
+              <div
+                className='hover:border-gray-700 chatRow align-self-start  hamburger-item '
+                onClick={toFAQ}
+              >
+                <QuestionMarkCircleIcon className='h-6 w-6' />
+              </div>
+              <div className='hiddenMouseOver'>FAQ</div>
             </div>
-            <div className='hover:border-gray-700 chatRow  '>
-              <a href='https://www.linkedin.com/in/dylan-kotzer-3a5421190/'>
-                <img
-                  src='https://www.svgrepo.com/show/391478/linkedin.svg'
-                  className='h-4 w-4  text-white m-auto'
-                  alt='LinkedIn'
-                />
-              </a>
+            <div className='wrapper'>
+              <div className='hover:border-gray-700 chatRow hamburger-item  '>
+                <a href='https://www.linkedin.com/in/dylan-kotzer-3a5421190/'>
+                  <img
+                    src='https://www.svgrepo.com/show/391478/linkedin.svg'
+                    className='h-5 w-5  text-white m-auto'
+                    alt='LinkedIn'
+                  />
+                </a>
+              </div>
+              <div className='hiddenMouseOver'>LinkedIn</div>
             </div>
-            <div
-              className='hover:border-gray-700 chatRow align-self-start '
-              onClick={() => signOut()}
-            >
-              <ArrowUpTrayIcon className='h-4 w-4 rotate-90' />
+            <div className='wrapper'>
+              <div
+                className='hover:border-gray-700 chatRow align-self-start hamburger-item '
+                onClick={() => signOut()}
+              >
+                <ArrowUpTrayIcon className='h-5 w-5 rotate-90' />
+              </div>
+              <div className='hiddenMouseOver'>Sign Out</div>
             </div>
-            <div className='h-[70px]   md:h-[35px]'></div>
           </div>
         )}
       </div>

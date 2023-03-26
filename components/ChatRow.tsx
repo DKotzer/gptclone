@@ -39,8 +39,12 @@ function ChatRow({ id }: Props) {
     >
       <ChatBubbleLeftIcon className='h-5 w-5 justify-start hover:scale-105 hover:text-green-500' />
       <p className='flex-1  text-center truncate max-w-[120px] overflow-ellipsis '>
-        {messages[0]?.messages[messages[0]?.messages?.length - 1].content ==
-        "Hello Dylan Kotzer, I am DylanGPT, how may I help you?"
+        {messages[0]?.messages[
+          messages[0]?.messages?.length - 1
+        ].content.includes(`I am DylanGPT, how may I help you?`) ||
+        messages[0]?.messages[
+          messages[0]?.messages?.length - 2
+        ].content.includes(`You were created by Dylan Kotzer.`)
           ? "Empty Chat"
           : messages[0]?.messages[messages[0]?.messages.length - 2].content}
       </p>
