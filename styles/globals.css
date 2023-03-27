@@ -34,6 +34,7 @@ body {
 .markdown img,
 video {
   margin-right: 20px;
+  margin-top: 10px;
   object-fit: contain;
   height: auto;
   margin-left: -40px;
