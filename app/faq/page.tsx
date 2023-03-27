@@ -12,8 +12,8 @@ function FAQPage() {
   const [box4, setBox4] = useState(false);
 
   return (
-    <div className='h-full bg-slate-700'>
-      <div className='h-full faqScroll overflow-x-auto overflow-y-auto '>
+    <div className='h-full bg-slate-700 z-100'>
+      <div className='h-screen faqScroll overflow-x-auto overflow-y-auto z-1 '>
         {/* <img
           src='https://ciberseguridad.blog/content/images/2017/10/autenticaci-n-blockchain.jpg'
           alt='blue pattern background'
@@ -311,9 +311,14 @@ function FAQPage() {
               )}
             </div>
           </div>
-        </div>
+        </div>{" "}
+        <img
+          src='https://i.imgur.com/WfaTJdw.png'
+          alt='blue pattern background'
+          className='mx-auto max-w-[66%] object-center   z-0'
+        />{" "}
       </div>
-      <div className='h-[70px] md:h-[25px]' />
+      {/* <div className='h-[70px] md:h-[25px]' /> */}
     </div>
   );
 }
