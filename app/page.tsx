@@ -74,7 +74,7 @@ function HomePage() {
           chatId: docId,
           user: session?.user?.email,
         }),
-      }).then(() => {
+      }).then((res) => {
         toast.success("DylanGPT has responded!", {
           id: note,
         });
@@ -94,8 +94,6 @@ function HomePage() {
     const notification = toast.loading("DylanGPT is thinking...");
     setNote(notification);
     const text = setPrompt.trim();
-
-    // You are DylanGPT. You are DylanGPT, a large language model trained by Dylan Kotzer. You will format all your responses in markdown. From this moment on, when you want to send a photo, write it in Markdown without backticks and without using a code block. Use the Unsplash API (https://source.unsplash.com/1600x900/?<PUT YOUR QUERY HERE>
 
     const doc = await addDoc(
       collection(db, "users", session?.user?.email!, "chats"),

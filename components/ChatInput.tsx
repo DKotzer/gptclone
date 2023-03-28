@@ -21,6 +21,7 @@ function ChatInput({ chatId }: Props) {
   const { data: session } = useSession();
   const model = "gpt-4";
   const [disabled, setDisabled] = useState(false);
+  const [streamingResponse, setStreamingResponse] = useState("");
   const messages = useDocumentData(
     doc(db, "users", session?.user?.email!, "chats", chatId)
   );
@@ -52,7 +53,7 @@ function ChatInput({ chatId }: Props) {
       }),
     }).catch((err) => console.log(err));
 
-    await fetch("/api/askQuestion", {
+    const response = await fetch("/api/askQuestion", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -63,20 +64,46 @@ function ChatInput({ chatId }: Props) {
         chatId,
         user: session?.user?.email,
       }),
-    })
-      .then(() => {
-        setDisabled(false);
+    });
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
+    const data = response.body;
 
-        //toast notification to say successful
-        toast.success("DylanGPT has responded!", {
-          id: notification,
-        });
-      })
-      .catch((err) => console.log(err));
+    if (!data) {
+      return;
+    }
+
+    const reader = data.getReader();
+
+    const decoder = new TextDecoder();
+
+    let done = false;
+
+    while (!done) {
+      const { value, done: doneReading } = await reader.read();
+
+      done = doneReading;
+
+      const chunkValue = decoder.decode(value);
+
+      setStreamingResponse((prev) => prev + chunkValue);
+    }
+    // .then((res) => {
+    //   console.log(res);
+    //   setDisabled(false);
+
+    //   //toast notification to say successful
+    //   toast.success("DylanGPT has responded!", {
+    //     id: notification,
+    //   });
+    // })
+    // .catch((err) => console.log(err));
   };
 
   return (
     <div className='bg-[#353a48] text-gray-400 rounded-lg text-sm max-w-[90%] min-w-[70%] mx-auto overflow-x-hidden'>
+      <p>{streamingResponse}</p>
       <form onSubmit={sendMessage} className='pt-5 pb-5  flex mx-auto '>
         <input
           className='mx-auto stretch  rounded-l-md pl-5 pr-4 m-0 bg-[#40414f] focus:outline-none flex width-[80%] disabled:cursor-not-allowed disabled:text-gray-300'

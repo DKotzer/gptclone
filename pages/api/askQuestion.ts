@@ -7,9 +7,15 @@ import admin from "firebase-admin";
 import { Message } from "@component/typings";
 import { updateDoc, doc } from "firebase/firestore";
 import { db } from "@component/firebase";
+import { OpenAIStream } from "@component/lib/OpenAiStream";
+import openai from "../../lib/chatgpt";
 
 type Data = {
   text: any;
+};
+
+export const config = {
+  runtime: "edge",
 };
 
 export default async function handler(
@@ -18,42 +24,13 @@ export default async function handler(
 ) {
   const { messages, chatId, user } = req.body;
 
-  if (!messages) {
-    res.status(400).json({ text: "Please provide messages" });
-    return;
-  }
-  if (!chatId) {
-    res.status(400).json({ text: "Please provide a valid chat ID!" });
-    return;
-  }
-
   //gpt3 query - handled by lib/queryApi
-  const response = await query(messages);
-
-  const newMsgArr = response?.data?.choices[0]?.message
-    ? [...messages, response.data.choices[0].message]
-    : [
-        ...messages,
-        {
-          role: "assistant",
-          content:
-            "I am sorry, the maximum chat length has been reached. Please start a new chat to continue.",
-        },
-      ];
-
-  // if (!response?.data?.choices[0]?.message) {
-  //   const newMsgArr = [...messages, response.data.choices[0].message];
-  // } else{
-
-  // }
-  // console.log("res data 666", response.data.choices[0].message);
-  // console.log("667", newMsgArr);
-
-  await updateDoc(doc(db, "users", user, "chats", chatId), {
-    messages: newMsgArr,
+  const payload = await openai.createChatCompletion({
+    model: "gpt-4",
+    messages: messages,
+    stream: true,
   });
 
-  res
-    .status(200)
-    .json({ text: [...messages, response.data.choices[0].message] });
+  const stream = await OpenAIStream(payload);
+  return new Response(stream);
 }
