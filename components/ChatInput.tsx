@@ -26,6 +26,10 @@ function ChatInput({ chatId }: Props) {
     doc(db, "users", session?.user?.email!, "chats", chatId)
   );
 
+  useEffect(() => {
+    console.log("streaming res", streamingResponse);
+  }, [streamingResponse]);
+
   const sendMessage = async (e: FormEvent<HTMLFormElement>) => {
     setDisabled(true);
     const notification = toast.loading("DylanGPT is thinking...");
@@ -68,9 +72,15 @@ function ChatInput({ chatId }: Props) {
     if (!response.ok) {
       throw new Error(response.statusText);
     }
-    const data = response.body;
+
+    setDisabled(true);
+    // const data = await response.json();
+    const data = await response.body;
+
+    console.log("data", data);
 
     if (!data) {
+      setDisabled(false);
       return;
     }
 
@@ -86,19 +96,11 @@ function ChatInput({ chatId }: Props) {
       done = doneReading;
 
       const chunkValue = decoder.decode(value);
+      console.log("chunkValue", chunkValue);
 
       setStreamingResponse((prev) => prev + chunkValue);
     }
-    // .then((res) => {
-    //   console.log(res);
-    //   setDisabled(false);
-
-    //   //toast notification to say successful
-    //   toast.success("DylanGPT has responded!", {
-    //     id: notification,
-    //   });
-    // })
-    // .catch((err) => console.log(err));
+    setDisabled(false);
   };
 
   return (
