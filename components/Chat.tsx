@@ -49,7 +49,7 @@ function Chat({
 
   useEffect(() => {
     if (completedStream == true) {
-      console.log("streaming data completed: ", streamingData);
+      // console.log("streaming data completed: ", streamingData);
       const postData = async () => {
         await fetch("/api/addQuestion", {
           method: "POST",
@@ -66,7 +66,7 @@ function Chat({
             user: session?.user?.email,
           }),
         }).catch((err) => console.log(err));
-        console.log("api to save assistant streamed msg goes here");
+        // console.log("api to save assistant streamed msg goes here");
       };
       postData();
       setCompletedStream(false);

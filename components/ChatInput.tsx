@@ -108,7 +108,7 @@ function ChatInput({
       done = doneReading;
 
       const chunkValue = decoder.decode(value);
-      console.log("cv", chunkValue);
+      // console.log("cv", chunkValue);
       // setStreamingResponse((prev) => prev + chunkValue);
       setStreamingData((prev) => prev + chunkValue);
     }

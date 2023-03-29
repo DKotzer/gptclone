@@ -70,12 +70,12 @@ function HomePage() {
 
   useEffect(() => {
     if (docId !== "") {
-      console.log("docId change detected", docId);
+      // console.log("docId change detected", docId);
       (async () => {
-        console.log("docIdtest", docId);
+        // console.log("docIdtest", docId);
         if (docId !== "") {
           const notification = toast.loading("DylanGPT is thinking...");
-          console.log("checkpoint 0");
+          // console.log("checkpoint 0");
 
           const response = await fetch("/api/askQuestion", {
             method: "POST",
@@ -103,15 +103,15 @@ function HomePage() {
               user: session?.user?.email,
             }),
           });
-          console.log("res", response);
-          console.log("checkpoint 1");
+          // console.log("res", response);
+          // console.log("checkpoint 1");
 
           if (!response.ok) {
             throw new Error(response.statusText);
           }
           setDisabled(true);
           const data = response.body;
-          console.log("checkpoint 2");
+          // console.log("checkpoint 2");
 
           // const data = await response.body;
 
@@ -134,15 +134,15 @@ function HomePage() {
             done = doneReading;
 
             const chunkValue = decoder.decode(value);
-            console.log("cv", chunkValue);
+            // console.log("cv", chunkValue);
             setStreamingResponse((prev) => prev + chunkValue);
           }
 
-          console.log("finished streaming response", streamingResponse);
+          // console.log("finished streaming response", streamingResponse);
           toast.success("DylanGPT has responded!", {
             id: notification,
           });
-          console.log("checkpoint test");
+          // console.log("checkpoint test");
           setDisabled(false);
           setCompletedStream(true);
 
@@ -154,7 +154,7 @@ function HomePage() {
 
   useEffect(() => {
     if (completedStream == true) {
-      console.log("completed stream true");
+      // console.log("completed stream true");
 
       const postData = async () => {
         await fetch("/api/addQuestion", {
@@ -188,7 +188,7 @@ function HomePage() {
             user: session?.user?.email,
           }),
         }).catch((err) => console.log(err));
-        console.log("api to save assistant streamed msg goes here");
+        // console.log("api to save assistant streamed msg goes here");
       };
       postData();
       setCompletedStream(false);
@@ -221,7 +221,7 @@ function HomePage() {
   };
 
   const createNewChat = async (setPrompt: any) => {
-    console.log("creating new chat");
+    // console.log("creating new chat");
     setDisabled(true);
 
     const text = setPrompt.trim();
@@ -270,7 +270,7 @@ function HomePage() {
     <div className='flex flex-col h-screen'>
       <div className='flex flex-col items-center md:justify-center h-full text-white px-2 mr-3 overflow-x-auto overflow-y-auto chatSelectScroll '>
         {streamingResponse ? (
-          <div className='fontPageChat'>
+          <div className='fontPageChat w-full h-full'>
             <Message
               message={{ role: "user", content: prompt }}
               userImg={session?.user?.image!}

@@ -21,7 +21,7 @@ function ChatPage({ params: { id } }: Props) {
   };
 
   useEffect(() => {
-    console.log("streaming data: ", streamingData);
+    // console.log("streaming data: ", streamingData);
   }, [streamingData]);
 
   if (status === "loading") {
