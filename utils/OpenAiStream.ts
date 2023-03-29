@@ -48,5 +48,7 @@ export async function OpenAIStream(payload) {
       }
     },
   });
+
+  // console.log("stream from OpenAiStreams", stream);
   return stream;
 }

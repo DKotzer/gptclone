@@ -69,14 +69,16 @@ function ChatInput({ chatId }: Props) {
         user: session?.user?.email,
       }),
     });
+    console.log("Response headers:", response.headers);
     console.log("front end response", response);
     if (!response.ok) {
       throw new Error(response.statusText);
     }
 
     setDisabled(true);
-    // const data = await response.json();
+    // const data = await response.text(); // extract the response data as a text string
     const data = await response.body;
+    // const data = await response.body;
 
     console.log("data", data);
 
@@ -85,25 +87,15 @@ function ChatInput({ chatId }: Props) {
       return;
     }
 
-    const reader = response?.body?.getReader();
-    console.log("reader", reader);
-    reader?.read().then(function processResult(result) {
-      console.log("result value", result);
-      if (result.done) {
-        console.log("Stream finished");
-        return;
-      }
-      console.log("reader", reader.read().then(processResult));
-    });
-
     // const reader = data.getReader();
 
-    // const decoder = new TextDecoder();
+    const decoder = new TextDecoder();
 
-    // let done = false;
+    let done = false;
 
     // while (!done) {
     //   const { value, done: doneReading } = await reader.read();
+    //   console.log("pre decoded value", value);
 
     //   done = doneReading;
 
@@ -117,7 +109,7 @@ function ChatInput({ chatId }: Props) {
 
   return (
     <div className='bg-[#353a48] text-gray-400 rounded-lg text-sm max-w-[90%] min-w-[70%] mx-auto overflow-x-hidden'>
-      <p>{streamingResponse}</p>
+      <p>{streamingResponse ? streamingResponse : "waiting"}</p>
       <form onSubmit={sendMessage} className='pt-5 pb-5  flex mx-auto '>
         <input
           className='mx-auto stretch  rounded-l-md pl-5 pr-4 m-0 bg-[#40414f] focus:outline-none flex width-[80%] disabled:cursor-not-allowed disabled:text-gray-300'
@@ -141,3 +133,14 @@ function ChatInput({ chatId }: Props) {
 }
 
 export default ChatInput;
+
+// const reader = response?.body?.getReader();
+// console.log("reader", reader);
+// reader?.read().then(function processResult(result) {
+//   console.log("result value", result);
+//   if (result.done) {
+//     console.log("Stream finished");
+//     return;
+//   }
+//   console.log("reader", reader.read().then(processResult));
+// });

@@ -33,28 +33,23 @@ export default async function handler(
   }
 
   //gpt3 query - handled by lib/queryApi
-  const payload = await openai
-    .createChatCompletion({
-      model: "gpt-4",
-      messages: messages,
-      stream: true,
-
-    })
-    // .then((res) => {
-    //   res.data.choices[0]?.message?.content! ||
-    //     "There was a problem receiving a response from the AI";
-    //   return res;
-    // })
-    // .catch(
-    //   (err) =>
-    //     `DylanGPT was unable to find an answer for that! (Error: ${err.message})`
-    // );
+  const payload = await openai.createChatCompletion({
+    model: "gpt-4",
+    messages: messages,
+    stream: true,
+  });
+  // .then((res) => {
+  //   res.data.choices[0]?.message?.content! ||
+  //     "There was a problem receiving a response from the AI";
+  //   return res;
+  // })
+  // .catch(
+  //   (err) =>
+  //     `DylanGPT was unable to find an answer for that! (Error: ${err.message})`
+  // );
 
   const stream = await OpenAIStream(payload);
-  console.log(stream)
-
-
-  
+  console.log("ask question stream", stream);
 
   // const newMsgArr = response?.data?.choices[0]?.message
   //   ? [...messages, response.data.choices[0].message]
