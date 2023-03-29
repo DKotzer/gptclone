@@ -69,6 +69,7 @@ function ChatInput({ chatId }: Props) {
         user: session?.user?.email,
       }),
     });
+    console.log("front end response", response);
     if (!response.ok) {
       throw new Error(response.statusText);
     }
@@ -84,22 +85,33 @@ function ChatInput({ chatId }: Props) {
       return;
     }
 
-    const reader = data.getReader();
+    const reader = response?.body?.getReader();
+    console.log("reader", reader);
+    reader?.read().then(function processResult(result) {
+      console.log("result value", result);
+      if (result.done) {
+        console.log("Stream finished");
+        return;
+      }
+      console.log("reader", reader.read().then(processResult));
+    });
 
-    const decoder = new TextDecoder();
+    // const reader = data.getReader();
 
-    let done = false;
+    // const decoder = new TextDecoder();
 
-    while (!done) {
-      const { value, done: doneReading } = await reader.read();
+    // let done = false;
 
-      done = doneReading;
+    // while (!done) {
+    //   const { value, done: doneReading } = await reader.read();
 
-      const chunkValue = decoder.decode(value);
-      console.log("chunkValue", chunkValue);
+    //   done = doneReading;
 
-      setStreamingResponse((prev) => prev + chunkValue);
-    }
+    //   const chunkValue = decoder.decode(value);
+    //   console.log("chunkValue", chunkValue);
+
+    //   setStreamingResponse((prev) => prev + chunkValue);
+    // }
     setDisabled(false);
   };
 
