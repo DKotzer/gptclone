@@ -10,13 +10,15 @@ import { useDocumentData } from "react-firebase-hooks/firestore";
 
 type Props = {
   chatId: string;
+  handleStreamingData: any;
+  setStreamingData: any;
 };
 
 type Response = {
   data: any;
 };
 
-function ChatInput({ chatId }: Props) {
+function ChatInput({ chatId, handleStreamingData, setStreamingData }: Props) {
   const [prompt, setPrompt] = useState("");
   const { data: session } = useSession();
   const model = "gpt-4";
@@ -26,9 +28,9 @@ function ChatInput({ chatId }: Props) {
     doc(db, "users", session?.user?.email!, "chats", chatId)
   );
 
-  useEffect(() => {
-    console.log("streaming res", streamingResponse);
-  }, [streamingResponse]);
+  // useEffect(() => {
+  //   console.log("streaming res", streamingResponse);
+  // }, [streamingResponse]);
 
   const sendMessage = async (e: FormEvent<HTMLFormElement>) => {
     setDisabled(true);
@@ -77,39 +79,42 @@ function ChatInput({ chatId }: Props) {
 
     setDisabled(true);
     // const data = await response.text(); // extract the response data as a text string
-    const data = await response.body;
+    const data = response.body;
     // const data = await response.body;
 
-    console.log("data", data);
+    // console.log("data", data);
 
     if (!data) {
       setDisabled(false);
+      console.log("no data");
       return;
     }
 
-    // const reader = data.getReader();
+    const reader = data.getReader();
 
     const decoder = new TextDecoder();
 
     let done = false;
 
-    // while (!done) {
-    //   const { value, done: doneReading } = await reader.read();
-    //   console.log("pre decoded value", value);
+    while (!done) {
+      const { value, done: doneReading } = await reader.read();
 
-    //   done = doneReading;
+      done = doneReading;
 
-    //   const chunkValue = decoder.decode(value);
-    //   console.log("chunkValue", chunkValue);
-
-    //   setStreamingResponse((prev) => prev + chunkValue);
-    // }
+      const chunkValue = decoder.decode(value);
+      console.log("cv", chunkValue);
+      setStreamingResponse((prev) => prev + chunkValue);
+      // setStreamingData((prev) => prev + chunkValue);
+    }
+    toast.success("DylanGPT has responded!", {
+      id: notification,
+    });
     setDisabled(false);
   };
 
   return (
     <div className='bg-[#353a48] text-gray-400 rounded-lg text-sm max-w-[90%] min-w-[70%] mx-auto overflow-x-hidden'>
-      <p>{streamingResponse ? streamingResponse : "waiting"}</p>
+      <p>{streamingResponse}</p>
       <form onSubmit={sendMessage} className='pt-5 pb-5  flex mx-auto '>
         <input
           className='mx-auto stretch  rounded-l-md pl-5 pr-4 m-0 bg-[#40414f] focus:outline-none flex width-[80%] disabled:cursor-not-allowed disabled:text-gray-300'

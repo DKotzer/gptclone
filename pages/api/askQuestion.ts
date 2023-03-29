@@ -1,6 +1,9 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { OpenAIStream } from "@component/utils/OpenAiStream";
 
+import { updateDoc, doc } from "firebase/firestore";
+import { db } from "@component/firebase";
+
 export const config = {
   runtime: "edge",
 };
@@ -23,11 +26,11 @@ const handler = async (req: Request): Promise<Response> => {
     model: "gpt-4",
     messages: messages,
     stream: true,
-    max_tokens: 2,
+    max_tokens: 5,
   };
 
   const stream = await OpenAIStream(payload);
-  // console.log("ask question stream", stream);
+  console.log("ask question stream", stream);
 
   return new Response(stream);
 };

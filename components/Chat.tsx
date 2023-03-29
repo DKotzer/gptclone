@@ -9,9 +9,10 @@ import { useEffect, useState, useRef } from "react";
 
 type Props = {
   chatId: string;
+  streamingData: string;
 };
 
-function Chat({ chatId }: Props) {
+function Chat({ chatId, streamingData }: Props) {
   const { data: session, status } = useSession();
   const router = useRouter();
   const messages = useDocumentData(
@@ -55,6 +56,7 @@ function Chat({ chatId }: Props) {
           <Message userImg={session?.user?.image!} key={i} message={message} />
         ) : null
       )}
+      {streamingData}
       {messages[0]?.messages[messages[0]?.messages?.length - 1].content ==
       "Hello Dylan Kotzer, I am DylanGPT, how may I help you?" ? (
         <div>
