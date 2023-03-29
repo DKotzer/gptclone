@@ -28,6 +28,7 @@ function Chat({ chatId, streamingData }: Props) {
       )
   );
 
+  console.log(typeof streamingData);
   //if done loading, and no errors, check if chat id exists inside chats, if not, go back to home page. - this handles people manually entering in the wrong chat or going to chats they have deleted in the past
   useEffect(() => {
     if (!loading && !error && chats) {
@@ -43,9 +44,9 @@ function Chat({ chatId, streamingData }: Props) {
     const messagesEnd = messagesEndRef.current;
     if (messagesEnd) {
       const secondToLastMessage = messagesEnd.previousSibling as HTMLElement;
-      if (secondToLastMessage) {
-        secondToLastMessage.scrollIntoView();
-      }
+      // if (secondToLastMessage) {
+      //   secondToLastMessage.scrollIntoView();
+      // }
     }
   }, [messages]);
 
@@ -56,7 +57,13 @@ function Chat({ chatId, streamingData }: Props) {
           <Message userImg={session?.user?.image!} key={i} message={message} />
         ) : null
       )}
-      {streamingData}
+      {streamingData ? (
+        <Message
+          userImg={"https://i.imgur.com/jfLbi1b.png"}
+          key={"streamingText"}
+          message={{ user: "assistant", content: streamingData }}
+        />
+      ) : null}
       {messages[0]?.messages[messages[0]?.messages?.length - 1].content ==
       "Hello Dylan Kotzer, I am DylanGPT, how may I help you?" ? (
         <div>

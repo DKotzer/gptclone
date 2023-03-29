@@ -104,7 +104,7 @@ function ChatInput({ chatId, handleStreamingData, setStreamingData }: Props) {
       const chunkValue = decoder.decode(value);
       console.log("cv", chunkValue);
       setStreamingResponse((prev) => prev + chunkValue);
-      // setStreamingData((prev) => prev + chunkValue);
+      setStreamingData((prev) => prev + chunkValue);
     }
     toast.success("DylanGPT has responded!", {
       id: notification,

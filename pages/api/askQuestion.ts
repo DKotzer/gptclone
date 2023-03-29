@@ -26,11 +26,12 @@ const handler = async (req: Request): Promise<Response> => {
     model: "gpt-4",
     messages: messages,
     stream: true,
-    max_tokens: 5,
+    max_tokens: 100,
   };
 
   const stream = await OpenAIStream(payload);
-  console.log("ask question stream", stream);
+
+  // console.log("ask question stream", stream);
 
   return new Response(stream);
 };

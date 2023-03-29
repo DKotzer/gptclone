@@ -20,6 +20,7 @@ function Message({ message, userImg }: Props) {
       return ""; // use external default escaping
     },
   });
+  console.log(message.content);
   let styledMSG = md.render(message.content);
   function createMarkup() {
     return { __html: styledMSG };
