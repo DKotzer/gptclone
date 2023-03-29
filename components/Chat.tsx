@@ -38,6 +38,16 @@ function Chat({
   );
 
   useEffect(() => {
+    const messagesEnd = messagesEndRef.current;
+    if (messagesEnd) {
+      const lastMessage = messagesEnd as HTMLElement;
+      if (lastMessage) {
+        lastMessage.scrollIntoView();
+      }
+    }
+  }, []);
+
+  useEffect(() => {
     if (completedStream == true) {
       console.log("streaming data completed: ", streamingData);
       const postData = async () => {
