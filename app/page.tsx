@@ -72,10 +72,16 @@ function HomePage() {
     if (docId !== "") {
       // console.log("docId change detected", docId);
       (async () => {
-        // console.log("docIdtest", docId);
+        console.log("docIdtest", docId);
         if (docId !== "") {
           const notification = toast.loading("DylanGPT is thinking...");
-          // console.log("checkpoint 0");
+          console.log(
+            "checkpoint 0",
+            model,
+            prompt,
+            docId,
+            session?.user?.email
+          );
 
           const response = await fetch("/api/askQuestion", {
             method: "POST",
@@ -103,7 +109,7 @@ function HomePage() {
               user: session?.user?.email,
             }),
           });
-          // console.log("res", response);
+          console.log("res", response);
           // console.log("checkpoint 1");
 
           if (!response.ok) {
@@ -134,7 +140,7 @@ function HomePage() {
             done = doneReading;
 
             const chunkValue = decoder.decode(value);
-            // console.log("cv", chunkValue);
+            console.log("cv", chunkValue);
             setStreamingResponse((prev) => prev + chunkValue);
           }
 
@@ -146,7 +152,7 @@ function HomePage() {
           setDisabled(false);
           setCompletedStream(true);
 
-          handleCompletedStream();
+          // handleCompletedStream();
         }
       })();
     }
@@ -198,7 +204,7 @@ function HomePage() {
     }
   }, [completedStream]);
 
-  const handleCompletedStream = async () => {};
+  // const handleCompletedStream = async () => {};
 
   // .then((res) => {
   //       toast.success("DylanGPT has responded!", {
@@ -214,8 +220,12 @@ function HomePage() {
   };
 
   const inputPromptSetter = async () => {
+    console.log(
+      "input prompt setter",
+      prompt,
+      session?.user?.email ? "user found" : "no user"
+    );
     if (db && session?.user?.email) {
-      setPrompt(prompt);
       createNewChat(prompt);
     }
   };
@@ -356,10 +366,16 @@ function HomePage() {
       </div>
       <div className='bg-[#353a48] text-gray-400 rounded-lg text-sm max-w-[90%] min-w-[70%] mx-auto overflow-x-hidden overflow-y-hidden'>
         {/* <div className='mx-auto text-center mr-[8%] ml-[8%] mt-2 text-white'></div> */}
-        <form onSubmit={inputPromptSetter} className='pt-5 pb-5  flex mx-auto '>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            inputPromptSetter();
+          }}
+          className='pt-5 pb-5  flex mx-auto '
+        >
           <input
             className='mx-auto stretch  rounded-l-md pl-5 pr-4 m-0 bg-[#40414f] focus:outline-none flex width-[100%] disabled:cursor-not-allowed disabled:text-gray-300'
-            disabled={true}
+            disabled={!session}
             type='text'
             value={prompt}
             onChange={(e) => setPrompt(e.target.value)}
