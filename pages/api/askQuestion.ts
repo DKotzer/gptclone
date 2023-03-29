@@ -1,59 +1,37 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-// @ts-nocheck
-import { adminDb } from "@component/firebaseAdmin";
-import query from "@component/lib/queryApi";
-import type { NextApiRequest, NextApiResponse } from "next";
-import admin from "firebase-admin";
-import { Message } from "@component/typings";
+import { NextApiRequest, NextApiResponse } from "next";
+import { OpenAIStream } from "@component/utils/OpenAiStream";
+
 import { updateDoc, doc } from "firebase/firestore";
 import { db } from "@component/firebase";
 
-type Data = {
-  text: any;
+export const config = {
+  runtime: "edge",
 };
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<Data>
-) {
-  const { messages, chatId, user } = req.body;
+const handler = async (req: Request): Promise<Response> => {
+  const { messages, chatId, user } = (await req.json()) as {
+    messages?: string[];
+    chatId?: string;
+    user?: string;
+  };
 
   if (!messages) {
-    res.status(400).json({ text: "Please provide messages" });
-    return;
+    return new Response("Please provide messages", { status: 400 });
   }
   if (!chatId) {
-    res.status(400).json({ text: "Please provide a valid chat ID!" });
-    return;
+    return new Response("Please provide a valid chat ID!", { status: 400 });
   }
 
-  //gpt3 query - handled by lib/queryApi
-  const response = await query(messages);
+  const payload = {
+    model: "gpt-4",
+    messages: messages,
+    stream: true,
+  };
 
-  const newMsgArr = response?.data?.choices[0]?.message
-    ? [...messages, response.data.choices[0].message]
-    : [
-        ...messages,
-        {
-          role: "assistant",
-          content:
-            "I am sorry, the maximum chat length has been reached. Please start a new chat to continue.",
-        },
-      ];
+  const stream = await OpenAIStream(payload);
 
-  // if (!response?.data?.choices[0]?.message) {
-  //   const newMsgArr = [...messages, response.data.choices[0].message];
-  // } else{
+  // console.log("ask question stream", stream);
 
-  // }
-  // console.log("res data 666", response.data.choices[0].message);
-  // console.log("667", newMsgArr);
-
-  await updateDoc(doc(db, "users", user, "chats", chatId), {
-    messages: newMsgArr,
-  });
-
-  res
-    .status(200)
-    .json({ text: [...messages, response.data.choices[0].message] });
-}
+  return new Response(stream);
+};
+export default handler;

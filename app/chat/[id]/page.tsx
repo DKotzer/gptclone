@@ -2,6 +2,7 @@
 import Chat from "@component/components/Chat";
 import ChatInput from "@component/components/ChatInput";
 import { useSession } from "next-auth/react";
+import { useEffect, useState } from "react";
 
 type Props = {
   params: {
@@ -11,6 +12,17 @@ type Props = {
 
 function ChatPage({ params: { id } }: Props) {
   const { data: session, status } = useSession();
+
+  const [streamingData, setStreamingData] = useState("");
+  const [completedStream, setCompletedStream] = useState(false);
+
+  const handleStreamingData = async (data: any) => {
+    setStreamingData(await data);
+  };
+
+  useEffect(() => {
+    // console.log("streaming data: ", streamingData);
+  }, [streamingData]);
 
   if (status === "loading") {
     return (
@@ -28,8 +40,19 @@ function ChatPage({ params: { id } }: Props) {
 
   return (
     <div className={`flex flex-col h-screen`}>
-      <Chat chatId={id} />
-      <ChatInput chatId={id} />
+      <Chat
+        chatId={id}
+        streamingData={streamingData}
+        completedStream={completedStream}
+        setCompletedStream={setCompletedStream}
+        setStreamingData={setStreamingData}
+      />
+      <ChatInput
+        chatId={id}
+        handleStreamingData={handleStreamingData}
+        setStreamingData={setStreamingData}
+        setCompletedStream={setCompletedStream}
+      />
     </div>
   );
 }

@@ -20,6 +20,7 @@ function Message({ message, userImg }: Props) {
       return ""; // use external default escaping
     },
   });
+  // console.log(message.content);
   let styledMSG = md.render(message.content);
   function createMarkup() {
     return { __html: styledMSG };
@@ -27,7 +28,7 @@ function Message({ message, userImg }: Props) {
   const isDylanGPT = message.role == "assistant";
   return (
     <div
-      className={`py-5 text-white bb  ${isDylanGPT && "bg-[#434654]"} ${
+      className={`py-5 text-white bb w-full ${isDylanGPT && "bg-[#434654]"} ${
         !isDylanGPT && "divide-solid > * + *"
       }}`}
     >

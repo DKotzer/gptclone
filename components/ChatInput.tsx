@@ -10,20 +10,33 @@ import { useDocumentData } from "react-firebase-hooks/firestore";
 
 type Props = {
   chatId: string;
+  handleStreamingData: any;
+  setStreamingData: any;
+  setCompletedStream: any;
 };
 
 type Response = {
   data: any;
 };
 
-function ChatInput({ chatId }: Props) {
+function ChatInput({
+  chatId,
+  handleStreamingData,
+  setStreamingData,
+  setCompletedStream,
+}: Props) {
   const [prompt, setPrompt] = useState("");
   const { data: session } = useSession();
   const model = "gpt-4";
   const [disabled, setDisabled] = useState(false);
+  // const [streamingResponse, setStreamingResponse] = useState("");
   const messages = useDocumentData(
     doc(db, "users", session?.user?.email!, "chats", chatId)
   );
+
+  // useEffect(() => {
+  //   console.log("streaming res", streamingResponse);
+  // }, [streamingResponse]);
 
   const sendMessage = async (e: FormEvent<HTMLFormElement>) => {
     setDisabled(true);
@@ -52,7 +65,7 @@ function ChatInput({ chatId }: Props) {
       }),
     }).catch((err) => console.log(err));
 
-    await fetch("/api/askQuestion", {
+    const response = await fetch("/api/askQuestion", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -63,16 +76,47 @@ function ChatInput({ chatId }: Props) {
         chatId,
         user: session?.user?.email,
       }),
-    })
-      .then(() => {
-        setDisabled(false);
+    });
+    // console.log("Response headers:", response.headers);
+    // console.log("front end response", response);
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
 
-        //toast notification to say successful
-        toast.success("DylanGPT has responded!", {
-          id: notification,
-        });
-      })
-      .catch((err) => console.log(err));
+    setDisabled(true);
+    // const data = await response.text(); // extract the response data as a text string
+    const data = response.body;
+    // const data = await response.body;
+
+    // console.log("data", data);
+
+    if (!data) {
+      setDisabled(false);
+      console.log("no data");
+      return;
+    }
+
+    const reader = data.getReader();
+
+    const decoder = new TextDecoder();
+
+    let done = false;
+
+    while (!done) {
+      const { value, done: doneReading } = await reader.read();
+
+      done = doneReading;
+
+      const chunkValue = decoder.decode(value);
+      // console.log("cv", chunkValue);
+      // setStreamingResponse((prev) => prev + chunkValue);
+      setStreamingData((prev) => prev + chunkValue);
+    }
+    toast.success("DylanGPT has responded!", {
+      id: notification,
+    });
+    setDisabled(false);
+    setCompletedStream(true);
   };
 
   return (
@@ -100,3 +144,14 @@ function ChatInput({ chatId }: Props) {
 }
 
 export default ChatInput;
+
+// const reader = response?.body?.getReader();
+// console.log("reader", reader);
+// reader?.read().then(function processResult(result) {
+//   console.log("result value", result);
+//   if (result.done) {
+//     console.log("Stream finished");
+//     return;
+//   }
+//   console.log("reader", reader.read().then(processResult));
+// });

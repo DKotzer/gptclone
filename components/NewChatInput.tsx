@@ -12,13 +12,19 @@ type Response = {
   data: any;
 };
 
-function NewChatInput() {
+type Props = {
+  inputPromptSetter: any;
+  setDocId: any;
+  docId: string;
+};
+
+function NewChatInput({ inputPromptSetter, setDocId, docId }: Props) {
   const { data: session } = useSession();
   const router = useRouter();
   const [prompt, setPrompt] = useState("");
   const model = "gpt-4";
   const [disabled, setDisabled] = useState(false);
-  const [docId, setDocId] = useState("");
+  // const [docId, setDocId] = useState("");
   const [note, setNote] = useState("");
 
   useEffect(() => {
@@ -87,7 +93,11 @@ function NewChatInput() {
     );
 
     setDocId(doc.id);
-    router.push(`/chat/${doc.id}`);
+    sendNewPrompt();
+  };
+
+  const sendNewPrompt = async () => {
+    inputPromptSetter(prompt.trim);
   };
 
   return (
