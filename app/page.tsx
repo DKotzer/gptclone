@@ -20,6 +20,7 @@ import { db } from "@component/firebase";
 import { useRouter } from "next/navigation";
 import prompts from "@component/components/Prompts";
 import Message from "@component/components/Message";
+import { PaperAirplaneIcon } from "@heroicons/react/24/solid";
 
 type Response = {
   data: any;
@@ -68,13 +69,14 @@ function HomePage() {
   }, [streamingResponse]);
 
   useEffect(() => {
-    console.log("docId", docId);
     if (docId !== "") {
+      console.log("docId change detected", docId);
       (async () => {
         console.log("docIdtest", docId);
         if (docId !== "") {
-          console.log("checkpoint 0");
           const notification = toast.loading("DylanGPT is thinking...");
+          console.log("checkpoint 0");
+
           const response = await fetch("/api/askQuestion", {
             method: "POST",
             headers: {
@@ -101,11 +103,16 @@ function HomePage() {
               user: session?.user?.email,
             }),
           });
+          console.log("res", response);
+          console.log("checkpoint 1");
+
           if (!response.ok) {
             throw new Error(response.statusText);
           }
           setDisabled(true);
           const data = response.body;
+          console.log("checkpoint 2");
+
           // const data = await response.body;
 
           // console.log("data", data);
@@ -206,7 +213,15 @@ function HomePage() {
     }
   };
 
+  const inputPromptSetter = async () => {
+    if (db && session?.user?.email) {
+      setPrompt(prompt);
+      createNewChat(prompt);
+    }
+  };
+
   const createNewChat = async (setPrompt: any) => {
+    console.log("creating new chat");
     setDisabled(true);
 
     const text = setPrompt.trim();
@@ -254,9 +269,6 @@ function HomePage() {
   return (
     <div className='flex flex-col h-screen'>
       <div className='flex flex-col items-center md:justify-center h-full text-white px-2 mr-3 overflow-x-auto overflow-y-auto chatSelectScroll '>
-        <h1 className='text-4xl md:text-6xl font-bold mt-5 mb-[5%]'>
-          DylanGPT
-        </h1>
         {streamingResponse ? (
           <div className='fontPageChat'>
             <Message
@@ -270,74 +282,99 @@ function HomePage() {
             <div ref={messagesEndRef} />{" "}
           </div>
         ) : (
-          <div className='flex space-x-2 text-center text-sm flex-col md:flex-row'>
-            <div className='pb-5 md:pb-0'>
-              <div className='flex flex-col items-center justify-center mb-5'>
-                <SunIcon className='h-8 w-8' />
-                <h2>Examples</h2>
-              </div>
+          <div>
+            <h1 className='text-4xl text-center md:text-6xl font-bold mt-5 mb-[5%]'>
+              DylanGPT
+            </h1>
+            <div className='flex space-x-2 text-center text-sm flex-col md:flex-row'>
+              <div className='pb-5 md:pb-0'>
+                <div className='flex flex-col items-center justify-center mb-5'>
+                  <SunIcon className='h-8 w-8' />
+                  <h2>Examples</h2>
+                </div>
 
-              <div className='space-y-1 ml-[12px]'>
-                <p
-                  onClick={promptSetter}
-                  className='infoText bg-[#40414f] ring-2 ring-slate-500/50 ring-inset  hover:border-opacity-100 hover:cursor-pointer hover:scale-105 hover:ring-white hover:ring-3 '
-                >
-                  Describe the 5 largest cities in Canada, including images.
-                </p>
-                <p
-                  onClick={promptSetter}
-                  className='infoText bg-[#40414f] ring-2 ring-slate-500/50 ring-inset  hover:border-opacity-100 hover:cursor-pointer hover:scale-105 hover:ring-white hover:ring-3'
-                >
-                  {`Tell me about Dylan Kotzer's projects`}
-                </p>
-                <p
-                  onClick={promptSetter}
-                  className='infoText bg-[#40414f] ring-2 ring-slate-500/50 ring-inset  hover:border-opacity-100 hover:cursor-pointer hover:scale-105 hover:ring-white hover:ring-3'
-                >
-                  Code hello world in 5 random programming languages.
-                </p>
+                <div className='space-y-1 ml-[12px]'>
+                  <p
+                    onClick={promptSetter}
+                    className='infoText bg-[#40414f] ring-2 ring-slate-500/50 ring-inset  hover:border-opacity-100 hover:cursor-pointer hover:scale-105 hover:ring-white hover:ring-3 '
+                  >
+                    Describe the 5 largest cities in Canada, including images.
+                  </p>
+                  <p
+                    onClick={promptSetter}
+                    className='infoText bg-[#40414f] ring-2 ring-slate-500/50 ring-inset  hover:border-opacity-100 hover:cursor-pointer hover:scale-105 hover:ring-white hover:ring-3'
+                  >
+                    {`Tell me about Dylan Kotzer's projects`}
+                  </p>
+                  <p
+                    onClick={promptSetter}
+                    className='infoText bg-[#40414f] ring-2 ring-slate-500/50 ring-inset  hover:border-opacity-100 hover:cursor-pointer hover:scale-105 hover:ring-white hover:ring-3'
+                  >
+                    Code hello world in 5 random programming languages.
+                  </p>
+                </div>
               </div>
-            </div>
-            <div className='pb-5'>
-              <div className='flex flex-col items-center justify-center mb-5'>
-                <BoltIcon className='h-8 w-8' />
-                <h2>Capabilities</h2>
-              </div>
+              <div className='pb-5'>
+                <div className='flex flex-col items-center justify-center mb-5'>
+                  <BoltIcon className='h-8 w-8' />
+                  <h2>Capabilities</h2>
+                </div>
 
-              <div className='space-y-1'>
-                <p className='infoText bg-[#40414f] ring-2 ring-slate-500/50 ring-inset'>
-                  Find and post relevant images formatted into markdown.
-                </p>
-                <p className='infoText bg-[#40414f] ring-2 ring-slate-500/50 ring-inset'>
-                  Can answer questions about Dylan Kotzer.
-                </p>
-                <p className='infoText bg-[#40414f] ring-2 ring-slate-500/50 ring-inset'>
-                  Dynamic formatting of AI responses.
-                </p>
+                <div className='space-y-1'>
+                  <p className='infoText bg-[#40414f] ring-2 ring-slate-500/50 ring-inset'>
+                    Find and post relevant images formatted into markdown.
+                  </p>
+                  <p className='infoText bg-[#40414f] ring-2 ring-slate-500/50 ring-inset'>
+                    Can answer questions about Dylan Kotzer.
+                  </p>
+                  <p className='infoText bg-[#40414f] ring-2 ring-slate-500/50 ring-inset'>
+                    Dynamic formatting of AI responses.
+                  </p>
+                </div>
               </div>
-            </div>
-            <div className='pb-5'>
-              <div className='flex flex-col items-center justify-center mb-5'>
-                <ExclamationTriangleIcon className='h-8 w-8' />
-                <h2>Limitation</h2>
-              </div>
+              <div className='pb-5'>
+                <div className='flex flex-col items-center justify-center mb-5'>
+                  <ExclamationTriangleIcon className='h-8 w-8' />
+                  <h2>Limitation</h2>
+                </div>
 
-              <div className='space-y-1 mr-[12px]'>
-                <p className='infoText bg-[#40414f] ring-2 ring-slate-500/50 ring-inset'>
-                  May sometimes make up answers or give false information
-                </p>
-                <p className='infoText bg-[#40414f] ring-2 ring-slate-500/50 ring-inset'>
-                  Will frequently post images of the wrong things.
-                </p>
-                <p className='infoText bg-[#40414f] ring-2 ring-slate-500/50 ring-inset'>
-                  Has very limited knowledge of events after 2021
-                </p>
+                <div className='space-y-1 mr-[12px]'>
+                  <p className='infoText bg-[#40414f] ring-2 ring-slate-500/50 ring-inset'>
+                    May sometimes make up answers or give false information
+                  </p>
+                  <p className='infoText bg-[#40414f] ring-2 ring-slate-500/50 ring-inset'>
+                    Will frequently post images of the wrong things.
+                  </p>
+                  <p className='infoText bg-[#40414f] ring-2 ring-slate-500/50 ring-inset'>
+                    Has very limited knowledge of events after 2021
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         )}
       </div>
-      <NewChatInput />
+      <div className='bg-[#353a48] text-gray-400 rounded-lg text-sm max-w-[90%] min-w-[70%] mx-auto overflow-x-hidden overflow-y-hidden'>
+        {/* <div className='mx-auto text-center mr-[8%] ml-[8%] mt-2 text-white'></div> */}
+        <form onSubmit={inputPromptSetter} className='pt-5 pb-5  flex mx-auto '>
+          <input
+            className='mx-auto stretch  rounded-l-md pl-5 pr-4 m-0 bg-[#40414f] focus:outline-none flex width-[100%] disabled:cursor-not-allowed disabled:text-gray-300'
+            disabled={true}
+            type='text'
+            value={prompt}
+            onChange={(e) => setPrompt(e.target.value)}
+            placeholder='Type your message here...'
+          />
+          <button
+            className='bg-[#11A37F] hover:opacity-50 text-white font-bolt px-4 m-0 py-2 rounded-r-md disabled:bg-gray-300 disabled:opacity-50 disabled:cursor-not-allowed'
+            disabled={!prompt || !session || disabled}
+            type='submit'
+          >
+            <PaperAirplaneIcon className='w-4 h-4 -rotate-45' />
+          </button>
+        </form>
+        <div className='h-[70px] md:h-[25px]' />
+      </div>
     </div>
   );
 }
