@@ -12,18 +12,24 @@ type Props = {
   chatId: string;
   handleStreamingData: any;
   setStreamingData: any;
+  setCompletedStream: any;
 };
 
 type Response = {
   data: any;
 };
 
-function ChatInput({ chatId, handleStreamingData, setStreamingData }: Props) {
+function ChatInput({
+  chatId,
+  handleStreamingData,
+  setStreamingData,
+  setCompletedStream,
+}: Props) {
   const [prompt, setPrompt] = useState("");
   const { data: session } = useSession();
   const model = "gpt-4";
   const [disabled, setDisabled] = useState(false);
-  const [streamingResponse, setStreamingResponse] = useState("");
+  // const [streamingResponse, setStreamingResponse] = useState("");
   const messages = useDocumentData(
     doc(db, "users", session?.user?.email!, "chats", chatId)
   );
@@ -71,8 +77,8 @@ function ChatInput({ chatId, handleStreamingData, setStreamingData }: Props) {
         user: session?.user?.email,
       }),
     });
-    console.log("Response headers:", response.headers);
-    console.log("front end response", response);
+    // console.log("Response headers:", response.headers);
+    // console.log("front end response", response);
     if (!response.ok) {
       throw new Error(response.statusText);
     }
@@ -103,18 +109,18 @@ function ChatInput({ chatId, handleStreamingData, setStreamingData }: Props) {
 
       const chunkValue = decoder.decode(value);
       console.log("cv", chunkValue);
-      setStreamingResponse((prev) => prev + chunkValue);
+      // setStreamingResponse((prev) => prev + chunkValue);
       setStreamingData((prev) => prev + chunkValue);
     }
     toast.success("DylanGPT has responded!", {
       id: notification,
     });
     setDisabled(false);
+    setCompletedStream(true);
   };
 
   return (
     <div className='bg-[#353a48] text-gray-400 rounded-lg text-sm max-w-[90%] min-w-[70%] mx-auto overflow-x-hidden'>
-      <p>{streamingResponse}</p>
       <form onSubmit={sendMessage} className='pt-5 pb-5  flex mx-auto '>
         <input
           className='mx-auto stretch  rounded-l-md pl-5 pr-4 m-0 bg-[#40414f] focus:outline-none flex width-[80%] disabled:cursor-not-allowed disabled:text-gray-300'

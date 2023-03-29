@@ -10,9 +10,18 @@ import { useEffect, useState, useRef } from "react";
 type Props = {
   chatId: string;
   streamingData: string;
+  completedStream: boolean;
+  setCompletedStream: any;
+  setStreamingData: any;
 };
 
-function Chat({ chatId, streamingData }: Props) {
+function Chat({
+  chatId,
+  streamingData,
+  completedStream,
+  setCompletedStream,
+  setStreamingData,
+}: Props) {
   const { data: session, status } = useSession();
   const router = useRouter();
   const messages = useDocumentData(
@@ -28,7 +37,40 @@ function Chat({ chatId, streamingData }: Props) {
       )
   );
 
-  console.log(typeof streamingData);
+  useEffect(() => {
+    if (completedStream == true) {
+      console.log("streaming data completed: ", streamingData);
+      const postData = async () => {
+        await fetch("/api/addQuestion", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            model: "gpt-4",
+            messages: [
+              ...messages[0]?.messages,
+              { role: "assistant", content: streamingData },
+            ],
+            chatId,
+            user: session?.user?.email,
+          }),
+        }).catch((err) => console.log(err));
+        console.log("api to save assistant streamed msg goes here");
+      };
+      postData();
+      setCompletedStream(false);
+      setStreamingData("");
+      // const messagesEnd = messagesEndRef.current;
+      // if (messagesEnd) {
+      //   const secondToLastMessage = messagesEnd.previousSibling as HTMLElement;
+      //   if (secondToLastMessage) {
+      //     secondToLastMessage.scrollIntoView();
+      //   }
+      // }
+    }
+  }, [completedStream]);
+
   //if done loading, and no errors, check if chat id exists inside chats, if not, go back to home page. - this handles people manually entering in the wrong chat or going to chats they have deleted in the past
   useEffect(() => {
     if (!loading && !error && chats) {
@@ -43,10 +85,10 @@ function Chat({ chatId, streamingData }: Props) {
   useEffect(() => {
     const messagesEnd = messagesEndRef.current;
     if (messagesEnd) {
-      const secondToLastMessage = messagesEnd.previousSibling as HTMLElement;
-      // if (secondToLastMessage) {
-      //   secondToLastMessage.scrollIntoView();
-      // }
+      const lastMessage = messagesEnd as HTMLElement;
+      if (lastMessage) {
+        lastMessage.scrollIntoView();
+      }
     }
   }, [messages]);
 

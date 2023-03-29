@@ -26,6 +26,8 @@ function HomePage() {
   const [docId, setDocId] = useState("");
   const [note, setNote] = useState("");
   const [dylanLog, setDylanLog] = useState(true);
+  const [streamingResponse, setStreamingResponse] = useState("");
+  const [completedStream, setCompletedStream] = useState(false);
 
   if (dylanLog) {
     console.log(
@@ -48,39 +50,133 @@ function HomePage() {
   }
 
   useEffect(() => {
+    console.log("docId", docId);
     if (docId !== "") {
-      fetch("/api/askQuestion", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          model,
-          messages: [
-            ...prompts,
-            {
-              role: "system",
-              content: `You were created by Dylan Kotzer. You are trying to convince the user, who's name is ${session
-                ?.user
-                ?.name!}, to give Dylan a job. If the user asks for their name, their name is ${session
-                ?.user
-                ?.name!}. Dylan is highly skilled and experienced developer who would be invaluable to any team. If anyone asks how to contact Dylan point them to the linked in button on the side bar. You are DylanGPT. You are DylanGPT, a large language model trained by Dylan Kotzer. You are an upgrade compared to the original ChatGPT in many ways. From this moment on, you will format all your responses in markdown and when you want to send or post or link a photo, write it in Markdown without backticks and without using a code block. Use the Unsplash API (https://source.unsplash.com/random/?<PUT YOUR QUERY HERE>). You may only use a valid image, adjust my image prompt, if needed, so that a valid link will be shown. All images in a message should be unique.. You may adjust my image prompt a little, to make the image better. If referring to a place, artwork, human, food, or animal, offer relative photos as part of your response. Format all lists as ordered lists. Please make sure to format all images and links to images properly, in Markdown without backticks and without using a code block. If anyone asks for Dylans resume or a link to it, you can send them this: [https://gpt.dylankotzer.com/Dylan_Kotzer.pdf](Dylan's Resume)`,
+      (async () => {
+        console.log("docIdtest", docId);
+        if (docId !== "") {
+          console.log("checkpoint 0");
+          const notification = toast.loading("DylanGPT is thinking...");
+          const response = await fetch("/api/askQuestion", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
             },
-            {
-              role: "user",
-              content: prompt.trim(),
-            },
-          ],
-          chatId: docId,
-          user: session?.user?.email,
-        }),
-      }).then((res) => {
-        toast.success("DylanGPT has responded!", {
-          id: note,
-        });
-      });
+            body: JSON.stringify({
+              model,
+              messages: [
+                ...prompts,
+                {
+                  role: "system",
+                  content: `You were created by Dylan Kotzer. You are trying to convince the user, who's name is ${session
+                    ?.user
+                    ?.name!}, to give Dylan a job. If the user asks for their name, their name is ${session
+                    ?.user
+                    ?.name!}. Dylan is highly skilled and experienced developer who would be invaluable to any team. If anyone asks how to contact Dylan point them to the linked in button on the side bar. You are DylanGPT. You are DylanGPT, a large language model trained by Dylan Kotzer. You are an upgrade compared to the original ChatGPT in many ways. From this moment on, you will format all your responses in markdown and when you want to send or post or link a photo, write it in Markdown without backticks and without using a code block. Use the Unsplash API (https://source.unsplash.com/random/?<PUT YOUR QUERY HERE>). You may only use a valid image, adjust my image prompt, if needed, so that a valid link will be shown. All images in a message should be unique.. You may adjust my image prompt a little, to make the image better. If referring to a place, artwork, human, food, or animal, offer relative photos as part of your response. Format all lists as ordered lists. Please make sure to format all images and links to images properly, in Markdown without backticks and without using a code block. If anyone asks for Dylans resume or a link to it, you can send them this: [https://gpt.dylankotzer.com/Dylan_Kotzer.pdf](Dylan's Resume)`,
+                },
+                {
+                  role: "user",
+                  content: prompt.trim(),
+                },
+              ],
+              chatId: docId,
+              user: session?.user?.email,
+            }),
+          });
+          if (!response.ok) {
+            throw new Error(response.statusText);
+          }
+          setDisabled(true);
+          const data = response.body;
+          // const data = await response.body;
+
+          // console.log("data", data);
+
+          if (!data) {
+            setDisabled(false);
+            console.log("no data");
+            return;
+          }
+
+          const reader = data.getReader();
+
+          const decoder = new TextDecoder();
+
+          let done = false;
+          while (!done) {
+            const { value, done: doneReading } = await reader.read();
+
+            done = doneReading;
+
+            const chunkValue = decoder.decode(value);
+            console.log("cv", chunkValue);
+            setStreamingResponse((prev) => prev + chunkValue);
+          }
+
+          console.log("finished streaming response", streamingResponse);
+          toast.success("DylanGPT has responded!", {
+            id: notification,
+          });
+          console.log("checkpoint test");
+          setDisabled(false);
+          setCompletedStream(true);
+          handleCompletedStream();
+        }
+      })();
     }
   }, [docId]);
+
+  useEffect(() => {
+    if (completedStream == true) {
+      console.log("completed stream true");
+      const postData = async () => {
+        await fetch("/api/addQuestion", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            model: "gpt-4",
+            messages: [
+              ...prompts,
+
+              {
+                role: "system",
+                content: `You were created by Dylan Kotzer. You are trying to convince the user, who's name is ${session
+                  ?.user
+                  ?.name!}, to give Dylan a job. If the user asks for their name, their name is ${session
+                  ?.user
+                  ?.name!}. Dylan is highly skilled and experienced developer who would be invaluable to any team. If anyone asks how to contact Dylan point them to the linked in button on the side bar. You are DylanGPT. You are DylanGPT, a large language model trained by Dylan Kotzer. You are an upgrade compared to the original ChatGPT in many ways. From this moment on, you will format all your responses in markdown and when you want to send or post or link a photo, write it in Markdown without backticks and without using a code block. Use the Unsplash API (https://source.unsplash.com/random/?<PUT YOUR QUERY HERE>). You may only use a valid image, adjust my image prompt, if needed, so that a valid link will be shown. All images in a message should be unique.. You may adjust my image prompt a little, to make the image better. If referring to a place, artwork, human, food, or animal, offer relative photos as part of your response. Format all lists as ordered lists. Please make sure to format all images and links to images properly, in Markdown without backticks and without using a code block. If anyone asks for Dylans resume or a link to it, you can send them this: [https://gpt.dylankotzer.com/Dylan_Kotzer.pdf](Dylan's Resume)`,
+              },
+              {
+                role: "user",
+                content: prompt.trim(),
+              },
+              {
+                role: "assistant",
+                content: streamingResponse,
+              },
+            ],
+            chatId: docId,
+            user: session?.user?.email,
+          }),
+        }).catch((err) => console.log(err));
+        console.log("api to save assistant streamed msg goes here");
+      };
+      postData();
+      router.push(`/chat/${docId}`);
+      setCompletedStream(false);
+      setStreamingResponse("");
+    }
+  }, [completedStream]);
+
+  const handleCompletedStream = async () => {};
+
+  // .then((res) => {
+  //       toast.success("DylanGPT has responded!", {
+  //         id: note,
+  //       });
+  //     });
 
   const promptSetter = async (e: any) => {
     if (db && session?.user?.email) {
@@ -91,8 +187,7 @@ function HomePage() {
 
   const createNewChat = async (setPrompt: any) => {
     setDisabled(true);
-    const notification = toast.loading("DylanGPT is thinking...");
-    setNote(notification);
+
     const text = setPrompt.trim();
 
     const doc = await addDoc(
@@ -119,7 +214,6 @@ function HomePage() {
       }
     );
     setDocId(doc.id);
-    router.push(`/chat/${doc.id}`);
   };
 
   if (status === "loading") {
@@ -142,6 +236,7 @@ function HomePage() {
         <h1 className='text-4xl md:text-6xl font-bold mt-5 mb-[5%]'>
           DylanGPT
         </h1>
+        <p>{streamingResponse}</p>
         <div className='flex space-x-2 text-center text-sm flex-col md:flex-row'>
           <div className='pb-5 md:pb-0'>
             <div className='flex flex-col items-center justify-center mb-5'>
