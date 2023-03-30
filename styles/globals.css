@@ -37,7 +37,14 @@ video {
   margin-top: 10px;
   object-fit: contain;
   height: auto;
-  margin-left: -40px;
+  margin-left: -25px;
+  scale: 100%;
+}
+
+@media (min-width: 768px) {
+  .markdown img {
+    margin-left: -35px;
+  }
 }
 
 .markdown {
@@ -73,11 +80,21 @@ video {
 
   /* max-width: 90%; */
 }
+.p-img {
+  z-index: 20;
+}
+
+/* .flex > .p-img + .markdown > *:first-child {
+  width: calc(100% - 45px);
+} */
+/* .p-img + markdown > p {
+  max-width: 80%;
+} */
 
 .markdown li {
   margin-right: 0.25em;
   max-width: 100%;
-  margin-left: -13px;
+  margin-left: -12px;
 }
 
 @media (min-width: 768px) {
