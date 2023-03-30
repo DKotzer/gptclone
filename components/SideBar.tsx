@@ -168,10 +168,10 @@ function SideBar() {
               </div>
               <div className='hiddenMouseOver'>Sign Out</div>
             </div>
+            <div className='h-[70px]  md:h-[25px]' />
           </div>
         )}
       </div>
-      <div className='h-[70px]  md:h-[25px]' />
     </div>
   );
 }
