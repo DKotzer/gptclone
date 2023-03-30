@@ -176,7 +176,6 @@ function HomePage() {
       postData();
       setCompletedStream(false);
       router.push(`/chat/${docId}`);
-
     }
   }, [completedStream]);
 
@@ -253,7 +252,7 @@ function HomePage() {
   }
 
   return (
-    <div className='flex chatBox flex-col h-screen'>
+    <div className='flex chatBox flex-col overflow-y-auto overflow-x-auto h-full bg-[#434654] ml-[-13px] md:ml-0'>
       <div className='flex flex-col items-center md:justify-center h-full text-white px-2 mr-3 overflow-x-auto overflow-y-auto chatSelectScroll '>
         {streamingResponse ? (
           <div className='fontPageChat w-full h-full'>
