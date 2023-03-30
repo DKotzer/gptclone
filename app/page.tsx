@@ -131,7 +131,6 @@ function HomePage() {
           toast.success("DylanGPT has responded!", {
             id: notification,
           });
-          setDisabled(false);
           setCompletedStream(true);
         }
       })();
@@ -252,7 +251,7 @@ function HomePage() {
   }
 
   return (
-    <div className='flex chatBox flex-col overflow-y-auto overflow-x-auto h-full bg-[#434654] ml-[-13px] md:ml-0'>
+    <div className='flex chatBox flex-col overflow-y-auto overflow-x-auto h-screen bg-[#434654]  md:ml-0'>
       <div className='flex flex-col items-center md:justify-center h-full text-white px-2 mr-3 overflow-x-auto overflow-y-auto chatSelectScroll '>
         {streamingResponse ? (
           <div className='fontPageChat w-full h-full'>
@@ -278,7 +277,7 @@ function HomePage() {
                   <h2>Examples</h2>
                 </div>
 
-                <div className='space-y-1 ml-[12px]'>
+                <div className='space-y-1 '>
                   <p
                     onClick={promptSetter}
                     className='infoText bg-[#40414f] ring-2 ring-slate-500/50 ring-inset  hover:border-opacity-100 hover:cursor-pointer hover:scale-105 hover:ring-white hover:ring-3 '
@@ -339,14 +338,14 @@ function HomePage() {
           </div>
         )}
       </div>
-      <div className='bg-[#353a48] text-gray-400 rounded-lg text-sm max-w-[90%] min-w-[70%] mx-auto overflow-x-hidden overflow-y-hidden'>
+      <div className='bg-[#353a48] text-gray-400 rounded-lg text-sm mx-auto w-full overflow-x-hidden overflow-y-hidden'>
         {/* <div className='mx-auto text-center mr-[8%] ml-[8%] mt-2 text-white'></div> */}
         <form
           onSubmit={(e) => {
             e.preventDefault();
             inputPromptSetter();
           }}
-          className='pt-5 pb-5  flex mx-auto '
+          className='pt-5 pb-5  flex mx-auto max-w-[90%] min-w-[70%]  '
         >
           <input
             className='mx-auto stretch  rounded-l-md pl-5 pr-4 m-0 bg-[#40414f] focus:outline-none flex width-[100%] disabled:cursor-not-allowed disabled:text-gray-300'
