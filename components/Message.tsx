@@ -32,7 +32,7 @@ function Message({ message, userImg }: Props) {
         !isDylanGPT && "divide-solid > * + *"
       }}`}
     >
-      <div className='flex mx-auto justify-between '>
+      <div className='flex flex-col md:flex-row mx-auto justify-between '>
         <img
           src={
             message.role == "assistant"
@@ -42,7 +42,10 @@ function Message({ message, userImg }: Props) {
           alt=''
           className='h-10 w-10 rounded-lg cursor-pointed mr-3 ml-3 p-img'
         />
-        <div className={"markdown"} dangerouslySetInnerHTML={createMarkup()} />
+        <div
+          className={"markdown ml-[1em] md:ml-[-10px]"}
+          dangerouslySetInnerHTML={createMarkup()}
+        />
       </div>
     </div>
   );
