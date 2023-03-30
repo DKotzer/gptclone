@@ -8,15 +8,17 @@ export default function Head() {
       <meta name='viewport' content='width=device-width, initial-scale=1.0' />
       <link rel='icon' href='/dgpt.webp' />
       <meta
+        name='image'
         property='og:image'
         content='https://gpt.dylankotzer.com/DylanGPTLogo.webp'
       />
       <meta property='og:title' content='DylanGPT' />
-      <meta name='description' content='A cutting edge AI-powered Chatbot' />
       <meta
-        property='description'
-        content='A cutting edge AI-powered Chatbot'
+        property='og:description'
+        content='An above average GPT-powered Chatbot created by Dylan Kotzer. Give it a shot!'
       />
+      <head />
+      <meta name='author' content='Dylan Kotzer'></meta>
 
       <link
         rel='stylesheet'
