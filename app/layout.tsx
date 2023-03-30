@@ -5,6 +5,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@component/pages/api/auth/[...nextauth]";
 import Login from "@component/components/Login";
 import ClientProvider from "@component/components/ClientProvider";
+import Head from "next/head";
 
 export const metadata = {
   title: "DylanGPT",
@@ -20,20 +21,21 @@ export default async function RootLayout({
 
   return (
     <html lang='en'>
-      <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-      {/* <meta name='image' property='og:image' content='/layoutLarge.png'></meta> */}
-      <meta
-        name='image'
-        property='og:image'
-        content='https://gpt.dylankotzer.com/DylanGPTLogo.webp'
-      />
+      <Head>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+        {/* <meta name='image' property='og:image' content='/layoutLarge.png'></meta> */}
+        <meta
+          name='image'
+          property='og:image'
+          content='https://gpt.dylankotzer.com/DylanGPTLogo.webp'
+        />
 
-      <meta property='og:title' content='DylanGPT' />
-      <meta
-        property='og:description'
-        content='An above average GPT-powered Chatbot created by Dylan Kotzer. Give it a shot!'
-      />
-      <head />
+        <meta property='og:title' content='DylanGPT' />
+        <meta
+          property='og:description'
+          content='An above average GPT-powered Chatbot created by Dylan Kotzer. Give it a shot!'
+        />
+      </Head>
       <meta name='author' content='Dylan Kotzer'></meta>
       <body>
         <SessionProvider session={session}>
