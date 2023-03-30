@@ -26,13 +26,18 @@ export default async function RootLayout({
         property='og:image'
         content='https://gpt.dylankotzer.com/DylanGPTLogo.webp'
       />
+      <meta
+        name='image'
+        property='og:image'
+        content='https://gpt.dylankotzer.com/DylanGPTLogo.webp'
+      ></meta>
       <meta property='og:title' content='DylanGPT' />
       <meta
         property='og:description'
         content='An above average GPT-powered Chatbot created by Dylan Kotzer. Give it a shot!'
       />
       <head />
-      <meta name="author" content="Dylan Kotzer"></meta>
+      <meta name='author' content='Dylan Kotzer'></meta>
       <body>
         <SessionProvider session={session}>
           {!session ? (
