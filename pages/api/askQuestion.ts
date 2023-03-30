@@ -23,7 +23,7 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   const payload = {
-    model: "gpt-3.5-turbo",
+    model: "gpt-4",
     messages: messages,
     stream: true,
   };
