@@ -7,6 +7,7 @@ export default function Head() {
       <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
       <meta name='viewport' content='width=device-width, initial-scale=1.0' />
       <link rel='icon' href='/dgpt.webp' />
+      <meta name='image' property='og:image' content='/layoutLarge.png'></meta>
       <meta
         name='image'
         property='og:image'
