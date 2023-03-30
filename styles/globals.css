@@ -46,7 +46,7 @@ video {
 .markdown a {
   text-decoration-line: underline;
   text-underline-offset: 2px;
-  max-width: 95%;
+  max-width: 100%;
 
   /* max-width: 90%; */
 }
@@ -54,12 +54,12 @@ video {
 .markdown p {
   margin-bottom: 0.5em;
   padding-right: 1rem;
-  max-width: 95%;
+  max-width: 100%;
 }
 
 .markdown ul {
   margin-bottom: 1em;
-  max-width: 95%;
+  max-width: 100%;
   margin-left: 0.25em;
   list-style-type: circle;
   /* max-width: 90%; */
@@ -67,7 +67,7 @@ video {
 
 .markdown ol {
   margin-bottom: 1em;
-  max-width: 95%;
+  max-width: 100%;
   margin-right: 0.25em;
   list-style-type: disc;
 
@@ -76,7 +76,7 @@ video {
 
 .markdown li {
   margin-right: 0.25em;
-  max-width: 95%;
+  max-width: 100%;
 }
 
 input {
@@ -157,13 +157,13 @@ code {
   margin-right: 15px;
   margin-bottom: 1.6em;
   margin-top: 0.8em;
-  /* width: 95%; */
+  /* width: 100%; */
   padding: 1em 1.5em;
   display: block;
   word-wrap: break-word;
   overflow-x: auto;
   overflow-y: hide;
-  max-width: 95%;
+  max-width: 100%;
 }
 
 /* below adds labels above the code blocks */
