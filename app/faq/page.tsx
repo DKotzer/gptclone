@@ -84,13 +84,13 @@ function FAQPage() {
                 <ul className=''>
                   <li>
                     <p className='text-base leading-normal text-gray-600 mt-4'>
-                      DylanGPT is fine-tuned from GPT-4, a language model
-                      trained to produce text. GPT 3.5 was optimized for
+                      DylanGPT is fine-tuned from gpt-3.5-turbo, a language
+                      model trained to produce text. GPT 3.5 was optimized for
                       dialogue by using Reinforcement Learning with Human
                       Feedback (RLHF) – a method that uses human demonstrations
                       and preference comparisons to guide the model toward
-                      desired behavior. DylanGPT uses GPT-4 to do the heavy
-                      lifting, but integrates other APIS and data to give
+                      desired behavior. DylanGPT uses gpt-3.5-turbo to do the
+                      heavy lifting, but integrates other APIS and data to give
                       DylanGPT capabilities that ChatGPT Does not, such as
                       posting images.
                     </p>

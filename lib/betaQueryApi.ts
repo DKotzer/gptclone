@@ -11,7 +11,7 @@ interface BetaQueryRequest {
 const betaQuery = async (messages: BetaQueryRequest["messages"]) => {
   const completion = await openai
     .createChatCompletion({
-      model: "gpt-4",
+      model: "gpt-3.5-turbo",
       messages: messages,
     })
     .then((res) => {

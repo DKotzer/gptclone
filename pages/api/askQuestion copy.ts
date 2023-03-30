@@ -34,7 +34,7 @@ export default async function handler(
 
   //gpt3 query - handled by lib/queryApi
   const payload = await openai.createChatCompletion({
-    model: "gpt-4",
+    model: "gpt-3.5-turbo",
     messages: messages,
     stream: true,
   });
