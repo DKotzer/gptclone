@@ -171,6 +171,7 @@ function SideBar() {
           </div>
         )}
       </div>
+      <div className='h-[70px]  md:h-[25px]' />
     </div>
   );
 }
