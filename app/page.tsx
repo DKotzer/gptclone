@@ -251,8 +251,8 @@ function HomePage() {
   }
 
   return (
-    <div className='flex chatBox flex-col overflow-y-auto overflow-x-auto h-screen bg-[#434654]  md:ml-0'>
-      <div className='flex flex-col items-center md:justify-center h-full text-white px-2 mr-3 overflow-x-auto overflow-y-auto chatSelectScroll '>
+    <div className='flex chatBox flex-col overflow-y-auto overflow-x-hidden h-screen bg-[#434654]  md:ml-0'>
+      <div className='flex flex-col items-center md:justify-center h-full text-white px-2 mr-3 overflow-x-hidden overflow-y-auto chatSelectScroll '>
         {streamingResponse ? (
           <div className='fontPageChat w-full h-full'>
             <Message
@@ -353,7 +353,7 @@ function HomePage() {
             type='text'
             value={prompt}
             onChange={(e) => setPrompt(e.target.value)}
-            placeholder='Type your message here...'
+            placeholder='Start a new chat here'
           />
           <button
             className='bg-[#11A37F] hover:opacity-50 text-white font-bolt px-4 m-0 py-2 rounded-r-md disabled:bg-gray-300 disabled:opacity-50 disabled:cursor-not-allowed'

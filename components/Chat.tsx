@@ -103,7 +103,7 @@ function Chat({
   }, [messages]);
 
   return (
-    <div className='chatBox flex-1 overflow-y-auto overflow-x-auto h-full bg-[#434654]  md:ml-0'>
+    <div className='chatBox flex-1 overflow-y-auto overflow-x-hidden h-full w-full bg-[#434654]  md:ml-0'>
       {messages[0]?.messages?.map((message, i) =>
         message.role !== "system" ? (
           <Message userImg={session?.user?.image!} key={i} message={message} />

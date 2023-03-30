@@ -16,7 +16,7 @@ import { useState } from "react";
 
 function SideBar() {
   const router = useRouter();
-  const [hidden, setHidden] = useState(false);
+  const [hidden, setHidden] = useState(window.innerWidth <= 768);
   const { data: session } = useSession();
   const [chats, loading, error] = useCollection(
     session &&
