@@ -7,6 +7,11 @@ export default function Head() {
       <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
       <meta name='viewport' content='width=device-width, initial-scale=1.0' />
       <link rel='icon' href='/dgpt.webp' />
+      <link
+        rel='stylesheet'
+        href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark-reasonable.min.css'
+      />
+
       <meta
         name='image'
         property='og:image'
@@ -17,10 +22,9 @@ export default function Head() {
         property='og:image'
         content='https://gpt.dylankotzer.com/LogoLarge.png'
       />
-      <link
-        rel='stylesheet'
-        href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark-reasonable.min.css'
-      />
+      <meta property='og:image:width' content='500' />
+
+      <meta property='og:image:height' content='500' />
       <meta name='viewport' content='width=device-width, initial-scale=1.0' />
       {/* <meta name='image' property='og:image' content='/layoutLarge.png'></meta> */}
       {/* <meta
