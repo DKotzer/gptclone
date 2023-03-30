@@ -29,6 +29,11 @@ export default async function RootLayout({
           property='og:image'
           content='https://gpt.dylankotzer.com/DylanGPTLogo.webp'
         />
+        <meta
+          name='image'
+          property='og:image'
+          content='https://gpt.dylankotzer.com/DylanGPTLogo.png'
+        />
 
         <meta property='og:title' content='DylanGPT' />
         <meta
