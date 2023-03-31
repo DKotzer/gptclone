@@ -41,14 +41,7 @@ export default async function RootLayout({
           property='og:image'
           content='https://gpt.dylankotzer.com/LogoLarge.jpeg'
         />
-        <meta property='og:image:width' content='1250' />
 
-        <meta property='og:image:height' content='700' />
-        <meta
-          name='image'
-          property='image'
-          content='https://gpt.dylankotzer.com/LogoLarge.png'
-        />
         <meta name='viewport' content='width=device-width, initial-scale=1.0' />
         {/* <meta name='image' property='og:image' content='/layoutLarge.png'></meta> */}
         {/* <meta
