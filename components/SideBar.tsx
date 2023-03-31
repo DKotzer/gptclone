@@ -12,13 +12,11 @@ import {
 } from "@heroicons/react/24/outline";
 import { useRouter } from "next/navigation";
 import { collection, orderBy, query } from "firebase/firestore";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function SideBar() {
   const router = useRouter();
-  const [hidden, setHidden] = useState(
-    typeof window !== "undefined" ? window?.innerWidth <= 768 : false
-  );
+  const [hidden, setHidden] = useState(false);
   const { data: session } = useSession();
   const [chats, loading, error] = useCollection(
     session &&
@@ -28,6 +26,13 @@ function SideBar() {
       )
   );
 
+  useEffect(() => {
+    //check size of window to set if the sidebar should be expanded or not on page load
+    const isWindowDefined = typeof window !== "undefined";
+    if (isWindowDefined) {
+      setHidden(window.innerWidth <= 768);
+    }
+  }, []);
   const createBetaChat = async () => {
     router.push(`/beta`);
   };
