@@ -28,9 +28,9 @@ function Message({ message, userImg }: Props) {
   const isDylanGPT = message.role == "assistant";
   return (
     <div
-      className={`py-5 text-white bb w-full ${isDylanGPT && "bg-[#434654]"} ${
-        !isDylanGPT && "divide-solid > * + *"
-      }}`}
+      className={`py-5 text-white  w-full ${!isDylanGPT && "bb"} ${
+        !isDylanGPT && "bg-[#353a48]"
+      } ${!isDylanGPT && "divide-solid > * + *"}}`}
     >
       <div className='flex flex-col md:flex-row mx-auto justify-between '>
         <img

@@ -120,7 +120,7 @@ function NewChatInput({ inputPromptSetter, setDocId, docId }: Props) {
           <PaperAirplaneIcon className='w-4 h-4 -rotate-45' />
         </button>
       </form>
-      <div className='h-[70px] md:h-[25px]' />
+      <div className='h-[70px] lg:h-[25px]' />
     </div>
   );
 }

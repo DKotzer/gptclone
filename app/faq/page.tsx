@@ -318,7 +318,7 @@ function FAQPage() {
           className='mx-auto max-w-[66%] object-center   z-0'
         />{" "}
       </div>
-      {/* <div className='h-[70px] md:h-[25px]' /> */}
+      {/* <div className='h-[70px] lg:h-[25px]' /> */}
     </div>
   );
 }
