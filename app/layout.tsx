@@ -31,15 +31,15 @@ export default async function RootLayout({
           href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark-reasonable.min.css'
         />
 
-        <meta
+        {/* <meta
           name='image'
           property='og:image'
           content='https://gpt.dylankotzer.com/DylanGPTLogo.webp'
-        />
+        /> */}
         <meta
           name='image'
           property='og:image'
-          content='https://gpt.dylankotzer.com/LogoLarge.png'
+          content='https://gpt.dylankotzer.com/LogoLarge.jpg'
         />
         <meta property='og:image:width' content='1250' />
 
