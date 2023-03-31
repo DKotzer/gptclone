@@ -22,6 +22,10 @@ export default function Head() {
         property='og:description'
         content='An above average GPT-powered Chatbot created by Dylan Kotzer. Give it a shot!'
       />
+      <meta
+        property='description'
+        content='An above average GPT-powered Chatbot created by Dylan Kotzer. Give it a shot!'
+      />
       <meta name='author' content='Dylan Kotzer'></meta>
     </>
   );

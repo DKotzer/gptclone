@@ -23,6 +23,10 @@ export default async function RootLayout({
     <html lang='en'>
       <head>
         <title>DylanGPT</title>
+        <meta
+          property='description'
+          content='An above average GPT-powered Chatbot created by Dylan Kotzer. Give it a shot!'
+        />
         <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
         <meta name='viewport' content='width=device-width, initial-scale=1.0' />
         <link rel='icon' href='/dgpt.webp' />
