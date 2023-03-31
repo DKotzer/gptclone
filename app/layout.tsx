@@ -39,7 +39,7 @@ export default async function RootLayout({
         <meta
           name='image'
           property='og:image'
-          content='https://gpt.dylankotzer.com/LogoLarge.jpg'
+          content='https://gpt.dylankotzer.com/LogoLarge.jpeg'
         />
         <meta property='og:image:width' content='1250' />
 
