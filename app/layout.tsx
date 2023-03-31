@@ -40,7 +40,7 @@ export default async function RootLayout({
           content='https://gpt.dylankotzer.com/LogoLarge.jpeg'
         />
         <meta
-          name='image'
+          name='image2'
           property='og:image'
           content='https://gpt.dylankotzer.com/DylanGPTLogo.webp'
         />
