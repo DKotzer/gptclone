@@ -49,6 +49,12 @@ function Chat({
 
   useEffect(() => {
     if (completedStream == true) {
+      const tokens = streamingData.split(/\s+/);
+      const estimatedTokenCount =
+        tokens.length +
+        Math.floor(tokens.length * 0.1) +
+        (streamingData.endsWith(".") ? 1 : 0);
+      // console.log("estimatedTokenCount: ", estimatedTokenCount);
       // console.log("streaming data completed: ", streamingData);
       const postData = async () => {
         await fetch("/api/addQuestion", {
@@ -64,16 +70,12 @@ function Chat({
             ],
             chatId,
             user: session?.user?.email,
+            tokens: estimatedTokenCount,
           }),
         }).catch((err) => console.log(err));
         // console.log("api to save assistant streamed msg goes here");
       };
-      const tokens = streamingData.split(/\s+/);
-      const estimatedTokenCount =
-        tokens.length +
-        Math.floor(tokens.length * 0.1) +
-        (streamingData.endsWith(".") ? 1 : 0);
-      console.log("estimatedTokenCount: ", estimatedTokenCount);
+
       postData();
       setCompletedStream(false);
       setStreamingData("");

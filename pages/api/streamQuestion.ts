@@ -11,6 +11,9 @@ import { db } from "@component/firebase";
 type Data = {
   text: any;
 };
+interface Messages {
+  content: string;
+}
 
 export default async function handler(
   req: NextApiRequest,
@@ -41,6 +44,8 @@ export default async function handler(
         },
       ];
 
+  //check token count of response.data.choices[0].message and add it to tokens count, token count should always exist by time there is an answer streamed
+
   // if (!response?.data?.choices[0]?.message) {
   //   const newMsgArr = [...messages, response.data.choices[0].message];
   // } else{
@@ -52,6 +57,27 @@ export default async function handler(
   await updateDoc(doc(db, "users", user, "chats", chatId), {
     messages: newMsgArr,
   });
+
+  function getTotalContentLength(objects: Messages[]): number {
+    let totalLength = 0;
+    for (const obj of objects) {
+      totalLength += obj.content.length;
+    }
+    return totalLength;
+  }
+
+  let tokens = getTotalContentLength(newMsgArr);
+  const estimatedTokenCount =
+    tokens +
+    Math.floor(tokens.length * 0.1) +
+    (streamingData.endsWith(".") ? 1 : 0);
+  // console.log("estimatedTokenCount: ", estimatedTokenCount);
+
+  // console.log("userRef", userRef);
+  await updateDoc(doc(db, "users", user), {
+    tokens: userDoc.data().tokens + Number(estimatedTokenCount),
+  });
+  // console.log("data", userDoc);
 
   res
     .status(200)
