@@ -13,6 +13,7 @@ type Props = {
   handleStreamingData: any;
   setStreamingData: any;
   setCompletedStream: any;
+  streamingData: any;
 };
 
 type Response = {
@@ -24,6 +25,7 @@ function ChatInput({
   handleStreamingData,
   setStreamingData,
   setCompletedStream,
+  streamingData,
 }: Props) {
   const [prompt, setPrompt] = useState("");
   const { data: session } = useSession();
@@ -77,18 +79,13 @@ function ChatInput({
         user: session?.user?.email,
       }),
     });
-    // console.log("Response headers:", response.headers);
     // console.log("front end response", response);
     if (!response.ok) {
       throw new Error(response.statusText);
     }
 
     setDisabled(true);
-    // const data = await response.text(); // extract the response data as a text string
     const data = response.body;
-    // const data = await response.body;
-
-    // console.log("data", data);
 
     if (!data) {
       setDisabled(false);
@@ -109,13 +106,13 @@ function ChatInput({
 
       const chunkValue = decoder.decode(value);
       // console.log("cv", chunkValue);
-      // setStreamingResponse((prev) => prev + chunkValue);
       setStreamingData((prev) => prev + chunkValue);
     }
     toast.success("DylanGPT has responded!", {
       id: notification,
     });
     setDisabled(false);
+
     setCompletedStream(true);
   };
 

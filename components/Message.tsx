@@ -43,7 +43,7 @@ function Message({ message, userImg }: Props) {
           className='h-10 w-10 rounded-lg cursor-pointed mr-3 ml-3 p-img'
         />
         <div
-          className={"markdown ml-[1em] md:ml-[-10px]"}
+          className={"markdown ml-[1em] md:ml-[-10px] "}
           dangerouslySetInnerHTML={createMarkup()}
         />
       </div>

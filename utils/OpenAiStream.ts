@@ -31,6 +31,7 @@ export async function OpenAIStream(payload) {
 
           try {
             const json = JSON.parse(data);
+            console.log(json);
             const text = json.choices[0].delta.content;
             const queue = encoder.encode(text);
             controller.enqueue(queue);
@@ -45,7 +46,7 @@ export async function OpenAIStream(payload) {
       // let msg = "";
 
       for await (const chunk of res.body as any) {
-        console.log("chunky", decoder.decode(chunk));
+        // console.log("chunky", decoder.decode(chunk));
         // msg += decoder.decode(
         //   chunk.data.choices[0].delta.content
         //     ? chunk.data.choices[0].delta.content
@@ -55,6 +56,7 @@ export async function OpenAIStream(payload) {
       }
     },
   });
+  console.log("res from OpenAiStreams", res);
 
   // console.log("stream from OpenAiStreams", stream);
   return stream;

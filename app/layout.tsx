@@ -74,3 +74,4 @@ export default async function RootLayout({
     </html>
   );
 }
+//Do these projects make Dylan a good candidate to work on our companies upcoming gpt-4 based App?

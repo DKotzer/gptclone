@@ -52,6 +52,7 @@ function ChatPage({ params: { id } }: Props) {
         handleStreamingData={handleStreamingData}
         setStreamingData={setStreamingData}
         setCompletedStream={setCompletedStream}
+        streamingData={streamingData}
       />
     </div>
   );
