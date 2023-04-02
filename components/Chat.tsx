@@ -68,6 +68,12 @@ function Chat({
         }).catch((err) => console.log(err));
         // console.log("api to save assistant streamed msg goes here");
       };
+      const tokens = streamingData.split(/\s+/);
+      const estimatedTokenCount =
+        tokens.length +
+        Math.floor(tokens.length * 0.1) +
+        (streamingData.endsWith(".") ? 1 : 0);
+      console.log("estimatedTokenCount: ", estimatedTokenCount);
       postData();
       setCompletedStream(false);
       setStreamingData("");
