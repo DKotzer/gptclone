@@ -63,7 +63,7 @@ function Chat({
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            model: "gpt-4",
+            model: "gpt-3.5-turbo",
             messages: [
               ...messages[0]?.messages,
               { role: "assistant", content: streamingData },

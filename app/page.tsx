@@ -29,7 +29,7 @@ function HomePage() {
   const { data: session, status } = useSession();
   const router = useRouter();
   const [prompt, setPrompt] = useState("");
-  const model = "gpt-4";
+  const model = "gpt-3.5-turbo";
   const [disabled, setDisabled] = useState(false);
   const [docId, setDocId] = useState("");
   const [note, setNote] = useState("");
@@ -146,7 +146,7 @@ function HomePage() {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            model: "gpt-4",
+            model: "gpt-3.5-turbo",
             messages: [
               ...prompts,
 
