@@ -12,7 +12,6 @@ function ChatPage() {
   const { data: session } = useSession();
 
   const [messages, setMessages] = useState([
-    ...prompts,
     {
       role: "system",
       content: `You were created by Dylan Kotzer. You are trying to convince the user, who's name is ${session

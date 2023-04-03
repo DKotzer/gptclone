@@ -67,6 +67,8 @@ function ChatInput({
       }),
     }).catch((err) => console.log(err));
 
+    
+
     const response = await fetch("/api/askQuestion", {
       method: "POST",
       headers: {

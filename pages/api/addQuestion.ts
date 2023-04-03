@@ -34,24 +34,23 @@ export default async function handler(
   const userRef = doc(db, "users", user);
   // console.log("userRef", userRef);
   if (userRef && tokens) {
-    console.log("userRef.path", userRef.path);
+    // console.log("userRef.path", userRef.path);
     const userDoc = await getDoc(userRef);
     // console.log("data", userDoc);
-    console.log("tokens pre if", userDoc.data().tokens);
+    console.log("tokens pre add Question", userDoc.data().tokens);
 
     if (userDoc.data()) {
-      console.log("user data found");
       if (userDoc.data().tokens) {
-        console.log("tokens found", userDoc.data().tokens);
+        // console.log("tokens found", userDoc.data().tokens);
         await updateDoc(userRef, {
           tokens: userDoc.data().tokens + Number(tokens),
         });
       } else {
-        console.log("uer data found but no tokens");
+        console.log("uer data found but no tokens", tokens);
         await setDoc(userRef, { tokens: tokens });
       }
     } else {
-      console.log("no user data found, creating tokens data");
+      console.log("no user data found, attempting to create tokens data", tokens);
       await setDoc(userRef, { tokens: tokens });
     }
   }

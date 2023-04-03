@@ -71,7 +71,7 @@ export default async function handler(
     tokens +
     Math.floor(tokens.length * 0.1) +
     (streamingData.endsWith(".") ? 1 : 0);
-  // console.log("estimatedTokenCount: ", estimatedTokenCount);
+  console.log("estimatedResponseTokenCount: ", estimatedTokenCount);
 
   // console.log("userRef", userRef);
   await updateDoc(doc(db, "users", user), {
