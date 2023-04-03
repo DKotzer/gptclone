@@ -91,12 +91,7 @@ video {
   z-index: 20;
 }
 
-/* .flex > .p-img + .markdown > *:first-child {
-  width: calc(100% - 45px);
-} */
-/* .p-img + markdown > p {
-  max-width: 80%;
-} */
+
 
 .markdown li {
   margin-right: 0.25em;
