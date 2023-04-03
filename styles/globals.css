@@ -197,12 +197,6 @@ code {
   max-width: 100%;
 }
 
-@media (min-width: 768px) {
-  code {
-    /* margin-left: -30px; */
-  }
-}
-
 /* below adds labels above the code blocks */
 
 code::before {
@@ -502,60 +496,4 @@ pre {
   100% {
     transform: rotate(360deg);
   }
-}
-
-@-webkit-keyframes shrinking-cog {
-  0% {
-    -webkit-transform: scale(1);
-  }
-  20% {
-    -webkit-transform: scale(1.2);
-  }
-  100% {
-    -webkit-transform: scale(0);
-  }
-}
-
-@-moz-keyframes shrinking-cog {
-  0% {
-    -moz-transform: scale(1);
-  }
-  20% {
-    -moz-transform: scale(1.2);
-  }
-  100% {
-    -moz-transform: scale(0);
-  }
-}
-
-@-o-keyframes shrinking-cog {
-  0% {
-    -o-transform: scale(1);
-  }
-  20% {
-    -o-transform: scale(1.2);
-  }
-  100% {
-    -o-transform: scale(0);
-  }
-}
-
-@keyframes shrinking-cog {
-  0% {
-    transform: scale(1);
-  }
-  20% {
-    transform: scale(1.2);
-  }
-  100% {
-    transform: scale(0);
-  }
-}
-
-.overlay-loader .loader-icon.shrinking-cog {
-  -webkit-animation: shrinking-cog 0.3s 1 ease forwards;
-  -moz-animation: shrinking-cog 0.3s 1 ease forwards;
-  -ms-animation: shrinking-cog 0.3s 1 ease forwards;
-  -o-animation: shrinking-cog 0.3s 1 ease forwards;
-  animation: shrinking-cog 0.3s 1 ease forwards;
 }

@@ -83,18 +83,9 @@ const handler = async (req: Request): Promise<Response> => {
     }),
   }).catch((err) => console.log("error detected", err));
 
-  // console.log("test", test);
-
-  // const userRef = doc(db, "users", user);
-  // const userDoc = await getDoc(userRef);
-
-  // await updateDoc(doc(db, "users", user), {
-  //   tokens: userDoc.data().tokens + Number(estimatedTokenCount),
-  // });
 
   const stream = await OpenAIStream(payload);
 
-  // console.log("ask question stream", stream);
 
   return new Response(stream);
 };
