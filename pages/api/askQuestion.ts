@@ -16,6 +16,10 @@ const handler = async (req: Request): Promise<Response> => {
     user?: string;
   };
 
+  const baseUrl = process.env.DEPLOYED_URL
+    ? "https://" + process.env.DEPLOYED_URL
+    : "http://localhost:3000";
+
   if (!messages) {
     return new Response("Please provide messages", { status: 400 });
   }
@@ -26,11 +30,35 @@ const handler = async (req: Request): Promise<Response> => {
   //if the last message.content.toLowerCase() includes 'dylan' then add prompts to the messages array
   const lastMessage = messages[messages.length - 1].content;
 
+  const keywords = [
+    "dylan",
+    "him",
+    "created",
+    "his",
+    "kotzer",
+    "portfolio",
+    "projects",
+    "resume",
+    "apps",
+    "linkedin",
+  ];
+
+  const messageContainsKeyword = keywords.some((keyword) =>
+    lastMessage.toLowerCase().includes(keyword)
+  );
+
   if (
-    lastMessage.toLowerCase().includes("dylan") ||
-    lastMessage.toLowerCase().includes("him") ||
-    lastMessage.toLowerCase().includes("created") ||
-    lastMessage.toLowerCase().includes("his") 
+    messageContainsKeyword
+    // lastMessage.toLowerCase().includes("dylan") ||
+    // lastMessage.toLowerCase().includes("him") ||
+    // lastMessage.toLowerCase().includes("created") ||
+    // lastMessage.toLowerCase().includes("his") ||
+    // lastMessage.toLowerCase().includes("kotzer") ||
+    // lastMessage.toLowerCase().includes("portfolio") ||
+    // lastMessage.toLowerCase().includes("projects") ||
+    // lastMessage.toLowerCase().includes("resume") ||
+    // lastMessage.toLowerCase().includes("apps") ||
+    // lastMessage.toLowerCase().includes("linkedin")
   ) {
     //check if one of the messages.content includes 'If anyone asks about Dylan's Projects or Portfolio, tell them'
 
@@ -63,6 +91,19 @@ const handler = async (req: Request): Promise<Response> => {
   console.log("Query Character Length: ", tokens);
   const estimatedTokenCount = ((tokens / 4) * 1.1).toFixed(0);
   console.log("estimatedQueryTokenCount: ", estimatedTokenCount);
+
+  let test = await fetch(`${baseUrl}/api/addTokens`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      user: user,
+      tokens: estimatedTokenCount,
+    }),
+  }).catch((err) => console.log("error detected", err));
+
+  // console.log("test", test);
 
   // const userRef = doc(db, "users", user);
   // const userDoc = await getDoc(userRef);

@@ -12,36 +12,20 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  const { messages, chatId, user, tokens } = req.body;
-
-  if (!messages) {
-    res.status(400).json({ text: "Please provide messages" });
-    return;
-  }
-
-  if (!chatId) {
-    res.status(400).json({ text: "Please provide a valid chat ID!" });
-    return;
-  }
-
-  //gpt3 query - handled by lib/queryApi
-
-  //...
-  await updateDoc(doc(db, "users", user, "chats", chatId), {
-    messages: messages,
-  });
+  const { user, tokens } = req.body;
 
   const userRef = doc(db, "users", user);
-  // console.log("userRef", userRef);
+  //   console.log("userRef", userRef);
   if (userRef && tokens) {
     // console.log("userRef.path", userRef.path);
     const userDoc = await getDoc(userRef);
     // console.log("data", userDoc);
-    // console.log("tokens pre add Question", userDoc?.data()?.tokens);
+    console.log("tokens api pre add Question", userDoc?.data()?.tokens);
 
     if (userDoc.data()) {
+      //   console.log("data found", userDoc?.data());
       if (userDoc?.data()?.tokens) {
-        // console.log("tokens found", userDoc.data().tokens);
+        console.log("tokens found", userDoc?.data()?.tokens);
         await updateDoc(userRef, {
           tokens: userDoc?.data()?.tokens + Number(tokens),
         });
@@ -57,5 +41,5 @@ export default async function handler(
       await setDoc(userRef, { tokens: tokens });
     }
   }
-  res.status(200).json({ text: messages });
+  res.status(200).json({ text: "Tokens added: " + tokens });
 }

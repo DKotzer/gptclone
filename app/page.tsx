@@ -15,12 +15,22 @@ import {
 import NewChatInput from "@component/components/NewChatInput";
 import { useSession } from "next-auth/react";
 import toast, { Toaster } from "react-hot-toast";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  doc,
+  getDoc,
+  serverTimestamp,
+} from "firebase/firestore";
 import { db } from "@component/firebase";
 import { useRouter } from "next/navigation";
 import prompts from "@component/components/Prompts";
 import Message from "@component/components/Message";
 import { PaperAirplaneIcon } from "@heroicons/react/24/solid";
+import {
+  useDocumentData,
+  useDocumentDataOnce,
+} from "react-firebase-hooks/firestore";
 
 type Response = {
   data: any;
@@ -37,6 +47,29 @@ function HomePage() {
   const [streamingResponse, setStreamingResponse] = useState("");
   const [completedStream, setCompletedStream] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const [tokens, setTokens] = useState(null);
+
+  useEffect(() => {
+    // console.log("running useEffect()");
+    const getUserData = async () => {
+      const userDocRef = doc(db, "users", session?.user?.email!);
+      const userDocSnap = await getDoc(userDocRef);
+      // console.log("snap", userDocSnap);
+      if (userDocSnap.exists()) {
+        // console.log("exists");
+        const userData = userDocSnap.data();
+        // console.log(userData);
+        setTokens(userData.tokens);
+      }
+    };
+
+    if (session?.user?.email) {
+      // console.log("email found");
+      getUserData();
+    }
+  }, [session?.user?.email]);
+
+  // console.log("tokens", tokens);
 
   if (dylanLog) {
     console.log(
@@ -311,6 +344,57 @@ function HomePage() {
     // }
   };
 
+  if (tokens && tokens > 700000) {
+    return (
+      <div className='relative w-full h-full overflow-hidden bg-cover bg-[50%] bg-no-repeat'>
+        <div className='absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-auto bg-fixed bg-grey'>
+          <div className='flex h-full items-center my-[5%] flex-col max-w-[80%] mx-auto'>
+            <img
+              src='/stonks.png'
+              className='bg-white rounded-full mb-4 max-h-[30%]'
+            ></img>
+            <h2 className='text-white opacity-100'>
+              Thank you for using DylanGPT!
+            </h2>
+            <p>&nbsp;</p>
+            <p className='text-white opacity-100'>
+              {" "}
+              We hope you enjoyed the app and were able to find all the
+              information about{" "}
+              <a href='https://dylankotzer.com' className='text-blue-400'>
+                Dylan Kotzer
+              </a>{" "}
+              that you were looking for. We are thrilled that the app has been
+              more popular than expected.
+            </p>
+            <p>&nbsp;</p>
+            <p className='text-white opacity-100'>
+              Unfortunately, the costs of maintaining DylanGPT are adding up and
+              it looks like you've used up all your free tokens.{" "}
+            </p>
+            <p>&nbsp;</p>
+            <p className='text-white opacity-100'>
+              Don't worry though - you can
+              <a href='mailto:dylan@dylankotzer.com' className='text-blue-400'>
+                {" "}
+                contact Dylan Kotzer
+              </a>{" "}
+              to request more tokens or let us know about any features you'd
+              like to see, bugs you've encountered, or feedback you have. We're
+              always looking for ways to improve DylanGPT and make it even
+              better for our users.
+            </p>
+            <p>&nbsp;</p>
+            <p className='text-white opacity-100'>
+              Thanks again for using DylanGPT, and we appreciate your
+              understanding as we work to keep the app sustainable. We hope to
+              hear from you soon!
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
   if (status === "loading") {
     return (
       <div className='overlay-loader'>
