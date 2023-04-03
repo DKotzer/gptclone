@@ -12,7 +12,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { useRouter } from "next/navigation";
 import { collection, orderBy, query } from "firebase/firestore";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function SideBar() {
   const router = useRouter();
@@ -25,6 +25,7 @@ function SideBar() {
         orderBy("createdAt", "asc")
       )
   );
+  const chatsEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     //check size of window to set if the sidebar should be expanded or not on page load
@@ -33,6 +34,17 @@ function SideBar() {
       setHidden(window.innerWidth <= 768);
     }
   }, []);
+
+  useEffect(() => {
+    const messagesEnd = chatsEndRef.current;
+    if (messagesEnd) {
+      const lastMessage = messagesEnd as HTMLElement;
+      if (lastMessage) {
+        lastMessage.scrollIntoView();
+      }
+    }
+  }, [chats]);
+
   const createBetaChat = async () => {
     router.push(`/beta`);
   };
@@ -85,6 +97,7 @@ function SideBar() {
               {chats?.docs.map((chat) => (
                 <ChatRow key={chat.id} id={chat.id} />
               ))}
+              <div ref={chatsEndRef}></div>
             </div>
           </div>
         </div>

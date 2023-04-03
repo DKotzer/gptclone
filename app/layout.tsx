@@ -6,6 +6,8 @@ import { authOptions } from "@component/pages/api/auth/[...nextauth]";
 import Login from "@component/components/Login";
 import ClientProvider from "@component/components/ClientProvider";
 import Head from "next/head";
+import { useContext } from "react";
+import { DataContext } from "./data-context";
 
 export const metadata = {
   title: "DylanGPT",
