@@ -62,36 +62,36 @@ function ChatPage({ params: { id } }: Props) {
             <p>&nbsp;</p>
             <p className='text-white opacity-100'>
               {" "}
-              We hope you enjoyed the app and were able to find all the
-              information about{" "}
+              {`We hope you enjoyed the app and were able to find all the
+              information about`}{" "}
               <a href='https://dylankotzer.com' className='text-blue-400'>
                 Dylan Kotzer
               </a>{" "}
-              that you were looking for. We are thrilled that the app has been
-              more popular than expected.
+              {`that you were looking for. We are thrilled that the app has been
+              more popular than expected.`}
             </p>
             <p>&nbsp;</p>
             <p className='text-white opacity-100'>
-              Unfortunately, the costs of maintaining DylanGPT are adding up and
-              it looks like you've used up all your free tokens.{" "}
+              {` Unfortunately, the costs of maintaining DylanGPT are adding up and
+              it looks like you've used up all your free tokens.`}{" "}
             </p>
             <p>&nbsp;</p>
             <p className='text-white opacity-100'>
-              Don't worry though - you can
+              {`Don't worry though - you can`}
               <a href='mailto:dylan@dylankotzer.com' className='text-blue-400'>
                 {" "}
                 contact Dylan Kotzer
               </a>{" "}
-              to request more tokens or let us know about any features you'd
+              {` to request more tokens or let us know about any features you'd
               like to see, bugs you've encountered, or feedback you have. We're
               always looking for ways to improve DylanGPT and make it even
-              better for our users.
+              better for our users.`}
             </p>
             <p>&nbsp;</p>
             <p className='text-white opacity-100'>
-              Thanks again for using DylanGPT, and we appreciate your
+              {`Thanks again for using DylanGPT, and we appreciate your
               understanding as we work to keep the app sustainable. We hope to
-              hear from you soon!
+              hear from you soon!`}
             </p>
           </div>
         </div>
