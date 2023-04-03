@@ -20,15 +20,18 @@ export default async function handler(
     // console.log("userRef.path", userRef.path);
     const userDoc = await getDoc(userRef);
     // console.log("data", userDoc);
-    console.log("tokens api pre add Question", userDoc?.data()?.tokens);
+    console.log("tokens api before", userDoc?.data()?.tokens);
 
     if (userDoc.data()) {
       //   console.log("data found", userDoc?.data());
       if (userDoc?.data()?.tokens) {
-        console.log("tokens found", userDoc?.data()?.tokens);
         await updateDoc(userRef, {
           tokens: userDoc?.data()?.tokens + Number(tokens),
         });
+        console.log(
+          "tokens api after",
+          userDoc?.data()?.tokens + Number(tokens)
+        );
       } else {
         console.log("uer data found but no tokens", tokens);
         await setDoc(userRef, { tokens: tokens });

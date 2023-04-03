@@ -56,6 +56,19 @@ function Chat({
         (streamingData.endsWith(".") ? 1 : 0);
       // console.log("estimatedTokenCount: ", estimatedTokenCount);
       // console.log("streaming data completed: ", streamingData);
+
+      async () =>
+        await fetch("/api/addTokens", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            user: session?.user?.email,
+            tokens: estimatedTokenCount,
+          }),
+        }).catch((err) => console.log("error detected", err));
+
       const postData = async () => {
         await fetch("/api/addQuestion", {
           method: "POST",
@@ -70,22 +83,13 @@ function Chat({
             ],
             chatId,
             user: session?.user?.email,
-            tokens: estimatedTokenCount,
           }),
         }).catch((err) => console.log(err));
-        // console.log("api to save assistant streamed msg goes here");
       };
 
       postData();
       setCompletedStream(false);
       setStreamingData("");
-      // const messagesEnd = messagesEndRef.current;
-      // if (messagesEnd) {
-      //   const secondToLastMessage = messagesEnd.previousSibling as HTMLElement;
-      //   if (secondToLastMessage) {
-      //     secondToLastMessage.scrollIntoView();
-      //   }
-      // }
     }
   }, [completedStream]);
 
@@ -111,7 +115,7 @@ function Chat({
   }, [messages]);
 
   return (
-    <div className='chatBox flex-1 overflow-y-auto overflow-x-hidden h-full w-full bg-[#434654]  md:ml-0'>
+    <div className='chatBox flex-1 overflow-y-auto overflow-x-hidden h-full w-full bg-[#434654] md:ml-0'>
       {messages[0]?.messages?.map((message, i) =>
         message.role !== "system" ? (
           <Message userImg={session?.user?.image!} key={i} message={message} />
@@ -134,7 +138,6 @@ function Chat({
         </div>
       ) : null}
       <div ref={messagesEndRef} />{" "}
-      {/* Add a div with ref for the last message element */}
     </div>
   );
 }

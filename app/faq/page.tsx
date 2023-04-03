@@ -10,15 +10,11 @@ function FAQPage() {
   const [box2, setBox2] = useState(false);
   const [box3, setBox3] = useState(false);
   const [box4, setBox4] = useState(false);
+  const [box5, setBox5] = useState(false);
 
   return (
     <div className='h-full bg-slate-700 z-100'>
       <div className='h-screen faqScroll overflow-x-auto overflow-y-auto z-1 '>
-        {/* <img
-          src='https://ciberseguridad.blog/content/images/2017/10/autenticaci-n-blockchain.jpg'
-          alt='blue pattern background'
-          className='absolute w-full h-64 md:h-96 object-center  object-fit z-0'
-        /> */}
         <div className=' flex flex-col items-center justify-center sm:px-5 px-6 z-20 pb-5 '>
           <div className='py-10 md:py-15 text-center'>
             <h1
@@ -29,7 +25,10 @@ function FAQPage() {
             </h1>
           </div>
           <div className='lg:w-1/2 md:w-8/12 sm:w-9/12 w-full'>
-            <div className='bg-white shadow rounded p-5'>
+            <div
+              className='bg-white shadow rounded p-5 hover:cursor-pointer'
+              onClick={() => setBox1(!box1)}
+            >
               <div className='flex items-center justify-between'>
                 <div>
                   <h2 className='text-base font-semibold leading-none text-gray-800'>
@@ -98,7 +97,10 @@ function FAQPage() {
                 </ul>
               )}
             </div>
-            <div className='bg-white shadow rounded p-8 mt-8'>
+            <div
+              className='bg-white shadow rounded p-8 mt-8 hover:cursor-pointer'
+              onClick={() => setBox2(!box2)}
+            >
               <div className='flex items-center justify-between'>
                 <div>
                   <h2 className='text-base font-semibold leading-none text-gray-800'>
@@ -168,7 +170,10 @@ function FAQPage() {
                 </ul>
               )}
             </div>
-            <div className='bg-white shadow rounded p-8 mt-8'>
+            <div
+              className='bg-white shadow rounded p-8 mt-8 hover:cursor-pointer'
+              onClick={() => setBox3(!box3)}
+            >
               <div className='flex items-center justify-between'>
                 <div>
                   <h2 className='text-base font-semibold leading-none text-gray-800'>
@@ -236,11 +241,14 @@ function FAQPage() {
                 </ul>
               )}
             </div>
-            <div className='bg-white shadow rounded p-8 mt-8'>
+            <div
+              className='bg-white shadow rounded p-8 mt-8 hover:cursor-pointer'
+              onClick={() => setBox4(!box4)}
+            >
               <div className='flex items-center justify-between'>
                 <div>
                   <h2 className='text-base font-semibold leading-none text-gray-800'>
-                    Where can we find information about you and offer you a job?
+                    Where can we find information about you?
                   </h2>
                 </div>
                 <button
@@ -288,6 +296,83 @@ function FAQPage() {
                 </button>
               </div>
               {box4 && (
+                <ul>
+                  <li>
+                    <p className='text-base leading-normal text-gray-600 mt-4 '>
+                      You can find more information about me on my{" "}
+                      <a
+                        href='https://www.dylankotzer.com/#/overview'
+                        className='text-blue-300 underline'
+                      >
+                        website.
+                      </a>
+                      Or a link to my linkedin on the sidebar, or click{" "}
+                      <a
+                        href='https://www.linkedin.com/in/dylan-kotzer-3a5421190/'
+                        className='text-blue-400 underline'
+                      >
+                        here.
+                      </a>
+                    </p>
+                  </li>
+                </ul>
+              )}
+            </div>
+            <div
+              className='bg-white shadow rounded p-8 mt-8 hover:cursor-pointer'
+              onClick={() => setBox5(!box5)}
+            >
+              <div className='flex items-center justify-between'>
+                <div>
+                  <h2 className='text-base font-semibold leading-none text-gray-800'>
+                    Where can we find information about you?
+                  </h2>
+                </div>
+                <button
+                  onClick={() => setBox5(!box5)}
+                  data-menu
+                  className='focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2 ring-offset-white cursor-pointer'
+                >
+                  {box5 ? (
+                    <svg
+                      role='button'
+                      aria-label='close dropdown'
+                      width='10'
+                      height='6'
+                      viewBox='0 0 10 6'
+                      fill='none'
+                      xmlns='http://www.w3.org/2000/svg'
+                    >
+                      <path
+                        d='M1 5L5 1L9 5'
+                        stroke='#4B5563'
+                        strokeWidth='1.5'
+                        strokeLinecap='round'
+                        strokeLinejoin='round'
+                      />
+                    </svg>
+                  ) : (
+                    <svg
+                      width='10'
+                      role='button'
+                      aria-label='open dropdown'
+                      height='6'
+                      viewBox='0 0 10 6'
+                      fill='none'
+                      xmlns='http://www.w3.org/2000/svg'
+                    >
+                      <path
+                        d='M1 1L5 5L9 1'
+                        stroke='#4B5563'
+                        strokeWidth='1.5'
+                        strokeLinecap='round'
+                        strokeLinejoin='round'
+                      />
+                    </svg>
+                  )}
+                </button>
+              </div>
+              {box5 && (
                 <ul>
                   <li>
                     <p className='text-base leading-normal text-gray-600 mt-4 '>

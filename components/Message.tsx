@@ -33,17 +33,20 @@ function Message({ message, userImg }: Props) {
       } ${!isDylanGPT && "divide-solid > * + *"}}`}
     >
       <div className='flex flex-col md:flex-row mx-auto justify-between '>
-        <img
-          src={
-            message.role == "assistant"
-              ? "https://i.imgur.com/jfLbi1b.png"
-              : userImg
-          }
-          alt=''
-          className='h-10 w-10 rounded-lg cursor-pointed mr-3 ml-3 p-img'
-        />
+        <div className='flex flex-row'>
+          <div className='mb-[5px] md:hidden'></div>
+          <img
+            src={
+              message.role == "assistant"
+                ? "https://i.imgur.com/jfLbi1b.png"
+                : userImg
+            }
+            alt=''
+            className='h-10 w-10 rounded-lg cursor-pointed mr-3 ml-3 p-img mb-[5px] md:mb-0'
+          />{" "}
+        </div>
         <div
-          className={"markdown ml-[1em] md:ml-[-10px] "}
+          className={"markdown ml-[1em] md:ml-[-2px] "}
           dangerouslySetInnerHTML={createMarkup()}
         />
       </div>

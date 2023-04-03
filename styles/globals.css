@@ -39,6 +39,7 @@ video {
   height: auto;
   margin-left: -22px;
   scale: 100%;
+  margin-bottom: 12px;
 }
 
 @media (min-width: 768px) {

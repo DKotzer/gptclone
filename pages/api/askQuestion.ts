@@ -49,29 +49,9 @@ const handler = async (req: Request): Promise<Response> => {
 
   if (
     messageContainsKeyword
-    // lastMessage.toLowerCase().includes("dylan") ||
-    // lastMessage.toLowerCase().includes("him") ||
-    // lastMessage.toLowerCase().includes("created") ||
-    // lastMessage.toLowerCase().includes("his") ||
-    // lastMessage.toLowerCase().includes("kotzer") ||
-    // lastMessage.toLowerCase().includes("portfolio") ||
-    // lastMessage.toLowerCase().includes("projects") ||
-    // lastMessage.toLowerCase().includes("resume") ||
-    // lastMessage.toLowerCase().includes("apps") ||
-    // lastMessage.toLowerCase().includes("linkedin")
   ) {
-    //check if one of the messages.content includes 'If anyone asks about Dylan's Projects or Portfolio, tell them'
-
-    //check if the first message.content is === prompts[0].content
-    if (messages[0].content !== prompts[0].content) {
-      console.log(
-        messages[0].content.substring(0, 20),
-        "vs",
-        prompts[0].content.substring(0, 20)
-      );
-      console.log("last message includes dylan ", lastMessage);
-      messages = [...prompts, ...messages];
-    }
+    console.log("last message includes dylan ", lastMessage);
+    messages = [...prompts, ...messages];
   }
   const payload = {
     model: "gpt-3.5-turbo",
@@ -92,7 +72,7 @@ const handler = async (req: Request): Promise<Response> => {
   const estimatedTokenCount = ((tokens / 4) * 1.1).toFixed(0);
   console.log("estimatedQueryTokenCount: ", estimatedTokenCount);
 
-  let test = await fetch(`${baseUrl}/api/addTokens`, {
+  await fetch(`${baseUrl}/api/addTokens`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
