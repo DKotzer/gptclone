@@ -15,33 +15,25 @@ export default async function handler(
   const { user, tokens } = req.body;
 
   const userRef = doc(db, "users", user);
-  //   console.log("userRef", userRef);
   if (userRef && tokens) {
-    // console.log("userRef.path", userRef.path);
     const userDoc = await getDoc(userRef);
-    // console.log("data", userDoc);
-    console.log("tokens api before", userDoc?.data()?.tokens);
+    const userTokens = userDoc?.data()?.tokens;
 
     if (userDoc.data()) {
-      //   console.log("data found", userDoc?.data());
-      if (userDoc?.data()?.tokens) {
-        await updateDoc(userRef, {
-          tokens: userDoc?.data()?.tokens + Number(tokens),
-        });
-        console.log(
-          "tokens api after",
-          userDoc?.data()?.tokens + Number(tokens)
-        );
+      if (userTokens) {
+        const updatedTokens = Number(userTokens) + Number(tokens);
+        await updateDoc(userRef, { tokens: updatedTokens });
+        console.log("tokens api after", updatedTokens);
       } else {
-        console.log("uer data found but no tokens", tokens);
-        await setDoc(userRef, { tokens: tokens });
+        console.log("user data found but no tokens", tokens);
+        await setDoc(userRef, { tokens: Number(tokens) });
       }
     } else {
       console.log(
         "no user data found, attempting to create tokens data",
         tokens
       );
-      await setDoc(userRef, { tokens: tokens });
+      await setDoc(userRef, { tokens: Number(tokens) });
     }
   }
   res.status(200).json({ text: "Tokens added: " + tokens });
