@@ -17,7 +17,7 @@ const handler = async (req: Request): Promise<Response> => {
   };
 
   const baseUrl = process.env.DEPLOYED_URL
-    ? "https://" + process.env.DEPLOYED_URL
+    ? process.env.DEPLOYED_URL
     : "http://localhost:3000";
 
   if (!messages) {
@@ -47,9 +47,7 @@ const handler = async (req: Request): Promise<Response> => {
     lastMessage.toLowerCase().includes(keyword)
   );
 
-  if (
-    messageContainsKeyword
-  ) {
+  if (messageContainsKeyword) {
     console.log("last message includes dylan ", lastMessage);
     messages = [...prompts, ...messages];
   }
@@ -72,20 +70,33 @@ const handler = async (req: Request): Promise<Response> => {
   const estimatedTokenCount = ((tokens / 4) * 1.1).toFixed(0);
   console.log("estimatedQueryTokenCount: ", estimatedTokenCount);
 
-  await fetch(`${baseUrl}/api/addTokens`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      user: user,
-      tokens: estimatedTokenCount,
-    }),
-  }).catch((err) => console.log("error detected", err));
-
+  if ((tokens / 4) * 1.1 > 3200) {
+    return new Response(
+      JSON.stringify({
+        Warning:
+          "Chat length limit reached, please start a new chat to continue.",
+      }),
+      {
+        status: 400,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+  } else {
+    await fetch(`${baseUrl}/api/addTokens`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        user: user,
+        tokens: estimatedTokenCount,
+      }),
+    }).catch((err) => console.log("error detected", err));
+  }
 
   const stream = await OpenAIStream(payload);
-
 
   return new Response(stream);
 };

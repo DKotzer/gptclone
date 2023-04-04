@@ -21,7 +21,19 @@ function Message({ message, userImg }: Props) {
     },
   });
   // console.log(message.content);
+
   let styledMSG = md.render(message.content);
+  if (
+    message.content.includes(
+      "Chat length limit reached, please start a new chat to continue"
+    )
+  ) {
+    styledMSG = md.render(
+      `I am sorry, the current Chat length limit has been reached.  
+      Please start a new chat to continue`
+    );
+  }
+
   function createMarkup() {
     return { __html: styledMSG };
   }
