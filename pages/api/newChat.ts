@@ -1,33 +1,29 @@
-// @ts-nocheck
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
-import { updateDoc, doc } from "firebase/firestore";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "@component/firebase";
 
 type Data = {
-  text: string;
-  // tokens?: number;
+  text: any;
 };
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  const { messages, chatId, user } = req.body;
+  const { messages, user } = req.body;
 
   if (!messages) {
     res.status(400).json({ text: "Please provide messages" });
     return;
   }
 
-  if (!chatId) {
-    res.status(400).json({ text: "Please provide a valid chat ID!" });
-    return;
-  }
-
-  await updateDoc(doc(db, "users", user, "chats", chatId), {
+  const doc = await addDoc(collection(db, "users", user, "chats"), {
+    userId: user,
+    createdAt: serverTimestamp(),
     messages: messages,
   });
 
-  res.status(200).json({ text: messages });
+  console.log("type of doc id, ", typeof doc.id, doc.id);
+  res.status(200).json({ text: doc.id });
 }

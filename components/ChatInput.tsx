@@ -67,8 +67,6 @@ function ChatInput({
       }),
     }).catch((err) => console.log(err));
 
-    
-
     const response = await fetch("/api/askQuestion", {
       method: "POST",
       headers: {
@@ -83,7 +81,16 @@ function ChatInput({
     });
     // console.log("front end response", response);
     if (!response.ok) {
-      throw new Error(response.statusText);
+      if (response.status === 400) {
+        toast.error(
+          "Chat length limit reached. Please Start a new chat to continue.",
+          {
+            id: notification,
+          }
+        );
+      } else {
+        throw new Error(response.statusText);
+      }
     }
 
     setDisabled(true);
@@ -110,9 +117,11 @@ function ChatInput({
       // console.log("cv", chunkValue);
       setStreamingData((prev) => prev + chunkValue);
     }
-    toast.success("DylanGPT has responded!", {
-      id: notification,
-    });
+    if (response.ok) {
+      toast.success("DylanGPT has responded!", {
+        id: notification,
+      });
+    }
     setDisabled(false);
 
     setCompletedStream(true);
