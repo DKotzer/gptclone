@@ -137,7 +137,7 @@ function SideBar() {
               <ArrowUpTrayIcon className='h-5 w-6 rotate-90' />
               <p className='md:text-sm'>Log Out</p>
             </div>
-            <div className='h-[70px] lg:h-[25px]'></div>
+            <div className='h-[80px] lg:h-[25px]'></div>
           </div>
         )}
       </div>
@@ -188,7 +188,7 @@ function SideBar() {
               </div>
               <div className='hiddenMouseOver'>Sign Out</div>
             </div>
-            <div className='h-[70px]  lg:h-[25px]' />
+            <div className='h-[80px]  lg:h-[25px]' />
           </div>
         )}
       </div>

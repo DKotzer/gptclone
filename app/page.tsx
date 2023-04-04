@@ -393,7 +393,7 @@ function HomePage() {
           </div>
         )}
       </div>
-      <div className='bg-[#353a48] text-gray-400 rounded-lg text-sm mx-auto w-full overflow-x-hidden overflow-y-hidden'>
+      <div className='bg-[#353a48] text-gray-400 text-sm mx-auto w-full overflow-x-hidden overflow-y-hidden'>
         {/* <div className='mx-auto text-center mr-[8%] ml-[8%] mt-2 text-white'></div> */}
         <form
           onSubmit={(e) => {
@@ -418,7 +418,7 @@ function HomePage() {
             <PaperAirplaneIcon className='w-4 h-4 -rotate-45' />
           </button>
         </form>
-        <div className='h-[70px] lg:h-[25px]' />
+        <div className='h-[80px] lg:h-[25px]' />
       </div>
     </div>
   );
