@@ -125,7 +125,7 @@ function Chat({
         <Message
           userImg={"https://i.imgur.com/jfLbi1b.png"}
           key={"streamingText"}
-          message={{ user: "assistant", content: streamingData }}
+          message={{ user:"assistant", content: streamingData }}
         />
       ) : null}
       {messages[0]?.messages[messages[0]?.messages?.length - 1].content ==

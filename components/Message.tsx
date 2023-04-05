@@ -40,9 +40,10 @@ function Message({ message, userImg }: Props) {
   const isDylanGPT = message.role == "assistant";
   return (
     <div
-      className={`py-5 text-white  w-full ${!isDylanGPT && "bb"} ${
-        !isDylanGPT && "bg-[#353a48]"
-      } ${!isDylanGPT && "divide-solid > * + *"}}`}
+      className={`py-5 text-white  w-full ${message.role == "user" && "bb"} 
+      ${message.role == "user" && "bg-[#353a48]"} ${
+        message.role == "user" && "divide-solid > * + *"
+      }}`}
     >
       <div className='flex flex-col md:flex-row mx-auto justify-between '>
         <div className='flex flex-row'>
