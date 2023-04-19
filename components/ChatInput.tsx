@@ -29,7 +29,7 @@ function ChatInput({
 }: Props) {
   const [prompt, setPrompt] = useState("");
   const { data: session } = useSession();
-  const model = "gpt-3.5-turbo";
+  const model = "gpt-4";
   const [disabled, setDisabled] = useState(false);
   // const [streamingResponse, setStreamingResponse] = useState("");
   const messages = useDocumentData(
