@@ -1,4 +1,4 @@
-//gpt-4 prompts w/ images
+//gpt-3.5-turbo prompts w/ images
 
 const prompts = [
   {
