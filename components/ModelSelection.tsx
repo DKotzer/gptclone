@@ -3,13 +3,13 @@
 import useSWR from "swr";
 import Select from "react-select";
 
-const fetchModels = () => fetch("/api/getEngines").then((res) => res.json());
+// const fetchModels = () => fetch("/api/getEngines").then((res) => res.json());
 
 function ModelSelection() {
-  const  models  = ["text-davinci-003", "text-daivinci-004"]
+  const models = ["gpt-3.5-turbo", "gpt-4"];
 
   const { data: model, mutate: setModel } = useSWR("model", {
-    fallbackData: "text-davinci-003",
+    fallbackData: "gpt-3.5-turbo",
   });
   return (
     <div className='mt-2'>
