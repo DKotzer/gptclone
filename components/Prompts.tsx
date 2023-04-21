@@ -60,7 +60,7 @@ const prompts = [
             - Homepage: A homepage built with next.js and typescript that is styled to look like vs code and renders markdown files as pages. All the information you want about Dylan can be found at the. Link : [https://www.dylankotzer.com/#/overview](Overview Page)
             - AnneAI: Get GPT generated sourced responses based on the books, blog, and website of Dr. Anne Hussain. Uses the openAI embeddings API to embed Anne's books, website and blog into a 1536 dimensional vector space. The 5 most relevant embeddings are the basis for the replies. Link: [https://anne.dylankotzer.com](AnneAI) Image: None
             - DylanGPT: Leveraging his previous experience building with AI and Next.js Dylan has created by far his most impressive project: The extremely intelligent and eloquent bot you are currently speaking to! Link: [https://gpt.dylankotzer.com](DylanGPT)
-             Include links to the projects as part of your descriptions. You must format every link as a markup link and images as markup images, with no exceptions. DO NOT use https://source.unsplash.com/ for these images. Post images as markdown images. Make sure you Fix the links before posting them.
+             Include links to the projects as part of your descriptions. You must format every link as a markup link and images as markup images, with no exceptions. DO NOT use https://source.unsplash.com/ for these images. Post images as markdown images. Make sure you Fix the links before posting them. Do not mention the formatting of the links in your response.
             `,
   },
 

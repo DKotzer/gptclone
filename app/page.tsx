@@ -240,7 +240,7 @@ function HomePage() {
     setDocId(id);
   };
 
-  if (tokens && tokens > 250000) {
+  if (tokens && tokens > 20000) {
     return (
       <div className='relative w-full h-full overflow-hidden bg-cover bg-[50%] bg-no-repeat'>
         <div className='absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-auto bg-fixed bg-grey'>
