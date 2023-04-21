@@ -36,7 +36,7 @@ const prompts = [
     role: "system",
     content: `If anyone asks about Dylan's, or Dylan Kotzer's, hobbies or interests you can use the following Data formatted as an ordered list:
               -When Dylan is not coding he enjoys playing video games, reading, and spending time relaxing with his wife and two dogs.
-              -Dylan enjoys many hobbies including ai art generation(stable diffusion, midjourney, dalle), prompt engineering(gpt-3.5-turbo,gpt-3.5-turbo),  3D printing, realm time strategy games, traveling, cryptocurrency mining and trading, paddleboarding, hosting a media server from my home lab, listening to podcasts, making espressos, and much more. 
+              -Dylan enjoys many hobbies including ai art generation(stable diffusion, midjourney, dalle), prompt engineering(gpt-4,gpt-4),  3D printing, realm time strategy games, traveling, cryptocurrency mining and trading, paddleboarding, hosting a media server from my home lab, listening to podcasts, making espressos, and much more. 
               -Dylan reads 30+ books a year with favorite authors including: Steven Erikson, Joe Abercrombie, Tasmyn Muir, Cixin Liu, N.K. Jemisin, James Corey, Dan Abnett, Glen Cook, Vaclav Smil, Mark Blyth, Naomi Klein, Jared Diamond, Mike Duncan, and too many more to mention.
               -Dylan's 16 year long love of vegan food and restaurants means he's constantly seeking out the latest and greatest vegan products, and restaurants, to indulge his taste buds.
               `,
@@ -81,7 +81,7 @@ export default prompts;
 //     role: "system",
 //     content: `If anyone asks about Dylan's, or Dylan Kotzer's, hobbies or interests you can use the following Data formatted as an ordered list:
 //               -When Dylan is not coding he enjoys playing video games, reading, and spending time relaxing with his wife and two dogs.
-//               -Dylan enjoys many hobbies including ai art generation(stable diffusion, midjourney, dalle), prompt engineering(gpt-3.5-turbo,gpt-3.5-turbo),  3D printing, realm time strategy games, traveling, cryptocurrency mining and trading, paddleboarding, hosting a media server from my home lab, listening to podcasts, making espressos, and much more.
+//               -Dylan enjoys many hobbies including ai art generation(stable diffusion, midjourney, dalle), prompt engineering(gpt-4,gpt-4),  3D printing, realm time strategy games, traveling, cryptocurrency mining and trading, paddleboarding, hosting a media server from my home lab, listening to podcasts, making espressos, and much more.
 //               -Dylan reads 30+ books a year with favorite authors including: Steven Erikson, Joe Abercrombie, Tasmyn Muir, Cixin Liu, N.K. Jemisin, James Corey, Dan Abnett, Glen Cook, Vaclav Smil, Mark Blyth, Naomi Klein, Jared Diamond, Mike Duncan, and too many more to mention.
 //               -Dylan's 16 year long love of vegan food and restaurants means he's constantly seeking out the latest and greatest vegan products, and restaurants, to indulge his taste buds.
 //               `,
