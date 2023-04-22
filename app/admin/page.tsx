@@ -77,7 +77,7 @@ function AdminPage() {
   const renderUser = (user) => {
     return (
       <tr className="userRow'" key={`${user.name}-${user.tokens}`}>
-        <td className='border px-4 py-2 border-gray-300 bg-white text-gray-600'>
+        <td className='border px-4 py-2 border-gray-300 bg-white text-gray-600 '>
           <a
             href={`https://console.firebase.google.com/u/0/project/chatgptclone-ce83a/firestore/data/~2Fusers~2F${user.name}`}
             target='_blank'
@@ -96,12 +96,12 @@ function AdminPage() {
   };
 
   return adminFound && users.length > 0 ? (
-    <div className='sm:m-10'>
-      <div>
-        <div className='mt-8 grid grid-cols-3 gap-6'>
+    <div className='overflow-y-auto max-h-screen '>
+      <div className='sm:m-10'>
+        <div className=' grid grid-cols-3 gap-6 '>
           <div className='flex flex-col bg-white border border-gray-300 rounded-lg shadow-sm'>
             <div className='p-6'>
-              <div className='text-2xl font-semibold text-gray-700'>
+              <div className='text-2xl font-semibold text-black'>
                 Total Users
               </div>
               <div className='mt-2 text-lg text-gray-600'>{users.length}</div>
@@ -109,7 +109,7 @@ function AdminPage() {
           </div>
           <div className='flex flex-col bg-white border border-gray-300 rounded-lg shadow-sm'>
             <div className='p-6'>
-              <div className='text-2xl font-semibold text-gray-700'>
+              <div className='text-2xl font-semibold text-black'>
                 Total Chats
               </div>
               <div className='mt-2 text-lg text-gray-600'>{totalChats}</div>
@@ -117,7 +117,7 @@ function AdminPage() {
           </div>
           <div className='flex flex-col bg-white border border-gray-300 rounded-lg shadow-sm'>
             <div className='p-6'>
-              <div className='text-2xl font-semibold text-gray-700'>
+              <div className='text-2xl font-semibold text-black'>
                 Total Tokens
               </div>
               <div className='mt-2 text-lg text-gray-600'>{totalTokens}</div>
@@ -125,8 +125,8 @@ function AdminPage() {
           </div>
         </div>
       </div>
-      <div className='mt-8'>
-        <table className='min-w-full divide-y divide-gray-200'>
+      <div className='sm:m-10'>
+        <table className='min-w-full divide-y divide-gray-200 mb-10'>
           <thead className='bg-gray-50'>
             <tr>
               <th className='px-6 py-3 text-xs font-semibold tracking-wider text-left text-gray-500 uppercase'>
