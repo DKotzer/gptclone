@@ -145,6 +145,7 @@ function AdminPage() {
           </tbody>
         </table>
       </div>
+      <div className='h-[80px]  lg:h-[25px]' />
     </div>
   ) : (
     <div>Not Admin</div>
