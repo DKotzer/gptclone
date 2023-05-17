@@ -22,7 +22,7 @@ function SideBar() {
     session &&
       query(
         collection(db, "users", session.user?.email!, "chats"),
-        orderBy("createdAt", "asc")
+        orderBy("createdAt", "desc")
       )
   );
   const chatsEndRef = useRef<HTMLDivElement>(null);
