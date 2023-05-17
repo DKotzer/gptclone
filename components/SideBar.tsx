@@ -94,10 +94,10 @@ function SideBar() {
                   <p>Loading Chats...</p>
                 </div>
               )}
+              <div ref={chatsEndRef}></div>
               {chats?.docs.map((chat) => (
                 <ChatRow key={chat.id} id={chat.id} />
               ))}
-              <div ref={chatsEndRef}></div>
             </div>
           </div>
         </div>
