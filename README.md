@@ -28,7 +28,7 @@ DylanGPT comes loaded with a variety of features to enhance your chatting experi
 
 DylanGPT is built on top of OpenAI's GPT-3 model, which is a state-of-the-art language model capable of generating human-like text. The front-end of the application is built with React, while the back-end is built with Node.js and Express. Images are searched using the Google Custom Search API and displayed using the React Image component.
 
-<img src="https://i.imgur.com/9AN0O4A.png"  width="504" height="342">
+<img src="https://i.imgur.com/1daQW8R.png"  width="504" height="342">
 
 ## Conclusion
 
