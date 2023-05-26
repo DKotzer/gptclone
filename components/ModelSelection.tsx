@@ -6,10 +6,10 @@ import Select from "react-select";
 // const fetchModels = () => fetch("/api/getEngines").then((res) => res.json());
 
 function ModelSelection() {
-  const models = ["gpt-3.5-turbo", "gpt-3.5-turbo"];
+  const models = ["gpt-4", "gpt-4"];
 
   const { data: model, mutate: setModel } = useSWR("model", {
-    fallbackData: "gpt-3.5-turbo",
+    fallbackData: "gpt-4",
   });
   return (
     <div className='mt-2'>
