@@ -22,7 +22,7 @@ function NewChatInput({ inputPromptSetter, setDocId, docId }: Props) {
   const { data: session } = useSession();
   const router = useRouter();
   const [prompt, setPrompt] = useState("");
-  const model = "gpt-3.5-turbo";
+  const model = "gpt-4-1106-preview";
   const [disabled, setDisabled] = useState(false);
   // const [docId, setDocId] = useState("");
   const [note, setNote] = useState("");

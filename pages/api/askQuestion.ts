@@ -52,7 +52,7 @@ const handler = async (req: Request): Promise<Response> => {
     messages = [...prompts, ...messages];
   }
   const payload = {
-    model: "gpt-3.5-turbo",
+    model: "gpt-4-1106-preview",
     messages: messages,
     stream: true,
   };
