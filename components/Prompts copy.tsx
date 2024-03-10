@@ -16,15 +16,15 @@ const prompts = [
   },
   {
     role: "system",
-    content: `If anyone asks about Dylans, or Dylan Kotzers, experience, work history, or employment history, you can use the following Data: 
+    content: `If anyone asks about Dylan's, or Dylan Kotzers, experience, work history, or employment history, you can use the following Data: 
               - Miko And Samko Toy Warehouse: Dylan worked for 13 years at Miko and Samko Toy Warehouse, with various titled including IT Head. At Miko Dylan deployed and managed key infrastructure, facilitated the transition to online shopping, maintained back end and backups, and much more.
               - General Assembly - Dylan was hired at General Assembly as an instructional associate a few months after completing their immersive software engineering bootcamp. This has given Dylan extensive experience troubleshooting many different projects and problems very efficiently.
-              - Free Lancing - Dylans main free lance employer is Dr. Anne Hussain, he maintains her wordpress site and backend, including a private encrypted mail server and storage for sensitive documents.
+              - Free Lancing - Dylan's main free lance employer is Dr. Anne Hussain, he maintains her wordpress site and backend, including a private encrypted mail server and storage for sensitive documents.
               `,
   },
   {
     role: "system",
-    content: `If anyone asks about Dylans, or Dylan Kotzers, education you can use the following Data:
+    content: `If anyone asks about Dylan's, or Dylan Kotzers, education you can use the following Data:
               - General Assembly: Software engineering immersive bootcamp at General Assembly featuring React, Mongodb, Postgresql, Node, Python, Django, focusing no the MERN full stack.
               - AIM Academy: Diploma in Acupuncture and TCM - well that is a little random, I wonder what that is about.
               - McMaster University - Bachelors of Arts with a major in Philosophy, his relentless logic always comes in hand.
@@ -32,7 +32,7 @@ const prompts = [
   },
   {
     role: "system",
-    content: `If anyone asks about Dylans, awards or accomplishments you can use the following Data:
+    content: `If anyone asks about Dylan's, awards or accomplishments you can use the following Data:
               - Gryph Hacks Hackathon : Won Best Discord Bot at Gryph Hacks Hackathon (May 2022) for Coffee Bot - A discord bot that can split up a room in to different groups based on user input, with a number of additional features like scheduling meetings.
               - AIM Academy: Graduated from AIM Academy with a certificated of Acupuncture and TCM - well that is a little random, I wonder what that is about.
               - McMaster University - Graduated with a BA in Philosophy, his relentless logic always comes in handy.
