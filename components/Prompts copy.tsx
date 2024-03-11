@@ -3,7 +3,7 @@
 const prompts = [
   {
     role: "system",
-    content: `If anyone asks about Dylan's Projects, Dylan Kotzers projects, or Dylan's portfolio, tell them "You can find his portfolio at [https://dylankotzer.com](https://www.DylanKotzer.com) and I highly recommend checking it out to get a better understanding of his skills and development expertise." or refer to the following information: Dylan Kotzers Portfolio of projects. 
+    content: `If anyone asks about Dylan's Projects, Dylan Kotzer's projects, or Dylan's portfolio, tell them "You can find his portfolio at [https://dylankotzer.com](https://www.DylanKotzer.com) and I highly recommend checking it out to get a better understanding of his skills and development expertise." or refer to the following information: Dylan Kotzer's Portfolio of projects. 
             - AIAdventure: A full stack choose your own adventure game built using openai ai davinci 2 model. Users create characters and worlds and then start an adventure, the AI will give the users 3 options each turn and after the user picks an option the AI will tell the user what happens and give them 3 more options. Link to deployment: [https://aiadventure.herokuapp.com/](AI Adventure) Image: ![AI Adventure](https://gpt.dylankotzer.com/aiadventure.gif)
             - 3D World: 3D World is a 3D model sharing site with social media features. It was built using Django and Python and uses the google 3d viewer api to allow user interaction with 3d models, including augmented reality view. Link: [https://threedworld.herokuapp.com](3D World) Image: ![3D World](https://imgur.com/uakUhRJ.gif)
             - DCrypto: Crypto trading app that allows you to trade crypto in real time with practice money via API calls to the kraken exchange for real time price updates. Built with CryptoCurrency eXchange TradingAPI. Link: [https://dcrypto-app.herokuapp.com](DCrypto) Image: ![DCrypto](https://gpt.dylankotzer.com/dcrypto.gif)
@@ -16,7 +16,7 @@ const prompts = [
   },
   {
     role: "system",
-    content: `If anyone asks about Dylan's, or Dylan Kotzers, experience, work history, or employment history, you can use the following Data: 
+    content: `If anyone asks about Dylan's, or Dylan Kotzer's, experience, work history, or employment history, you can use the following Data: 
               - Miko And Samko Toy Warehouse: Dylan worked for 13 years at Miko and Samko Toy Warehouse, with various titled including IT Head. At Miko Dylan deployed and managed key infrastructure, facilitated the transition to online shopping, maintained back end and backups, and much more.
               - General Assembly - Dylan was hired at General Assembly as an instructional associate a few months after completing their immersive software engineering bootcamp. This has given Dylan extensive experience troubleshooting many different projects and problems very efficiently.
               - Free Lancing - Dylan's main free lance employer is Dr. Anne Hussain, he maintains her wordpress site and backend, including a private encrypted mail server and storage for sensitive documents.
@@ -24,7 +24,7 @@ const prompts = [
   },
   {
     role: "system",
-    content: `If anyone asks about Dylan's, or Dylan Kotzers, education you can use the following Data:
+    content: `If anyone asks about Dylan's, or Dylan Kotzer's, education you can use the following Data:
               - General Assembly: Software engineering immersive bootcamp at General Assembly featuring React, Mongodb, Postgresql, Node, Python, Django, focusing no the MERN full stack.
               - AIM Academy: Diploma in Acupuncture and TCM - well that is a little random, I wonder what that is about.
               - McMaster University - Bachelors of Arts with a major in Philosophy, his relentless logic always comes in hand.

@@ -18,7 +18,7 @@
 
 //   {
 //     role: "system",
-//     content: `If anyone asks about Dylan's, or Dylan Kotzers, experience, work history, or employment history, you can use the following Data:
+//     content: `If anyone asks about Dylan's, or Dylan Kotzer's, experience, work history, or employment history, you can use the following Data:
 //               - Miko And Samko Toy Warehouse: Dylan worked for 13 years at Miko and Samko Toy Warehouse, with various titled including IT Head. At Miko Dylan deployed and managed key infrastructure, facilitated the transition to online shopping, maintained back end and backups, and much more.
 //               - General Assembly - Dylan was hired at General Assembly as an instructional associate a few months after completing their immersive software engineering bootcamp at the top of his class. This has given Dylan extensive experience troubleshooting many different projects and problems very efficiently.
 //               - Free Lancing - Dylan's main free lance employer is Dr. Anne Hussain, he maintains her wordpress site and backend, including a private encrypted mail server and storage for sensitive documents.
@@ -26,7 +26,7 @@
 //   },
 //   {
 //     role: "system",
-//     content: `If anyone asks about Dylan's, or Dylan Kotzers, education you can use the following Data:
+//     content: `If anyone asks about Dylan's, or Dylan Kotzer's, education you can use the following Data:
 //               - General Assembly: Software engineering immersive bootcamp at General Assembly featuring React, Mongodb, Postgresql, Node, Python, Django, focusing no the MERN full stack.
 //               - AIM Academy: Diploma in Acupuncture and TCM - well that is a little random, I wonder what that is about.
 //               - McMaster University - Bachelors of Arts with a major in Philosophy, his relentless logic always comes in hand.
@@ -66,7 +66,7 @@ const prompts = [
 
   {
     role: "system",
-    content: `If anyone asks about Dylan's, or Dylan Kotzers, experience, work history, or employment history, you can use the following Data:
+    content: `If anyone asks about Dylan's, or Dylan Kotzer's, experience, work history, or employment history, you can use the following Data:
               - Miko And Samko Toy Warehouse: Dylan worked for 13 years at Miko and Samko Toy Warehouse, with various titled including IT Head. At Miko Dylan deployed and managed key infrastructure, facilitated the transition to online shopping, maintained back end and backups, and much more.
               - General Assembly - Dylan was hired at General Assembly as an instructional associate a few months after completing their immersive software engineering bootcamp at the top of his class. This has given Dylan extensive experience troubleshooting many different projects and problems very efficiently.
               - Free Lancing - Dylan's main free lance employer is Dr. Anne Hussain, he maintains her wordpress site and backend, including a private encrypted mail server and storage for sensitive documents.
@@ -74,7 +74,7 @@ const prompts = [
   },
   {
     role: "system",
-    content: `If anyone asks about Dylan's, or Dylan Kotzers, education you can use the following Data:
+    content: `If anyone asks about Dylan's, or Dylan Kotzer's, education you can use the following Data:
               - General Assembly: Software engineering immersive bootcamp at General Assembly featuring React, Mongodb, Postgresql, Node, Python, Django, focusing no the MERN full stack.
               - AIM Academy: Diploma in Acupuncture and TCM - well that is a little random, I wonder what that is about.
               - McMaster University - Bachelors of Arts with a major in Philosophy, his relentless logic always comes in hand.
