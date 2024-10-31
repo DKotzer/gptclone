@@ -1,35 +1,35 @@
-"use client";
-import { PaperAirplaneIcon } from "@heroicons/react/24/outline";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
-import { useSession } from "next-auth/react";
-import { FormEvent, useEffect, useState } from "react";
-import { db } from "@component/firebase";
-import toast, { Toaster } from "react-hot-toast";
-import { useRouter } from "next/navigation";
-import prompts from "./Prompts";
+"use client"
+import { PaperAirplaneIcon } from "@heroicons/react/24/outline"
+import { addDoc, collection, serverTimestamp } from "firebase/firestore"
+import { useSession } from "next-auth/react"
+import { FormEvent, useEffect, useState } from "react"
+import { db } from "@component/firebase"
+import toast, { Toaster } from "react-hot-toast"
+import { useRouter } from "next/navigation"
+import prompts from "./Prompts"
 
 type Response = {
-  data: any;
-};
+  data: any
+}
 
 type Props = {
-  inputPromptSetter: any;
-  setDocId: any;
-  docId: string;
-};
+  inputPromptSetter: any
+  setDocId: any
+  docId: string
+}
 
 function NewChatInput({ inputPromptSetter, setDocId, docId }: Props) {
-  const { data: session } = useSession();
-  const router = useRouter();
-  const [prompt, setPrompt] = useState("");
-  const model = "gpt-4-1106-preview";
-  const [disabled, setDisabled] = useState(false);
+  const { data: session } = useSession()
+  const router = useRouter()
+  const [prompt, setPrompt] = useState("")
+  const model = "gpt-4o"
+  const [disabled, setDisabled] = useState(false)
   // const [docId, setDocId] = useState("");
-  const [note, setNote] = useState("");
+  const [note, setNote] = useState("")
 
   useEffect(() => {
     if (docId !== "") {
-      const input = prompt.trim();
+      const input = prompt.trim()
       fetch("/api/askQuestion", {
         method: "POST",
         headers: {
@@ -58,16 +58,16 @@ function NewChatInput({ inputPromptSetter, setDocId, docId }: Props) {
       }).then(() => {
         toast.success("DylanGPT has responded!", {
           id: note,
-        });
-      });
+        })
+      })
     }
-  }, [docId]);
+  }, [docId])
 
   const createNewChat = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setDisabled(true);
-    const notification = toast.loading("DylanGPT is thinking...");
-    setNote(notification);
+    e.preventDefault()
+    setDisabled(true)
+    const notification = toast.loading("DylanGPT is thinking...")
+    setNote(notification)
 
     const doc = await addDoc(
       collection(db, "users", session?.user?.email!, "chats"),
@@ -89,15 +89,15 @@ function NewChatInput({ inputPromptSetter, setDocId, docId }: Props) {
           },
         ],
       }
-    );
+    )
 
-    setDocId(doc.id);
-    sendNewPrompt();
-  };
+    setDocId(doc.id)
+    sendNewPrompt()
+  }
 
   const sendNewPrompt = async () => {
-    inputPromptSetter(prompt.trim);
-  };
+    inputPromptSetter(prompt.trim)
+  }
 
   return (
     <div className='bg-[#353a48] text-gray-400 rounded-lg text-sm max-w-[90%] min-w-[70%] mx-auto overflow-x-hidden overflow-y-hidden'>
@@ -121,7 +121,7 @@ function NewChatInput({ inputPromptSetter, setDocId, docId }: Props) {
       </form>
       <div className='h-[80px] lg:h-[25px]' />
     </div>
-  );
+  )
 }
 
-export default NewChatInput;
+export default NewChatInput

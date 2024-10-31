@@ -1,34 +1,34 @@
-import openai from "./chatgpt";
+import openai from "./chatgpt"
 
 interface QueryRequest {
-  messages: any;
+  messages: any
 }
 
 type Message = {
-  role: string;
-  content: string;
-};
+  role: string
+  content: string
+}
 
 const query = async (messages: QueryRequest["messages"]) => {
   const completion = await openai
     .createChatCompletion({
-      model: "gpt-4-1106-preview",
+      model: "gpt-4o",
       messages: messages,
     })
     .then((res) => {
       res.data.choices[0]?.message?.content! ||
-        "There was a problem receiving a response from the AI";
-      return res;
+        "There was a problem receiving a response from the AI"
+      return res
     })
     .catch(
       (err) =>
         `DylanGPT was unable to find an answer for that! (Error: ${err.message})`
-    );
+    )
 
-  return await completion;
-};
+  return await completion
+}
 
-export default query;
+export default query
 
 // const query = async (prompt: string, chatId: string, model: string) => {
 //   const res = await openai

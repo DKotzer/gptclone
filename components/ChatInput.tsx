@@ -1,24 +1,24 @@
-"use client";
+"use client"
 
-import { PaperAirplaneIcon } from "@heroicons/react/24/outline";
-import { doc } from "firebase/firestore";
-import { useSession } from "next-auth/react";
-import { FormEvent, useEffect, useState } from "react";
-import { db } from "@component/firebase";
-import toast, { Toaster } from "react-hot-toast";
-import { useDocumentData } from "react-firebase-hooks/firestore";
+import { PaperAirplaneIcon } from "@heroicons/react/24/outline"
+import { doc } from "firebase/firestore"
+import { useSession } from "next-auth/react"
+import { FormEvent, useEffect, useState } from "react"
+import { db } from "@component/firebase"
+import toast, { Toaster } from "react-hot-toast"
+import { useDocumentData } from "react-firebase-hooks/firestore"
 
 type Props = {
-  chatId: string;
-  handleStreamingData: any;
-  setStreamingData: any;
-  setCompletedStream: any;
-  streamingData: any;
-};
+  chatId: string
+  handleStreamingData: any
+  setStreamingData: any
+  setCompletedStream: any
+  streamingData: any
+}
 
 type Response = {
-  data: any;
-};
+  data: any
+}
 
 function ChatInput({
   chatId,
@@ -27,32 +27,32 @@ function ChatInput({
   setCompletedStream,
   streamingData,
 }: Props) {
-  const [prompt, setPrompt] = useState("");
-  const { data: session } = useSession();
-  const model = "gpt-4-1106-preview";
-  const [disabled, setDisabled] = useState(false);
+  const [prompt, setPrompt] = useState("")
+  const { data: session } = useSession()
+  const model = "gpt-4o"
+  const [disabled, setDisabled] = useState(false)
   // const [streamingResponse, setStreamingResponse] = useState("");
   const messages = useDocumentData(
     doc(db, "users", session?.user?.email!, "chats", chatId)
-  );
+  )
 
   // useEffect(() => {
   //   console.log("streaming res", streamingResponse);
   // }, [streamingResponse]);
 
   const sendMessage = async (e: FormEvent<HTMLFormElement>) => {
-    setDisabled(true);
-    const notification = toast.loading("DylanGPT is thinking...");
+    setDisabled(true)
+    const notification = toast.loading("DylanGPT is thinking...")
 
-    e.preventDefault();
-    if (!prompt) return;
-    const input = prompt.trim();
+    e.preventDefault()
+    if (!prompt) return
+    const input = prompt.trim()
     const message = {
       role: "user",
       content: input,
-    };
-    setPrompt("");
-    const newMsgs = [...messages[0]?.messages, message];
+    }
+    setPrompt("")
+    const newMsgs = [...messages[0]?.messages, message]
 
     await fetch("/api/addQuestion", {
       method: "POST",
@@ -65,7 +65,7 @@ function ChatInput({
         chatId,
         user: session?.user?.email,
       }),
-    }).catch((err) => console.log(err));
+    }).catch((err) => console.log(err))
 
     const response = await fetch("/api/askQuestion", {
       method: "POST",
@@ -78,7 +78,7 @@ function ChatInput({
         chatId,
         user: session?.user?.email,
       }),
-    });
+    })
     // console.log("front end response", response);
     if (!response.ok) {
       if (response.status === 400) {
@@ -87,45 +87,45 @@ function ChatInput({
           {
             id: notification,
           }
-        );
+        )
       } else {
-        throw new Error(response.statusText);
+        throw new Error(response.statusText)
       }
     }
 
-    setDisabled(true);
-    const data = response.body;
+    setDisabled(true)
+    const data = response.body
 
     if (!data) {
-      setDisabled(false);
-      console.log("no data");
-      return;
+      setDisabled(false)
+      console.log("no data")
+      return
     }
 
-    const reader = data.getReader();
+    const reader = data.getReader()
 
-    const decoder = new TextDecoder();
+    const decoder = new TextDecoder()
 
-    let done = false;
+    let done = false
 
     while (!done) {
-      const { value, done: doneReading } = await reader.read();
+      const { value, done: doneReading } = await reader.read()
 
-      done = doneReading;
+      done = doneReading
 
-      const chunkValue = decoder.decode(value);
+      const chunkValue = decoder.decode(value)
       // console.log("cv", chunkValue);
-      setStreamingData((prev) => prev + chunkValue);
+      setStreamingData((prev) => prev + chunkValue)
     }
     if (response.ok) {
       toast.success("DylanGPT has responded!", {
         id: notification,
-      });
+      })
     }
-    setDisabled(false);
+    setDisabled(false)
 
-    setCompletedStream(true);
-  };
+    setCompletedStream(true)
+  }
 
   return (
     <div className='bg-[#353a48] text-gray-400 rounded-lg text-sm max-w-[90%] min-w-[70%] mx-auto overflow-x-hidden'>
@@ -148,10 +148,10 @@ function ChatInput({
       </form>
       <div className='h-[80px]  lg:h-[25px]' />
     </div>
-  );
+  )
 }
 
-export default ChatInput;
+export default ChatInput
 
 // const reader = response?.body?.getReader();
 // console.log("reader", reader);

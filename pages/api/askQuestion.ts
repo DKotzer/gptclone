@@ -1,34 +1,34 @@
-import { NextApiRequest, NextApiResponse } from "next";
-import { OpenAIStream } from "@component/utils/OpenAiStream";
+import { NextApiRequest, NextApiResponse } from "next"
+import { OpenAIStream } from "@component/utils/OpenAiStream"
 
-import { updateDoc, doc, getDoc } from "firebase/firestore";
-import { db } from "@component/firebase";
-import prompts from "@component/components/Prompts";
+import { updateDoc, doc, getDoc } from "firebase/firestore"
+import { db } from "@component/firebase"
+import prompts from "@component/components/Prompts"
 
 export const config = {
   runtime: "edge",
-};
+}
 
 const handler = async (req: Request): Promise<Response> => {
   let { messages, chatId, user } = (await req.json()) as {
-    messages?: any;
-    chatId?: string;
-    user?: string;
-  };
+    messages?: any
+    chatId?: string
+    user?: string
+  }
 
   const baseUrl = process.env.DEPLOYED_URL
     ? process.env.DEPLOYED_URL
-    : "http://localhost:3000";
+    : "http://localhost:3000"
 
   if (!messages) {
-    return new Response("Please provide messages", { status: 400 });
+    return new Response("Please provide messages", { status: 400 })
   }
   if (!chatId) {
-    return new Response("Please provide a valid chat ID!", { status: 400 });
+    return new Response("Please provide a valid chat ID!", { status: 400 })
   }
 
   //if the last message.content.toLowerCase() includes 'dylan' then add prompts to the messages array
-  const lastMessage = messages[messages.length - 1].content;
+  const lastMessage = messages[messages.length - 1].content
 
   const keywords = [
     "dylan",
@@ -41,34 +41,34 @@ const handler = async (req: Request): Promise<Response> => {
     "resume",
     "apps",
     "linkedin",
-  ];
+  ]
 
   const messageContainsKeyword = keywords.some((keyword) =>
     lastMessage.toLowerCase().includes(keyword)
-  );
+  )
 
   if (messageContainsKeyword) {
-    console.log("last message includes dylan ", lastMessage);
-    messages = [...prompts, ...messages];
+    console.log("last message includes dylan ", lastMessage)
+    messages = [...prompts, ...messages]
   }
   const payload = {
-    model: "gpt-4-1106-preview",
+    model: "gpt-4o",
     messages: messages,
     stream: true,
-  };
+  }
 
   let getTotalContentLength = (messages): number => {
-    let totalLength = 0;
+    let totalLength = 0
     for (const obj of messages) {
-      totalLength += obj.content.length;
+      totalLength += obj.content.length
     }
-    return totalLength;
-  };
+    return totalLength
+  }
 
-  let tokens = getTotalContentLength(messages);
-  console.log("Query Character Length: ", tokens);
-  const estimatedTokenCount = ((tokens / 4) * 1.1).toFixed(0);
-  console.log("estimatedQueryTokenCount: ", estimatedTokenCount);
+  let tokens = getTotalContentLength(messages)
+  console.log("Query Character Length: ", tokens)
+  const estimatedTokenCount = ((tokens / 4) * 1.1).toFixed(0)
+  console.log("estimatedQueryTokenCount: ", estimatedTokenCount)
 
   if ((tokens / 4) * 1.1 > 3200) {
     return new Response(
@@ -82,7 +82,7 @@ const handler = async (req: Request): Promise<Response> => {
           "Content-Type": "application/json",
         },
       }
-    );
+    )
   } else {
     await fetch(`${baseUrl}/api/addTokens`, {
       method: "POST",
@@ -93,11 +93,11 @@ const handler = async (req: Request): Promise<Response> => {
         user: user,
         tokens: estimatedTokenCount,
       }),
-    }).catch((err) => console.log("error detected", err));
+    }).catch((err) => console.log("error detected", err))
   }
 
-  const stream = await OpenAIStream(payload);
+  const stream = await OpenAIStream(payload)
 
-  return new Response(stream);
-};
-export default handler;
+  return new Response(stream)
+}
+export default handler

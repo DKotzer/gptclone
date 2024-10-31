@@ -1,16 +1,16 @@
-"use client";
+"use client"
 
-import useSWR from "swr";
-import Select from "react-select";
+import useSWR from "swr"
+import Select from "react-select"
 
 // const fetchModels = () => fetch("/api/getEngines").then((res) => res.json());
 
 function ModelSelection() {
-  const models = ["gpt-4-1106-preview", "gpt-4-1106-preview"];
+  const models = ["gpt-4o", "gpt-4o"]
 
   const { data: model, mutate: setModel } = useSWR("model", {
-    fallbackData: "gpt-4-1106-preview",
-  });
+    fallbackData: "gpt-4o",
+  })
   return (
     <div className='mt-2'>
       <Select
@@ -26,7 +26,7 @@ function ModelSelection() {
         onChange={(e) => setModel(e.value)}
       />
     </div>
-  );
+  )
 }
 
-export default ModelSelection;
+export default ModelSelection

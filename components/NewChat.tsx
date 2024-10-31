@@ -1,17 +1,17 @@
-"use client";
-import { PlusIcon } from "@heroicons/react/24/solid";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
-import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
-import { db } from "@component/firebase";
-import prompts from "./Prompts";
+"use client"
+import { PlusIcon } from "@heroicons/react/24/solid"
+import { addDoc, collection, serverTimestamp } from "firebase/firestore"
+import { useSession } from "next-auth/react"
+import { useRouter } from "next/navigation"
+import { db } from "@component/firebase"
+import prompts from "./Prompts"
 
 function NewChat() {
-  const router = useRouter();
-  const { data: session } = useSession();
+  const router = useRouter()
+  const { data: session } = useSession()
 
   const createNewChat = async () => {
-    let id: string = "";
+    let id: string = ""
     try {
       const res = await fetch("/api/newChat", {
         method: "POST",
@@ -19,7 +19,7 @@ function NewChat() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          model: "gpt-4-1106-preview",
+          model: "gpt-4o",
           messages: [
             {
               role: "system",
@@ -37,15 +37,15 @@ function NewChat() {
           ],
           user: session?.user?.email,
         }),
-      });
-      const data = await res.json();
-      id = data.text;
+      })
+      const data = await res.json()
+      id = data.text
     } catch (error) {
-      console.error(error);
+      console.error(error)
     }
 
-    router.push(`/chat/${id}`);
-  };
+    router.push(`/chat/${id}`)
+  }
   return (
     <div
       onClick={createNewChat}
@@ -54,7 +54,7 @@ function NewChat() {
       <PlusIcon className='h-5 w-5  text-white my-auto' />
       <p>New Chat</p>
     </div>
-  );
+  )
 }
 
-export default NewChat;
+export default NewChat

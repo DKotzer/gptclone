@@ -1,34 +1,31 @@
-"use client";
+"use client"
 
-import { PaperAirplaneIcon } from "@heroicons/react/24/solid";
-import { useSession } from "next-auth/react";
-import { FormEvent, useState } from "react";
-import toast, { Toaster } from "react-hot-toast";
+import { PaperAirplaneIcon } from "@heroicons/react/24/solid"
+import { useSession } from "next-auth/react"
+import { FormEvent, useState } from "react"
+import toast, { Toaster } from "react-hot-toast"
 
 type Props = {
-  setMessages: Function;
-  messages: Array<any>;
-};
+  setMessages: Function
+  messages: Array<any>
+}
 
 function BetaInput({ setMessages, messages }) {
-  const [prompt, setPrompt] = useState("");
-  const { data: session } = useSession();
-  const model = "gpt-4-1106-preview";
-  const [disabled, setDisabled] = useState(false);
+  const [prompt, setPrompt] = useState("")
+  const { data: session } = useSession()
+  const model = "gpt-4o"
+  const [disabled, setDisabled] = useState(false)
 
   const sendMessage = async (e: FormEvent<HTMLFormElement>) => {
-    setDisabled(true);
-    e.preventDefault();
-    if (!prompt) return;
-    const input = prompt.trim();
-    setMessages((prevState) => [
-      ...prevState,
-      { role: "user", content: input },
-    ]);
-    setPrompt("");
+    setDisabled(true)
+    e.preventDefault()
+    if (!prompt) return
+    const input = prompt.trim()
+    setMessages((prevState) => [...prevState, { role: "user", content: input }])
+    setPrompt("")
     //toast notification to say loading
-    const notification = toast.loading("DylanGPT is thinking...");
-    let msgHolder = [...messages, { role: "user", content: input }];
+    const notification = toast.loading("DylanGPT is thinking...")
+    let msgHolder = [...messages, { role: "user", content: input }]
 
     let response = await fetch("/api/betaQuestion", {
       method: "POST",
@@ -41,26 +38,26 @@ function BetaInput({ setMessages, messages }) {
       }),
     })
       .then((res) => {
-        setDisabled(false);
+        setDisabled(false)
         res
           .json()
           .then((j) => {
             setMessages((prevState) => [
               ...prevState,
               { role: "assistant", content: j.text },
-            ]);
+            ])
           })
-          .catch((err) => console.log("error:", err));
+          .catch((err) => console.log("error:", err))
         //toast notification to say successfull
         toast.success("DylanGPT has responded!", {
           id: notification,
-        });
+        })
       })
       .catch(
         (err) =>
           `DylanGPT was unable to find an answer for that! (Error: ${err.message})`
-      );
-  };
+      )
+  }
 
   return (
     <div className='bg-gray-700/50 text-gray-400 rounded-lg text-sm'>
@@ -84,7 +81,7 @@ function BetaInput({ setMessages, messages }) {
       </form>
       <div className='md:hidden'></div>
     </div>
-  );
+  )
 }
 
-export default BetaInput;
+export default BetaInput

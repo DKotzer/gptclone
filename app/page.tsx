@@ -1,55 +1,55 @@
-"use client";
+"use client"
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react"
 import {
   SunIcon,
   BoltIcon,
   ExclamationTriangleIcon,
-} from "@heroicons/react/24/outline";
-import { useSession } from "next-auth/react";
-import toast, { Toaster } from "react-hot-toast";
-import { doc, getDoc } from "firebase/firestore";
-import { db } from "@component/firebase";
-import { useRouter } from "next/navigation";
-import Message from "@component/components/Message";
-import { PaperAirplaneIcon } from "@heroicons/react/24/solid";
+} from "@heroicons/react/24/outline"
+import { useSession } from "next-auth/react"
+import toast, { Toaster } from "react-hot-toast"
+import { doc, getDoc } from "firebase/firestore"
+import { db } from "@component/firebase"
+import { useRouter } from "next/navigation"
+import Message from "@component/components/Message"
+import { PaperAirplaneIcon } from "@heroicons/react/24/solid"
 
 type Response = {
-  data: any;
-};
+  data: any
+}
 function HomePage() {
-  const { data: session, status } = useSession();
-  const router = useRouter();
-  const [prompt, setPrompt] = useState("");
-  const model = "gpt-4-1106-preview";
-  const [disabled, setDisabled] = useState(false);
-  const [docId, setDocId] = useState("");
-  const [note, setNote] = useState("");
-  const [dylanLog, setDylanLog] = useState(true);
-  const [streamingResponse, setStreamingResponse] = useState("");
-  const [completedStream, setCompletedStream] = useState(false);
-  const messagesEndRef = useRef<HTMLDivElement>(null);
-  const [tokens, setTokens] = useState(null);
+  const { data: session, status } = useSession()
+  const router = useRouter()
+  const [prompt, setPrompt] = useState("")
+  const model = "gpt-4o"
+  const [disabled, setDisabled] = useState(false)
+  const [docId, setDocId] = useState("")
+  const [note, setNote] = useState("")
+  const [dylanLog, setDylanLog] = useState(true)
+  const [streamingResponse, setStreamingResponse] = useState("")
+  const [completedStream, setCompletedStream] = useState(false)
+  const messagesEndRef = useRef<HTMLDivElement>(null)
+  const [tokens, setTokens] = useState(null)
 
   useEffect(() => {
     // console.log("running useEffect()");
     const getUserData = async () => {
-      const userDocRef = doc(db, "users", session?.user?.email!);
-      const userDocSnap = await getDoc(userDocRef);
+      const userDocRef = doc(db, "users", session?.user?.email!)
+      const userDocSnap = await getDoc(userDocRef)
       // console.log("snap", userDocSnap);
       if (userDocSnap.exists()) {
         // console.log("exists");
-        const userData = userDocSnap.data();
+        const userData = userDocSnap.data()
         // console.log(userData);
-        setTokens(userData.tokens);
+        setTokens(userData.tokens)
       }
-    };
+    }
 
     if (session?.user?.email) {
       // console.log("email found");
-      getUserData();
+      getUserData()
     }
-  }, [session?.user?.email]);
+  }, [session?.user?.email])
 
   // console.log("tokens", tokens);
 
@@ -69,25 +69,25 @@ function HomePage() {
             "Y88P"                                                                                  
 `,
       "color:green"
-    );
-    setDylanLog(false);
+    )
+    setDylanLog(false)
   }
 
   useEffect(() => {
-    const messagesEnd = messagesEndRef.current;
+    const messagesEnd = messagesEndRef.current
     if (messagesEnd) {
-      const lastMessage = messagesEnd as HTMLElement;
+      const lastMessage = messagesEnd as HTMLElement
       if (lastMessage) {
-        lastMessage.scrollIntoView();
+        lastMessage.scrollIntoView()
       }
     }
-  }, [streamingResponse]);
+  }, [streamingResponse])
 
   useEffect(() => {
     if (docId !== "") {
-      (async () => {
+      ;(async () => {
         if (docId !== "") {
-          const notification = toast.loading("DylanGPT is thinking...");
+          const notification = toast.loading("DylanGPT is thinking...")
 
           const response = await fetch("/api/askQuestion", {
             method: "POST",
@@ -113,42 +113,42 @@ function HomePage() {
               chatId: docId,
               user: session?.user?.email,
             }),
-          });
+          })
 
           if (!response.ok) {
-            throw new Error(response.statusText);
+            throw new Error(response.statusText)
           }
-          setDisabled(true);
-          const data = response.body;
+          setDisabled(true)
+          const data = response.body
 
           if (!data) {
-            setDisabled(false);
-            console.log("no data");
-            return;
+            setDisabled(false)
+            console.log("no data")
+            return
           }
 
-          const reader = data.getReader();
+          const reader = data.getReader()
 
-          const decoder = new TextDecoder();
+          const decoder = new TextDecoder()
 
-          let done = false;
+          let done = false
           while (!done) {
-            const { value, done: doneReading } = await reader.read();
-            done = doneReading;
-            const chunkValue = decoder.decode(value);
+            const { value, done: doneReading } = await reader.read()
+            done = doneReading
+            const chunkValue = decoder.decode(value)
             // console.log("cv", chunkValue);
-            setStreamingResponse((prev) => prev + chunkValue);
+            setStreamingResponse((prev) => prev + chunkValue)
           }
 
           // console.log("finished streaming response", streamingResponse);
           toast.success("DylanGPT has responded!", {
             id: notification,
-          });
-          setCompletedStream(true);
+          })
+          setCompletedStream(true)
         }
-      })();
+      })()
     }
-  }, [docId]);
+  }, [docId])
 
   useEffect(() => {
     if (completedStream == true) {
@@ -159,7 +159,7 @@ function HomePage() {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            model: "gpt-4-1106-preview",
+            model: "gpt-4o",
             messages: [
               {
                 role: "system",
@@ -181,32 +181,32 @@ function HomePage() {
             chatId: docId,
             user: session?.user?.email,
           }),
-        }).catch((err) => console.log(err));
-      };
-      postData();
-      router.push(`/chat/${docId}`);
-      setCompletedStream(false);
+        }).catch((err) => console.log(err))
+      }
+      postData()
+      router.push(`/chat/${docId}`)
+      setCompletedStream(false)
     }
-  }, [completedStream]);
+  }, [completedStream])
 
   const promptSetter = async (e: any) => {
     if (db && session?.user?.email) {
-      setPrompt(e?.target?.innerText!);
-      createNewChat(e?.target?.innerText!);
+      setPrompt(e?.target?.innerText!)
+      createNewChat(e?.target?.innerText!)
     }
-  };
+  }
 
   const inputPromptSetter = async () => {
     if (db && session?.user?.email) {
-      createNewChat(prompt);
+      createNewChat(prompt)
     }
-  };
+  }
 
   const createNewChat = async (setPrompt: any) => {
     // console.log("creating new chat");
-    setDisabled(true);
-    const text = setPrompt.trim();
-    let id: string = "";
+    setDisabled(true)
+    const text = setPrompt.trim()
+    let id: string = ""
     try {
       const res = await fetch("/api/newChat", {
         method: "POST",
@@ -214,7 +214,7 @@ function HomePage() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          model: "gpt-4-1106-preview",
+          model: "gpt-4o",
           messages: [
             {
               role: "system",
@@ -231,14 +231,14 @@ function HomePage() {
           ],
           user: session?.user?.email,
         }),
-      });
-      const data = await res.json();
-      id = data.text;
+      })
+      const data = await res.json()
+      id = data.text
     } catch (error) {
-      console.error(error);
+      console.error(error)
     }
-    setDocId(id);
-  };
+    setDocId(id)
+  }
 
   if (
     tokens &&
@@ -293,7 +293,7 @@ function HomePage() {
           </div>
         </div>
       </div>
-    );
+    )
   }
   if (status === "loading") {
     return (
@@ -306,7 +306,7 @@ function HomePage() {
           alt=''
         />
       </div>
-    );
+    )
   }
 
   return (
@@ -401,8 +401,8 @@ function HomePage() {
         {/* <div className='mx-auto text-center mr-[8%] ml-[8%] mt-2 text-white'></div> */}
         <form
           onSubmit={(e) => {
-            e.preventDefault();
-            inputPromptSetter();
+            e.preventDefault()
+            inputPromptSetter()
           }}
           className='pt-5 pb-5  flex mx-auto max-w-[90%] min-w-[70%]  '
         >
@@ -425,7 +425,7 @@ function HomePage() {
         <div className='h-[80px] lg:h-[25px]' />
       </div>
     </div>
-  );
+  )
 }
 
-export default HomePage;
+export default HomePage

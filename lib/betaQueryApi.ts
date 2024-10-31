@@ -1,31 +1,31 @@
-import openai from "./chatgpt";
+import openai from "./chatgpt"
 
 type Message = {
-  role: string;
-  content: string;
-};
+  role: string
+  content: string
+}
 interface BetaQueryRequest {
-  messages: any;
+  messages: any
 }
 
 const betaQuery = async (messages: BetaQueryRequest["messages"]) => {
   const completion = await openai
     .createChatCompletion({
-      model: "gpt-4-1106-preview",
+      model: "gpt-4o",
       messages: messages,
     })
     .then((res) => {
-      console.log("beta res", res);
+      console.log("beta res", res)
       res.data.choices[0]?.message?.content! ||
-        "There was a problem receiving a response from the AI";
-      return res;
+        "There was a problem receiving a response from the AI"
+      return res
     })
     .catch(
       (err) =>
         `DylanGPT was unable to find an answer for that! (Error: ${err.message})`
-    );
+    )
 
-  return await completion;
-};
+  return await completion
+}
 
-export default betaQuery;
+export default betaQuery
