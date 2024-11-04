@@ -40,7 +40,7 @@ video {
   margin-left: -22px;
   scale: 100%;
   margin-bottom: 12px;
-  max-width: 1400px;
+  max-width: 960px;
 }
 
 @media (min-width: 768px) {
