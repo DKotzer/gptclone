@@ -1,61 +1,61 @@
-"use client";
+"use client"
 
-import NewChat from "./NewChat";
-import { useSession, signOut } from "next-auth/react";
-import { useCollection } from "react-firebase-hooks/firestore";
-import { db } from "@component/firebase";
-import ChatRow from "./ChatRow";
+import NewChat from "./NewChat"
+import { useSession, signOut } from "next-auth/react"
+import { useCollection } from "react-firebase-hooks/firestore"
+import { db } from "@component/firebase"
+import ChatRow from "./ChatRow"
 import {
   ArrowUpTrayIcon,
   Bars3Icon,
   QuestionMarkCircleIcon,
-} from "@heroicons/react/24/outline";
-import { useRouter } from "next/navigation";
-import { collection, orderBy, query } from "firebase/firestore";
-import { useEffect, useRef, useState } from "react";
+} from "@heroicons/react/24/outline"
+import { useRouter } from "next/navigation"
+import { collection, orderBy, query } from "firebase/firestore"
+import { useEffect, useRef, useState } from "react"
 
 function SideBar() {
-  const router = useRouter();
-  const [hidden, setHidden] = useState(false);
-  const { data: session } = useSession();
+  const router = useRouter()
+  const [hidden, setHidden] = useState(false)
+  const { data: session } = useSession()
   const [chats, loading, error] = useCollection(
     session &&
       query(
         collection(db, "users", session.user?.email!, "chats"),
         orderBy("createdAt", "desc")
       )
-  );
-  const chatsEndRef = useRef<HTMLDivElement>(null);
+  )
+  const chatsEndRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     //check size of window to set if the sidebar should be expanded or not on page load
-    const isWindowDefined = typeof window !== "undefined";
+    const isWindowDefined = typeof window !== "undefined"
     if (isWindowDefined) {
-      setHidden(window.innerWidth <= 768);
+      setHidden(window.innerWidth <= 768)
     }
-  }, []);
+  }, [])
 
   useEffect(() => {
-    const messagesEnd = chatsEndRef.current;
+    const messagesEnd = chatsEndRef.current
     if (messagesEnd) {
-      const lastMessage = messagesEnd as HTMLElement;
+      const lastMessage = messagesEnd as HTMLElement
       if (lastMessage) {
-        lastMessage.scrollIntoView();
+        lastMessage.scrollIntoView()
       }
     }
-  }, [chats]);
+  }, [chats])
 
   const createBetaChat = async () => {
-    router.push(`/beta`);
-  };
+    router.push(`/beta`)
+  }
 
   const toFAQ = async () => {
-    router.push(`/faq`);
-  };
+    router.push(`/faq`)
+  }
 
   const toHome = async () => {
-    router.push(`/`);
-  };
+    router.push(`/`)
+  }
 
   return (
     <div className='max-h-screen overflow-y-hidden overflow-x-hidden'>
@@ -67,7 +67,7 @@ function SideBar() {
         <button
           type='button'
           onClick={() => setHidden(true)}
-          className='flex h-10 w-10 items-center justify-center hover:animate-spin  focus:animate-ping absolute -top-[0.5%] -right-[4%] overflow-x-hidden'
+          className='flex h-10 w-10 items-center justify-center hover:animate-spin  focus:animate-ping absolute -top-[0.5%] -right-[4%] overflow-x-hidden slow-spin'
         >
           <svg
             stroke='currentColor'
@@ -193,8 +193,7 @@ function SideBar() {
         )}
       </div>
     </div>
-  );
+  )
 }
 
-export default SideBar;
-  
+export default SideBar

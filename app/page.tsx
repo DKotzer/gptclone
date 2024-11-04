@@ -348,7 +348,7 @@ function HomePage() {
                     onClick={promptSetter}
                     className='infoText bg-[#40414f] ring-2 ring-slate-500/50 ring-inset  hover:border-opacity-100 hover:cursor-pointer hover:scale-105 hover:ring-white hover:ring-3'
                   >
-                    {`Tell me about Dylan Kotzer's projects`}
+                    {`Tell me about Dylan Kotzer's projects, including images of them.`}
                   </p>
                   <p
                     onClick={promptSetter}

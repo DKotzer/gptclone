@@ -437,6 +437,19 @@ pre {
   color: #fff;
 }
 
+@keyframes slow-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.slow-spin {
+  animation: slow-spin 2s linear infinite; /* Adjust the duration as needed */
+}
+
 .overlay-loader .loader-icon.spinning-cog {
   -webkit-animation: spinning-cog 1.3s infinite ease;
   -moz-animation: spinning-cog 1.3s infinite ease;
