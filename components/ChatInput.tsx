@@ -103,6 +103,7 @@ function ChatInput({
     }
 
     const reader = data.getReader()
+    
 
     const decoder = new TextDecoder()
 
