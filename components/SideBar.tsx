@@ -67,7 +67,7 @@ function SideBar() {
         <button
           type='button'
           onClick={() => setHidden(true)}
-          className='flex h-10 w-10 items-center justify-center  focus:animate-ping absolute -top-[0.5%] -right-[4%] overflow-x-hidden hover:animate-ping'
+          className='flex h-10 w-10 items-center justify-center  focus:animate-ping absolute -top-[0.5%] -right-[4%] overflow-x-hidden hover:animate-pulse'
         >
           <svg
             stroke='currentColor'

@@ -40,6 +40,7 @@ video {
   margin-left: -22px;
   scale: 100%;
   margin-bottom: 12px;
+  max-width: 1400px;
 }
 
 @media (min-width: 768px) {
@@ -90,8 +91,6 @@ video {
 .p-img {
   z-index: 20;
 }
-
-
 
 .markdown li {
   margin-right: 0.25em;
